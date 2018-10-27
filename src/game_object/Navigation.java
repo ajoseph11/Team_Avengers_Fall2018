@@ -16,8 +16,8 @@ public class Navigation {
     
     public static void main(String[] args) {
 
-        Games citadelofstorms;
-        citadelofstorms = new Games();
+        Navigation citadelofstorms;
+        citadelofstorms = new Navigation();
 
         citadelofstorms.playerSetUp();
         citadelofstorms.readA2();
@@ -25,28 +25,28 @@ public class Navigation {
 
     public void playerSetUp(){
 
-     room = new Room();
-        rooms.playerHP = 20;
+        room = new Room();
+        room.playerHP = 20;
 
-        rooms.monsterHP = 15;
+        room.monsterHP = 15;
 
-        rooms.playerWeapon = "Knife";
+        room.playerWeapon = "Knife";
 
-        System.out.println("Your HP: "+ rooms.playerHP);
-        System.out.println("Your Weapon: "+ rooms.playerWeapon);
+        System.out.println("Your HP: "+ room.playerHP);
+        System.out.println("Your Weapon: "+ room.playerWeapon);
 
         System.out.println("Please enter your name:");
 
-        rooms.playerName = myScanner.nextLine();
+        room.playerName = myScanner.nextLine();
 
-        System.out.println("Hello " + rooms.playerName + ", let's start the game!");
+        System.out.println("Hello " + room.playerName + ", let's start the game!");
 
 
     }
 
     public void readA2(){
      
-     rooms.a2();
+     room.a2();
      
         choice = myScanner.nextInt();
 
