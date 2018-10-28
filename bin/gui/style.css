@@ -92,13 +92,17 @@
 	
 }
 
-#roomDesc, #monstDesc, #attackStatus{
+#playerDetails, #roomHeader, #monstDesc, #attackStatus, #roomDesctn, #monstDesc, #attackStatus, #textA, #textB,#textC {
 	-fx-background-color: rgba(138,6,81,0.6);
 	-fx-font-size: 18pt;
 	-fx-text-align: center;
 	
-	-fx-font-family: Serif;
-	-fx-text-fill: #FFFFFF;
+	
+	-fx-font-family: sans-Serif;
+	-fx-font-size: 24pt; 
+	-fx-font-style: italic;
+	-fx-font-weight: normal;
+	-fx-text-fill: #ffff00
 	
 }
 
@@ -108,10 +112,8 @@
 	-fx-background-size: cover;
 	-fx-background-position: center;
 	-fx-fill-width: true;
-	-fx-font-family: sans-Serif;
-	-fx-font-size: 20pt; 
-	-fx-font-style: italic;
-	-fx-font-weight: normal;
-	-fx-text-fill: #FFFFFF;
+	
+	
+	
 	
 }

@@ -52,8 +52,8 @@ public class GUI extends Application{
    Button btDetails;
    Button btClearNav;
    Button btClearDetails;
-   String playerName,  playerHealth,roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
-   
+   String playerName,roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   int  playerHealth;
   
    Text  txtErrorMsg;
    public static final ObservableList<String> data = 
@@ -186,16 +186,17 @@ public class GUI extends Application{
 			buttonCliked = 2;
 			System.out.println("Clicked: "+ buttonCliked);}
 		});
-		btWest.setOnAction(e -> {
-			if (e.getSource() == btWest) {	
+		btSouth.setOnAction(e -> {
+			if (e.getSource() == btSouth) {	
 				buttonCliked = 3;
 				System.out.println("Clicked: "+ buttonCliked);}
 		});
-		btSouth.setOnAction(e -> {
-			if (e.getSource() == btSouth) {	
+		btWest.setOnAction(e -> {
+			if (e.getSource() == btWest) {	
 				buttonCliked = 4;
 				System.out.println("Clicked: "+ buttonCliked);}
 		});
+		
 		
 		btUpperFloor.setOnAction(e -> {
 			if (e.getSource() == btUpperFloor) {	
@@ -304,7 +305,7 @@ public class GUI extends Application{
 
 		}
 	    
-	    public VBox getVBox(String playerName, String playerHealth, String roomTitle, String  floorTitle, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
+	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
 	    	String roomDescription =  "";
 	    	//Room room = new Room(roomDescription);
 	    	HBox topX = new HBox();
@@ -318,6 +319,15 @@ public class GUI extends Application{
 	    	HBox base = new HBox();
 	    	base.setAlignment(Pos.CENTER);
 	    	
+	    	HBox baseA = new HBox();
+	    	baseA.setAlignment(Pos.CENTER);
+	    	HBox baseB = new HBox();
+	    	baseB.setAlignment(Pos.CENTER);
+	    	HBox baseC = new HBox();
+	    	baseC.setAlignment(Pos.CENTER);
+	    	
+	    	
+	    	
 			VBox vbPlayField = new VBox();
 			vbPlayField.setId("playField");
 			
@@ -328,22 +338,37 @@ public class GUI extends Application{
 			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle);
 			roomHeader.setId("roomHeader");
 			
-			Label roomDesctn = new Label(roomDesc);
-			Label monstDesc = new Label(monster);
+			Label roomDesctn = new Label("Room Desc: " + roomDesc);
+			roomDesctn.setId("roomDesctn");
+			Label monstDesc = new Label("Monster Desc: " + monster);
 			monstDesc.setId("monstDesc");
-			Label attackStatus = new Label(attackStat);
+			Label attackStatus = new Label("Attack Status: " + attackStat);
 			attackStatus.setId("attackStatus");
+			
+			Label textA = new Label("TextA: " + txtA);
+			textA.setId("textA");
+			Label textB = new Label("TextB: " + txtB);
+			textB.setId("textB");
+			Label textC = new Label("TextC: " + txtC);
+			textC.setId("textC");
 			
 			topX.getChildren().add(playerDetails);
 			top.getChildren().add(roomHeader);
 			topB.getChildren().add(roomDesctn);
 			mid.getChildren().add(monstDesc);
 			base.getChildren().add(attackStatus);
-			vbPlayField.getChildren().addAll(topX, top, topB, mid, base);
-			VBox.setMargin(top, new Insets(2));
-			VBox.setMargin(topB, new Insets(2));
-			VBox.setMargin(mid, new Insets(2));
-			VBox.setMargin(base, new Insets(2));
+			baseA.getChildren().add(textA);
+			baseB.getChildren().add(textB);
+			baseC.getChildren().add(textC);
+			vbPlayField.getChildren().addAll(topX, top, topB, mid, base, baseA, baseB, baseC);
+			VBox.setMargin(topX, new Insets(4));
+			VBox.setMargin(top, new Insets(4));
+			VBox.setMargin(topB, new Insets(4));
+			VBox.setMargin(mid, new Insets(4));
+			VBox.setMargin(base, new Insets(4));
+			VBox.setMargin(baseA, new Insets(4));
+			VBox.setMargin(baseB, new Insets(4));
+			VBox.setMargin(baseC, new Insets(4));
 			return vbPlayField;
 			
 			

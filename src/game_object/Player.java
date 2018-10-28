@@ -13,7 +13,12 @@ public class Player {
 }
  
  
- public void setPlayerName(String playerName) {
+ public Player() {//default constructor
+	// TODO Auto-generated constructor stub
+}
+
+
+public void setPlayerName(String playerName) {
 	 this.playerName = playerName;
  }
  

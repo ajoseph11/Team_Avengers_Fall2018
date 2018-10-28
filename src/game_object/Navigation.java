@@ -8,7 +8,8 @@ public class Navigation {
      int playerHealth;
  	private String roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC;
 
-     Player player = new Player(playerName, playerHealth);
+     Player player = new Player();
+     
      Room room = new Room(roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC);
     
 //    int playerHP;
