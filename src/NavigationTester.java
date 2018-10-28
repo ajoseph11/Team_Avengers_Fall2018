@@ -1,13 +1,16 @@
+import game_object.Navigation;
 import game_object.Navigationn;
 import game_object.Player;
 import game_object.Room;
 import game_object.Roomm;
 
 public class NavigationTester {
-
+	static Player player = new Player();
 	public static void main(String [] args) {
 		Navigationn navigationn = new Navigationn();
 		Roomm roomm = new Roomm();
+		player.setPlayerName("Elijah");
+		player.setPlayerHealth(20);
 		roomm.setRoomDesc("Description of room goes here");
 		roomm.setAttackStat("being attakced...");
 		roomm.setFloorTitle("Floor 1");
@@ -16,9 +19,8 @@ public class NavigationTester {
 		roomm.setTxtA("Text a goes here...");
 		roomm.setTxtB("Text b goes here...");
 		roomm.setTxtC("Text c goes here...");
-		Player player = new Player();
-		player.setPlayerName("Elijah");
-		player.setPlayerHealth(20);
+		
+		
 		
 		navigationn.setRoomTitle(roomm.getRoomTitle());
 		navigationn.setRoomm(roomm);
@@ -35,5 +37,7 @@ public class NavigationTester {
 	System.out.println(roomm.getRoomTitle());
 	
 }
+	
+
 	
 }
