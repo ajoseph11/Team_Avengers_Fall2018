@@ -52,6 +52,8 @@ public class GUI extends Application{
    Button btDetails;
    Button btClearNav;
    Button btClearDetails;
+   String playerName,  playerHealth,roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   
   
    Text  txtErrorMsg;
    public static final ObservableList<String> data = 
@@ -165,7 +167,7 @@ public class GUI extends Application{
 		borderPane = new BorderPane();
 		borderPane.getStyleClass().add("borderPane");
 		borderPane.setTop(hbTop);
-		borderPane.setCenter(controller.getVBox(0));
+		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC));
 		borderPane.setLeft(vbLeft);
 		borderPane.setRight(vbRight);
 		borderPane.setBottom(hbBottom);
@@ -195,6 +197,16 @@ public class GUI extends Application{
 				System.out.println("Clicked: "+ buttonCliked);}
 		});
 		
+		btUpperFloor.setOnAction(e -> {
+			if (e.getSource() == btUpperFloor) {	
+				buttonCliked = 200;
+				System.out.println("Clicked: "+ buttonCliked);}
+		});
+        btLowerFloor.setOnAction(e -> {
+        	if (e.getSource() == btLowerFloor) {	
+				buttonCliked = 100;
+				System.out.println("Clicked: "+ buttonCliked);}
+		});
 		/*******Navigaition buttons***********/
 		
 		
@@ -292,11 +304,15 @@ public class GUI extends Application{
 
 		}
 	    
-	    public VBox getVBox(int roomFrom) {
+	    public VBox getVBox(String playerName, String playerHealth, String roomTitle, String  floorTitle, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
 	    	String roomDescription =  "";
 	    	//Room room = new Room(roomDescription);
+	    	HBox topX = new HBox();
+	    	topX.setAlignment(Pos.CENTER);
 	    	HBox top = new HBox();
 	    	top.setAlignment(Pos.CENTER);
+	    	HBox topB = new HBox();
+	    	topB.setAlignment(Pos.CENTER);
 	    	HBox mid = new HBox();
 	    	mid.setAlignment(Pos.CENTER);
 	    	HBox base = new HBox();
@@ -304,20 +320,28 @@ public class GUI extends Application{
 	    	
 			VBox vbPlayField = new VBox();
 			vbPlayField.setId("playField");
+			
+			Label playerDetails = new Label("Player: " + playerName + " || HealthPoint: "  + playerHealth);
+			playerDetails.setId("playerDetails");
+			
 		
-			Label roomDesc = new Label("Room Description ");
-			roomDesc.setId("roomDesc");
-			Label monstDesc = new Label("Monster Description ");
+			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle);
+			roomHeader.setId("roomHeader");
+			
+			Label roomDesctn = new Label(roomDesc);
+			Label monstDesc = new Label(monster);
 			monstDesc.setId("monstDesc");
-			Label attackStatus = new Label("Attack Status ");
+			Label attackStatus = new Label(attackStat);
 			attackStatus.setId("attackStatus");
 			
-			
-			top.getChildren().add(roomDesc);
+			topX.getChildren().add(playerDetails);
+			top.getChildren().add(roomHeader);
+			topB.getChildren().add(roomDesctn);
 			mid.getChildren().add(monstDesc);
 			base.getChildren().add(attackStatus);
-			vbPlayField.getChildren().addAll(top, mid, base);
+			vbPlayField.getChildren().addAll(topX, top, topB, mid, base);
 			VBox.setMargin(top, new Insets(2));
+			VBox.setMargin(topB, new Insets(2));
 			VBox.setMargin(mid, new Insets(2));
 			VBox.setMargin(base, new Insets(2));
 			return vbPlayField;

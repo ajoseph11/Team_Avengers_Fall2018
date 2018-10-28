@@ -3,7 +3,14 @@ import java.util.Scanner;
 public class Navigation {
 	Scanner myScanner = new Scanner(System.in);
     Scanner enterScanner = new Scanner(System.in);
-    Room room = new Room();
+    //Room room = new Room();
+     String playerName;
+     int playerHealth;
+ 	private String roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC;
+
+     Player player = new Player(playerName, playerHealth);
+     Room room = new Room(roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC);
+    
 //    int playerHP;
 //    String playerName;
 //    String playerWeapon;
@@ -22,7 +29,12 @@ public class Navigation {
         citadelofstorms.playerSetUp();
         citadelofstorms.readA2();
     }
-
+    
+    public void setPlayerConsole() {
+    	
+    }
+    
+    
     public void playerSetUp(){
 
         room = new Room();

@@ -108,5 +108,10 @@
 	-fx-background-size: cover;
 	-fx-background-position: center;
 	-fx-fill-width: true;
+	-fx-font-family: sans-Serif;
+	-fx-font-size: 20pt; 
+	-fx-font-style: italic;
+	-fx-font-weight: normal;
+	-fx-text-fill: #FFFFFF;
 	
 }
