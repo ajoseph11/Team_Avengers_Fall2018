@@ -51,26 +51,308 @@ public class Navigation {
         choice = myScanner.nextInt();
 
         if(choice==1){
-          room.c1();
-            
-            
-         // get.rooms.a2();
-            //if(rooms.silverRing==1){
-                //ending();
-           // }
-            //else{
-               // System.out.println("(As you enter the chamber, your attention is drawn to the far \ncorner, where a hulking form breathes softly.) On the floor around you lie\n the discarded bodies of once-living minions.\n Is this where all these experiments came to a head?");
-               // enterScanner.nextLine();
-               // readCrossRoad();
-            
-           //readb2();
+          room.a1();
         }
         
         else if(choice==2){
-            System.out.println("The door falls open, a gust of wind comes in the room, and the candles\n mounted against the walls flames flicker. Stomachs are growling:\n the pig people are on the prowl. A smell of desperation is in the air. The closest object seems to be a crate;\n there could still be something in there. There is a tool bench, as well as a work table. \nThis room is filled with opportunity – or defeat.");
-            //System.out.println("Your HP: " + playerHP);
-            enterScanner.nextLine();
-            readA2();
+           room.b2();
         }
     }
+    public void readB1(){
+        
+       room.b1();
+        
+           choice = myScanner.nextInt();
+
+           if(choice==2){
+             room.c1();
+           }
+           
+           else if(choice==3){
+              room.b2();
+           }
+           else if(choice==4){
+               room.a1();
+            }
+       }
+    public void readB2(){
+        
+        room.b1();
+         
+            choice = myScanner.nextInt();
+
+            if(choice==2){
+              room.c1();
+            }
+            
+            else if(choice==3){
+               room.b2();
+            }
+            else if(choice==4){
+                room.a1();
+             }
+        }
+    public void readC1(){
+        
+        room.c1();
+         
+            choice = myScanner.nextInt();
+
+            if(choice==3){
+              room.c2();
+            }
+            
+            else if(choice==4){
+               room.b1();
+            }
+        }
+public void readC2(){
+        
+        room.c2();
+         
+            choice = myScanner.nextInt();
+
+            if(choice==1){
+              room.c1();
+            }
+            
+            else if(choice==2){
+               room.d2();
+            }
+            else if(choice==3){
+            	room.a2();
+            	//update this B1F
+               // room.c3(); 
+             }
+            else if(choice==4){
+                room.b2();
+             }
+        }
+public void readA3(){
+    
+    room.a3();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==2){
+          room.b3();
+        }
+        
+        else if(choice==3){
+           room.a4();
+        }
+    }
+public void readA4(){
+    
+    room.a4();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.a3();
+        }
+        
+        else if(choice==2){
+           room.b4();
+        }
+        else if(choice==3){
+        	room.a5();
+         }
+}
+public void readB3(){
+    
+    room.b3();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.b2();
+        }
+        
+        else if(choice==2){
+           room.a2();
+         //update this B1F
+           // room.c3();
+        }
+        else if(choice==3){
+        	room.b4();
+         }
+        else if(choice==4){
+        	room.a3();
+         }
+}
+public void readB4(){
+    
+    room.b4();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.b3();
+        }
+        
+        else if(choice==2){
+           room.c4();
+         //update this B1F
+           // room.c3();
+        }
+        else if(choice==3){
+        	room.b5();
+         }
+        else if(choice==4){
+        	room.a4();
+         }
+}
+public void readB5(){
+    
+    room.b5();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.b4();
+        }
+        
+        else if(choice==2){
+           room.a5();
+        }
+}
+public void readD1(){
+    
+    room.d1();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==2){
+          room.e1();
+        }
+        
+        else if(choice==3){
+           room.d2();
+        }
+}
+public void readD2(){
+    
+    room.d2();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.d1();
+        }
+        
+        else if(choice==2){
+           room.e2();
+        }
+        else if(choice==3){
+        	room.d3();
+         }
+        else if(choice==4){
+        	room.c2();
+         }
+}
+public void readD3(){
+    
+    room.d3();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.d2();
+        }
+        
+        else if(choice==2){
+           room.e3();
+        }
+        else if(choice==3){
+        	room.d4();
+         }
+        else if(choice==4){
+        	room.a2();
+        	//update this B1F
+            // room.c3();
+         }
+}
+public void readE2(){
+    
+    room.e2();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.e1();
+        }
+        else if(choice==3){
+        	room.e3();
+         }
+        else if(choice==4){
+        	room.d2();
+         }
+}
+public void readE3(){
+    
+    room.e3();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.e2();
+        }
+        else if(choice==4){
+        	room.d3();
+         }
+}
+public void readC4(){
+    
+    room.c4();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.a2();
+        //update this B1F
+          // room.c3();
+        }
+        else if(choice==2){
+           room.d4();
+        }
+        else if(choice==3){
+        	room.c5();
+         }
+        else if(choice==4){
+        	room.b4();
+         }
+}
+public void readC5(){
+    
+    room.c5();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.c4();
+        }
+        else if(choice==2){
+           room.d5(); 
+        }
+}
+public void readD4(){
+    
+    room.d4();
+     
+        choice = myScanner.nextInt();
+
+        if(choice==1){
+          room.d3();
+        }
+        else if(choice==2){
+          // room.e4(); 
+        }
+        else if(choice==3){
+            room.d5(); 
+         }
+        else if(choice==4){
+            room.c4(); 
+         }
+}
 }

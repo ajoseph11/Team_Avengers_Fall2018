@@ -215,5 +215,61 @@ public class Room {
 	  //System.out.println("3: Go south");
 	  //System.out.println("4: Go west");
 	  System.out.println("\n------------------------------------------------------------------\n");
-	 }  
+	 }
+	        public void a1() {
+	      	  System.out.println("\n------------------------------------------------------------------\n");
+	      	  System.out.println( "As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly. On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head");
+	      	  System.out.println("");
+	      	  System.out.println("What do you want to do?");
+	      	  System.out.println("");
+	      	 // System.out.println("1: Go north");
+	      	  System.out.println("2: Go east");
+	      	  System.out.println("3: Go south");
+	      	  System.out.println("\n------------------------------------------------------------------\n");
+	      	 }
+	        public void a5() {
+		      	  System.out.println("\n------------------------------------------------------------------\n");
+		      	  System.out.println( "Peeking slowly around the doorframe, you edge cautiously into this room. It reeks of rotting meat, and there are pools of vile fluids scattered here and there upon the floor. (A pair of glowing red eyes stares you down from the far corner, but do not make any motion. Yet.)");
+		      	  System.out.println("");
+		      	  System.out.println("What do you want to do?");
+		      	  System.out.println("");
+		      	  System.out.println("1: Go north");
+		      	  System.out.println("2: Go east");
+		      	 // System.out.println("3: Go south");
+		      	  System.out.println("\n------------------------------------------------------------------\n");
+		      	 }
+	        public void e1() {
+	  System.out.println("\n------------------------------------------------------------------\n");
+	  System.out.println("Wading quietly through the water, you enter a room that has a more foreboding atmosphere than you've felt in a while. The walls drip slowly with water and green ooze, and small splashes can be heard echoing about in the otherwise still air. (In the far corner, a somber form appears to be sizing you up.)");
+	  System.out.println("");
+	  //System.out.println("1: Go north");
+	  //System.out.println("2: Go east");
+	  System.out.println("3: Go south");
+	  System.out.println("4: Go west");
+	  System.out.println("\n------------------------------------------------------------------\n");
+	        }
+	        public void d4() {
+	  System.out.println("\n------------------------------------------------------------------\n");
+	  System.out.println("(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.");
+	  System.out.println("");
+	  System.out.println("(If lantern description) Claw marks litter the wall almost with the same frequency as bones litter the floor. Something feeds here, and you quietly hope it is not home. ");
+	  System.out.println("What do you want to do?");
+	  System.out.println("1: Go north");
+	  System.out.println("2: Go east");
+	  System.out.println("3: Go south");
+	  System.out.println("4: Go west");
+	  System.out.println("\n------------------------------------------------------------------\n");
+	 }    
+	        public void d5() {
+	      	  System.out.println("\n------------------------------------------------------------------\n");
+	      	  System.out.println("(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.");
+	      	  System.out.println("");
+	      	  System.out.println("(If lantern description) A chest sits in the center of this room. Surely your lantern will stay lit long enough for you to open it... ");
+	      	  System.out.println("What do you want to do?");
+	      	  System.out.println("1: Go north");
+	      	  //System.out.println("2: Go east");
+	      	  System.out.println("3: Go south");
+	      	  System.out.println("4: Go west");
+	      	  System.out.println("\n------------------------------------------------------------------\n");
+	      	 }          
 }
