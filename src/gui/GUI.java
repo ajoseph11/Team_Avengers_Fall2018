@@ -26,7 +26,7 @@ public class GUI extends Application{
 	private Navigationn navigationn = new Navigationn();
     private Roomm roomm;
     private Player player;
-
+   private boolean gamestateActive;
 	private int currentRoom;
 	private int buttonClicked;
    final private int windowWidth = 1500; // width of Window
@@ -70,6 +70,8 @@ public class GUI extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		//vbPlayField = controller.getVBox();
+		
+		gamestateActive = false;
 		nav = "default";
 	    navigationn = new Navigationn(); // instance of Navigation
 	    roomm = new Roomm(); // instance of Room
@@ -183,7 +185,10 @@ public class GUI extends Application{
 		borderPane = new BorderPane();
 		borderPane.getStyleClass().add("borderPane");
 		borderPane.setTop(hbTop);
-		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+		//borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+		
+		borderPane.setCenter(controller.showLoginScreen());
+
 		System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + txtA+ " " +  txtB+ " " + txtC);
 		
 		borderPane.setLeft(vbLeft);
@@ -303,6 +308,8 @@ public class GUI extends Application{
 		primaryStage.setTitle("Citadel_Of_Storms");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		System.out.println("Game state " + gamestateActive);
+
 		primaryStage.setResizable(false); // disallow increasing window size
 		
 		
@@ -326,18 +333,21 @@ public class GUI extends Application{
 		
 		//THese are the methods that the button call whenever someting needs to get done....
 		public void showGameDetails() {
-			try {
-				txtErrorMsg.setText("MESSAGE: Click Clear when done"); 
-				vbLeft.getChildren().addAll( lbDetails, listView, txtErrorMsg);
-			} catch (Exception e) {
-				txtErrorMsg.setText("MESSAGE: Details is already active"); 
-				System.out.println(e);
+			if(!gamestateActive ==false) {
+				try {
+					txtErrorMsg.setText("MESSAGE: Click Clear when done"); 
+					vbLeft.getChildren().addAll( lbDetails, listView, txtErrorMsg);
+				} catch (Exception e) {
+					txtErrorMsg.setText("MESSAGE: Details is already active"); 
+					System.out.println(e);
+				}
 			}
 			
 
 		}
 		
 	    public void showGameNav() {
+	    if (!gamestateActive == false) {
 	    	try {
 	    		txtErrorMsg.setText("MESSAGE: Click Clear when done"); 
 	    		vbRight.getChildren().addAll(lbNavigation, btUpperFloor, gpNav, btLowerFloor, txtErrorMsg);
@@ -348,6 +358,7 @@ public class GUI extends Application{
 	    		
 	    		System.out.println(e);
 		}
+	    }
 	    }
 	    
 	    public void clearGameDetails() {
@@ -360,9 +371,18 @@ public class GUI extends Application{
 
 		}
 	    
+	    
+	    public VBox showLoginScreen() {
+			VBox loginVBox = new VBox();
+			loginVBox.setId("loginVBox");
+			
+	    	return loginVBox;
+	    }
+	    
 	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
 	        
-	    	setRoomDetails();
+	    if (!gamestateActive == false) {
+	    	
 	    	System.out.println(navigationn.toString());
 	    	//Room room = new Room(roomDescription);
 	    	HBox topX = new HBox();
@@ -383,6 +403,9 @@ public class GUI extends Application{
 	    	HBox baseC = new HBox();
 	    	baseC.setAlignment(Pos.CENTER);
 	    	
+	    	
+	    	
+	    
 	    	
 	    	
 			VBox vbPlayField = new VBox();
@@ -428,9 +451,12 @@ public class GUI extends Application{
 			VBox.setMargin(baseA, new Insets(4));
 			VBox.setMargin(baseB, new Insets(4));
 			VBox.setMargin(baseC, new Insets(4));
-			return vbPlayField;
+			System.out.println("Game state " + gamestateActive);
 			
+	    }
 			
+		
+	    return vbPlayField;
 	    	
 	    }
 		
