@@ -34,4 +34,8 @@ public void setPlayerName(String playerName) {
  public int getPlayerHealth() {
 	 return this.playerHealth;
  }
+ 
+ public String toString() {
+		return "Player Object";
+	}
 }

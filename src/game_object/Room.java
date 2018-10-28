@@ -2,32 +2,13 @@ package game_object;
 
 public class Room {
 	int playerHP;
-	
-	private String roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC;
 	String playerName;
-	String playerWeapon;
-	int monsterHP;
-	
-	
-   
+	 String playerWeapon;
+	 int monsterHP;
+
 	 
 
-	 public Room() {
-		super();
-	}
-	public Room(String roomTitle, String floorTitle, String roomDesc, String monster, String attackStat, String txtA,
-			String txtB, String txtC) {
-		super();
-		this.roomTitle = roomTitle;
-		this.floorTitle = floorTitle;
-		this.roomDesc = roomDesc;
-		this.monster = monster;
-		this.attackStat = attackStat;
-		this.txtA = txtA;
-		this.txtB = txtB;
-		this.txtC = txtC;
-	}
-	public void a2() {
+	 public void a2() {
 	  System.out.println("\n------------------------------------------------------------------\n");
 	  System.out.println(
 	    "There is an eerie feeling in the room. The air is muggy. \n With every step you take another stream of sweat comes down your face.\n You initially see a few pig people. There is a dim fire in the corner,\n you can see the shadow of a chest. There are a few pigs standing around a \ntable. There seems to be a carcass on the wall.");
@@ -235,55 +216,4 @@ public class Room {
 	  //System.out.println("4: Go west");
 	  System.out.println("\n------------------------------------------------------------------\n");
 	 }  
-	        
-	        
-	        /***************Getters and Setter for the room properties*****************/
-	        public String getRoomTitle() {
-	    		return roomTitle;
-	    	}
-	    	public void setRoomTitle(String roomTitle) {
-	    		this.roomTitle = roomTitle;
-	    	}
-	    	public String getFloorTitle() {
-	    		return floorTitle;
-	    	}
-	    	public void setFloorTitle(String floorTitle) {
-	    		this.floorTitle = floorTitle;
-	    	}
-	    	public String getRoomDesc() {
-	    		return roomDesc;
-	    	}
-	    	public void setRoomDesc(String roomDesc) {
-	    		this.roomDesc = roomDesc;
-	    	}
-	    	public String getMonster() {
-	    		return monster;
-	    	}
-	    	public void setMonster(String monster) {
-	    		this.monster = monster;
-	    	}
-	    	public String getAttackStat() {
-	    		return attackStat;
-	    	}
-	    	public void setAttackStat(String attackStat) {
-	    		this.attackStat = attackStat;
-	    	}
-	    	public String getTxtA() {
-	    		return txtA;
-	    	}
-	    	public void setTxtA(String txtA) {
-	    		this.txtA = txtA;
-	    	}
-	    	public String getTxtB() {
-	    		return txtB;
-	    	}
-	    	public void setTxtB(String txtB) {
-	    		this.txtB = txtB;
-	    	}
-	    	public String getTxtC() {
-	    		return txtC;
-	    	}
-	    	public void setTxtC(String txtC) {
-	    		this.txtC = txtC;
-	    	}     
 }

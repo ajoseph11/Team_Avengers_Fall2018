@@ -1,5 +1,7 @@
 package gui;
 
+import game_object.*;
+
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -21,6 +23,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class GUI extends Application{
+	private Navigationn navigationn = new Navigationn();
+    private Roomm roomm;
+    private Player player;
+
+	
 	private int buttonCliked;
    final private int windowWidth = 1500; // width of Window
     final private int windowHeight = 900; //height of window
@@ -63,7 +70,47 @@ public class GUI extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		//vbPlayField = controller.getVBox();
-	
+	    navigationn = new Navigationn(); // instance of Navigation
+	    roomm = new Roomm(); // instance of Room
+	    player = new Player(); // instance of Player
+	    /*************Game, Player and NAvigation Begin***************/
+	    roomm.setRoomDesc("Description of room goes here");
+		roomm.setAttackStat("being attakced...");
+		roomm.setFloorTitle("Floor 1");
+		roomm.setMonster("Very Big Monster");
+		roomm.setRoomTitle("Room One");
+		roomm.setTxtA("Text a goes here...");
+		roomm.setTxtB("Text b goes here...");
+		roomm.setTxtC("Text c goes here...");
+		Player player = new Player();
+		player.setPlayerName("Elijah");
+		player.setPlayerHealth(20);
+		
+		navigationn.setRoomTitle(roomm.getRoomTitle());
+		navigationn.setRoomm(roomm);
+		navigationn.setFloorTitle(roomm.getFloorTitle());
+		navigationn.setMonster(roomm.getMonster());
+		navigationn.setPlayer(player);
+		navigationn.setAttackStat(roomm.getAttackStat());
+		navigationn.setPlayerHealth(player.getPlayerHealth());
+		navigationn.setPlayerName(player.getPlayerName());
+		navigationn.setRoomDesc(roomm.getRoomDesc());
+		  /******Values that get printed on the canvas Begin*******/
+		String playerName = navigationn.getPlayerName();
+		String roomTitle = navigationn.getRoomTitle();
+		String floorTitle  = navigationn.getFloorTitle();
+		String roomDesc = navigationn.getRoomDesc();
+		String monster = navigationn.getMonster();
+		String attackStat = navigationn.getAttackStat();
+		String txtA = navigationn.getTxtA();
+		String txtB = navigationn.getTxtB();
+		String txtC = navigationn.getTxtC();
+		
+		/******Values that get printed on the canvas Begin*******/
+		
+		
+		/********************Game, Player, and Navigation End***************************/
+	    
 		controller = new Controller();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
@@ -303,7 +350,8 @@ public class GUI extends Application{
 		}
 	    
 	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
-	    	String roomDescription =  "";
+	    
+	    	
 	    	//Room room = new Room(roomDescription);
 	    	HBox topX = new HBox();
 	    	topX.setAlignment(Pos.CENTER);
