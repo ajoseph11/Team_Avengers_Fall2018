@@ -27,8 +27,8 @@ public class GUI extends Application{
     private Roomm roomm;
     private Player player;
 
-	
-	private int buttonCliked;
+	private int currentRoom;
+	private int buttonClicked;
    final private int windowWidth = 1500; // width of Window
     final private int windowHeight = 900; //height of window
    VBox vbCenter; // vertical pane in the center of the window's borderPane
@@ -56,7 +56,7 @@ public class GUI extends Application{
    Button btDetails;
    Button btClearNav;
    Button btClearDetails;
-   String playerName,roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
    int  playerHealth;
   
    Text  txtErrorMsg;
@@ -70,47 +70,19 @@ public class GUI extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		//vbPlayField = controller.getVBox();
+		nav = "default";
 	    navigationn = new Navigationn(); // instance of Navigation
 	    roomm = new Roomm(); // instance of Room
 	    player = new Player(); // instance of Player
 	    /*************Game, Player and NAvigation Begin***************/
-	    roomm.setRoomDesc("Description of room goes here");
-		roomm.setAttackStat("being attakced...");
-		roomm.setFloorTitle("Floor 1");
-		roomm.setMonster("Very Big Monster");
-		roomm.setRoomTitle("Room One");
-		roomm.setTxtA("Text a goes here...");
-		roomm.setTxtB("Text b goes here...");
-		roomm.setTxtC("Text c goes here...");
-		Player player = new Player();
-		player.setPlayerName("Elijah");
-		player.setPlayerHealth(20);
-		
-		navigationn.setRoomTitle(roomm.getRoomTitle());
-		navigationn.setRoomm(roomm);
-		navigationn.setFloorTitle(roomm.getFloorTitle());
-		navigationn.setMonster(roomm.getMonster());
-		navigationn.setPlayer(player);
-		navigationn.setAttackStat(roomm.getAttackStat());
-		navigationn.setPlayerHealth(player.getPlayerHealth());
-		navigationn.setPlayerName(player.getPlayerName());
-		navigationn.setRoomDesc(roomm.getRoomDesc());
-		  /******Values that get printed on the canvas Begin*******/
-		String playerName = navigationn.getPlayerName();
-		String roomTitle = navigationn.getRoomTitle();
-		String floorTitle  = navigationn.getFloorTitle();
-		String roomDesc = navigationn.getRoomDesc();
-		String monster = navigationn.getMonster();
-		String attackStat = navigationn.getAttackStat();
-		String txtA = navigationn.getTxtA();
-		String txtB = navigationn.getTxtB();
-		String txtC = navigationn.getTxtC();
+	   
+	
 		
 		/******Values that get printed on the canvas Begin*******/
 		
 		
 		/********************Game, Player, and Navigation End***************************/
-	    
+	    currentRoom = 1;
 		controller = new Controller();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
@@ -211,7 +183,9 @@ public class GUI extends Application{
 		borderPane = new BorderPane();
 		borderPane.getStyleClass().add("borderPane");
 		borderPane.setTop(hbTop);
-		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, roomDesc, monster, attackStat, txtA,  txtB, txtC));
+		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+		System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + txtA+ " " +  txtB+ " " + txtC);
+		
 		borderPane.setLeft(vbLeft);
 		borderPane.setRight(vbRight);
 		borderPane.setBottom(hbBottom);
@@ -221,36 +195,73 @@ public class GUI extends Application{
 		
 		btNorth.setOnAction(e -> {
 			if (e.getSource() == btNorth) {	
-				buttonCliked = 1;
-				System.out.println("Clicked: "+ buttonCliked);}	
+				buttonClicked = 1;
+				setRoomDetails();
+				//playerName = "Dan";
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+				System.out.println("Clicked: "+ buttonClicked);
+				System.out.println("CurrentRoom: "+ currentRoom);
+				System.out.println(navigationn.toString());
+				
+			}	
 		});
 		
 		btEast.setOnAction(e -> {
 			if (e.getSource() == btEast) {	
-			buttonCliked = 2;
-			System.out.println("Clicked: "+ buttonCliked);}
+			buttonClicked = 2;
+			setRoomDetails();
+			borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+			System.out.println("Clicked: "+ buttonClicked);
+			System.out.println("CurrentRoom: "+ currentRoom);
+			System.out.println(navigationn.toString());
+			
+			
+			
+			}
 		});
 		btSouth.setOnAction(e -> {
 			if (e.getSource() == btSouth) {	
-				buttonCliked = 3;
-				System.out.println("Clicked: "+ buttonCliked);}
+				buttonClicked = 3;
+				setRoomDetails();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+				System.out.println("Clicked: "+ buttonClicked);
+				System.out.println("CurrentRoom: "+ currentRoom);
+				System.out.println(navigationn.toString());
+				
+			}
 		});
 		btWest.setOnAction(e -> {
 			if (e.getSource() == btWest) {	
-				buttonCliked = 4;
-				System.out.println("Clicked: "+ buttonCliked);}
+				buttonClicked = 4;
+				setRoomDetails();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+				System.out.println("Clicked: "+ buttonClicked);
+				System.out.println("CurrentRoom: "+ currentRoom);
+				System.out.println(navigationn.toString());
+				
+			}
 		});
 		
 		
 		btUpperFloor.setOnAction(e -> {
 			if (e.getSource() == btUpperFloor) {	
-				buttonCliked = 200;
-				System.out.println("Clicked: "+ buttonCliked);}
+				buttonClicked = 5;
+				setRoomDetails();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+				System.out.println("Clicked: "+ buttonClicked);}
 		});
         btLowerFloor.setOnAction(e -> {
         	if (e.getSource() == btLowerFloor) {	
-				buttonCliked = 100;
-				System.out.println("Clicked: "+ buttonCliked);}
+				buttonClicked = 6;
+				setRoomDetails();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+				System.out.println("Clicked: "+ buttonClicked);}
 		});
 		/*******Navigaition buttons***********/
 		
@@ -349,9 +360,10 @@ public class GUI extends Application{
 
 		}
 	    
-	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
-	    
-	    	
+	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
+	        
+	    	setRoomDetails();
+	    	System.out.println(navigationn.toString());
 	    	//Room room = new Room(roomDescription);
 	    	HBox topX = new HBox();
 	    	topX.setAlignment(Pos.CENTER);
@@ -378,9 +390,11 @@ public class GUI extends Application{
 			
 			Label playerDetails = new Label("Player: " + playerName + " || HealthPoint: "  + playerHealth);
 			playerDetails.setId("playerDetails");
+			//nav = "default";
 			
 		
-			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle);
+			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle + "|| NAV. Clicked: " + nav );
+			
 			roomHeader.setId("roomHeader");
 			
 			Label roomDesctn = new Label("Room Desc: " + roomDesc);
@@ -421,6 +435,228 @@ public class GUI extends Application{
 	    }
 		
 		
+	}
+	
+	public void setRoomDetails() {
+	
+		switch (buttonClicked) {
+		case 1:
+			        
+				    roomm.setRoomDesc("Description of room goes here");
+					roomm.setAttackStat("being attacked...");
+					roomm.setFloorTitle("Floor 1");
+					roomm.setMonster("Very Big Monster");
+					roomm.setRoomTitle("Room One");
+					roomm.setTxtA("Text a goes here...");
+					roomm.setTxtB("Text b goes here...");
+					roomm.setTxtC("Text c goes here...");
+					
+					player.setPlayerName("Elijah");
+					player.setPlayerHealth(20);
+					
+					
+					navigationn.setRoomTitle(roomm.getRoomTitle());
+					navigationn.setRoomm(roomm);
+					navigationn.setFloorTitle(roomm.getFloorTitle());
+					navigationn.setMonster(roomm.getMonster());
+					navigationn.setPlayer(player);
+					navigationn.setAttackStat(roomm.getAttackStat());
+					navigationn.setPlayerHealth(player.getPlayerHealth());
+					navigationn.setPlayerName(player.getPlayerName());
+					navigationn.setRoomDesc(roomm.getRoomDesc());
+					  /******Values that get printed on the canvas Begin*******/
+					 playerName = navigationn.getPlayerName();
+					 roomTitle = navigationn.getRoomTitle();
+					 floorTitle  = navigationn.getFloorTitle();
+					 roomDesc = navigationn.getRoomDesc();
+					 monster = navigationn.getMonster();
+					 attackStat = navigationn.getAttackStat();
+					 txtA = navigationn.getTxtA();
+					 txtB = navigationn.getTxtB();
+					 txtC = navigationn.getTxtC();
+					 nav = "N";
+					
+			break;
+		    case 2:
+ 
+			    roomm.setRoomDesc("Not known");
+				roomm.setAttackStat("Not known");
+				roomm.setFloorTitle("Not known");
+				roomm.setMonster("Not known");
+				roomm.setRoomTitle("Not known");
+				roomm.setTxtA("Not known");
+				roomm.setTxtB("Not known");
+				roomm.setTxtC("Not known");
+				
+				 player.setPlayerHealth(20);
+				
+				navigationn.setRoomTitle(roomm.getRoomTitle());
+				navigationn.setRoomm(roomm);
+				navigationn.setFloorTitle(roomm.getFloorTitle());
+				navigationn.setMonster(roomm.getMonster());
+				navigationn.setPlayer(player);
+				navigationn.setAttackStat(roomm.getAttackStat());
+				navigationn.setPlayerHealth(player.getPlayerHealth());
+				navigationn.setPlayerName(player.getPlayerName());
+				navigationn.setRoomDesc(roomm.getRoomDesc());
+				  /******Values that get printed on the canvas Begin*******/
+				 playerName = navigationn.getPlayerName();
+				 roomTitle = navigationn.getRoomTitle();
+				 floorTitle  = navigationn.getFloorTitle();
+				 roomDesc = navigationn.getRoomDesc();
+				 monster = navigationn.getMonster();
+				 attackStat = navigationn.getAttackStat();
+				 txtA = navigationn.getTxtA();
+				 txtB = navigationn.getTxtB();
+				 txtC = navigationn.getTxtC();
+				
+				 nav = "E";
+					break;
+		case 3:
+			    
+			roomm.setRoomDesc("Not known");
+			roomm.setAttackStat("Not known");
+			roomm.setFloorTitle("Not known");
+			roomm.setMonster("Not known");
+			roomm.setRoomTitle("Not known");
+			roomm.setTxtA("Not known");
+			roomm.setTxtB("Not known");
+			roomm.setTxtC("Not known");
+			
+			player.setPlayerHealth(20);
+			
+			navigationn.setRoomTitle(roomm.getRoomTitle());
+			navigationn.setRoomm(roomm);
+			navigationn.setFloorTitle(roomm.getFloorTitle());
+			navigationn.setMonster(roomm.getMonster());
+			navigationn.setPlayer(player);
+			navigationn.setAttackStat(roomm.getAttackStat());
+			navigationn.setPlayerHealth(player.getPlayerHealth());
+			navigationn.setPlayerName(player.getPlayerName());
+			navigationn.setRoomDesc(roomm.getRoomDesc());
+			  /******Values that get printed on the canvas Begin*******/
+			 playerName = navigationn.getPlayerName();
+			 roomTitle = navigationn.getRoomTitle();
+			 floorTitle  = navigationn.getFloorTitle();
+			 roomDesc = navigationn.getRoomDesc();
+			 monster = navigationn.getMonster();
+			 attackStat = navigationn.getAttackStat();
+			 txtA = navigationn.getTxtA();
+			 txtB = navigationn.getTxtB();
+			 txtC = navigationn.getTxtC();
+			 
+			 nav = "S";
+			 break;
+		     case 4:
+			
+			roomm.setRoomDesc("Not known");
+			roomm.setAttackStat("Not known");
+			roomm.setFloorTitle("Not known");
+			roomm.setMonster("Not known");
+			roomm.setRoomTitle("Not known");
+			roomm.setTxtA("Not known");
+			roomm.setTxtB("Not known");
+			roomm.setTxtC("Not known");
+			
+			player.setPlayerHealth(20);
+			
+			navigationn.setRoomTitle(roomm.getRoomTitle());
+			navigationn.setRoomm(roomm);
+			navigationn.setFloorTitle(roomm.getFloorTitle());
+			navigationn.setMonster(roomm.getMonster());
+			navigationn.setPlayer(player);
+			navigationn.setAttackStat(roomm.getAttackStat());
+			navigationn.setPlayerHealth(player.getPlayerHealth());
+			navigationn.setPlayerName(player.getPlayerName());
+			navigationn.setRoomDesc(roomm.getRoomDesc());
+			  /******Values that get printed on the canvas Begin*******/
+			 playerName = navigationn.getPlayerName();
+			 roomTitle = navigationn.getRoomTitle();
+			 floorTitle  = navigationn.getFloorTitle();
+			 roomDesc = navigationn.getRoomDesc();
+			 monster = navigationn.getMonster();
+			 attackStat = navigationn.getAttackStat();
+			 txtA = navigationn.getTxtA();
+			 txtB = navigationn.getTxtB();
+			 txtC = navigationn.getTxtC();
+			 
+			 nav = "E";
+			
+			break;
+			
+		     case 5:
+		    	 roomm.setRoomDesc("Not known");
+					roomm.setAttackStat("Not known");
+					roomm.setFloorTitle("Not known");
+					roomm.setMonster("Not known");
+					roomm.setRoomTitle("Not known");
+					roomm.setTxtA("Not known");
+					roomm.setTxtB("Not known");
+					roomm.setTxtC("Not known");
+					
+					player.setPlayerHealth(20);
+					
+					navigationn.setRoomTitle(roomm.getRoomTitle());
+					navigationn.setRoomm(roomm);
+					navigationn.setFloorTitle(roomm.getFloorTitle());
+					navigationn.setMonster(roomm.getMonster());
+					navigationn.setPlayer(player);
+					navigationn.setAttackStat(roomm.getAttackStat());
+					navigationn.setPlayerHealth(player.getPlayerHealth());
+					navigationn.setPlayerName(player.getPlayerName());
+					navigationn.setRoomDesc(roomm.getRoomDesc());
+					  /******Values that get printed on the canvas Begin*******/
+					 playerName = navigationn.getPlayerName();
+					 roomTitle = navigationn.getRoomTitle();
+					 floorTitle  = navigationn.getFloorTitle();
+					 roomDesc = navigationn.getRoomDesc();
+					 monster = navigationn.getMonster();
+					 attackStat = navigationn.getAttackStat();
+					 txtA = navigationn.getTxtA();
+					 txtB = navigationn.getTxtB();
+					 txtC = navigationn.getTxtC();
+					 
+					 nav = "Upper-Floor";
+					 break;
+		     case 6:
+		    	     roomm.setRoomDesc("Not known");
+					roomm.setAttackStat("Not known");
+					roomm.setFloorTitle("Not known");
+					roomm.setMonster("Not known");
+					roomm.setRoomTitle("Not known");
+					roomm.setTxtA("Not known");
+					roomm.setTxtB("Not known");
+					roomm.setTxtC("Not known");
+					
+					player.setPlayerHealth(20);
+					
+					navigationn.setRoomTitle(roomm.getRoomTitle());
+					navigationn.setRoomm(roomm);
+					navigationn.setFloorTitle(roomm.getFloorTitle());
+					navigationn.setMonster(roomm.getMonster());
+					navigationn.setPlayer(player);
+					navigationn.setAttackStat(roomm.getAttackStat());
+					navigationn.setPlayerHealth(player.getPlayerHealth());
+					navigationn.setPlayerName(player.getPlayerName());
+					navigationn.setRoomDesc(roomm.getRoomDesc());
+					  /******Values that get printed on the canvas Begin*******/
+					 playerName = navigationn.getPlayerName();
+					 roomTitle = navigationn.getRoomTitle();
+					 floorTitle  = navigationn.getFloorTitle();
+					 roomDesc = navigationn.getRoomDesc();
+					 monster = navigationn.getMonster();
+					 attackStat = navigationn.getAttackStat();
+					 txtA = navigationn.getTxtA();
+					 txtB = navigationn.getTxtB();
+					 txtC = navigationn.getTxtC();
+					
+					 nav = "Lower-Floor";
+					 break;
+
+		       default:
+			     nav = "default";
+			break;
+		}
 	}
 	
 	
