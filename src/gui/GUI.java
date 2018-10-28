@@ -4,6 +4,7 @@ package gui;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,9 +20,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 
 public class GUI extends Application{
+	private int buttonCliked;
    final private int windowWidth = 1500; // width of Window
     final private int windowHeight = 900; //height of window
    VBox vbCenter; // vertical pane in the center of the window's borderPane
@@ -61,6 +64,7 @@ public class GUI extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		//vbPlayField = controller.getVBox();
+	
 		controller = new Controller();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
@@ -152,7 +156,6 @@ public class GUI extends Application{
 		hbBottom.setAlignment(Pos.CENTER);
 		
 		
-		
 		vbRight = new VBox();
 		//vbRight.getChildren().addAll(lbNavigation, btUpperFloor, gpNav, btLowerFloor);
 		vbRight.getStyleClass().addAll("hbox-htTop", "vbox-vbRight");
@@ -167,13 +170,48 @@ public class GUI extends Application{
 		borderPane.setRight(vbRight);
 		borderPane.setBottom(hbBottom);
 		
+		/*******Navigaition buttons***********/
+	
 		
+		btNorth.setOnAction(e -> {
+			if (e.getSource() == btNorth) {	
+				buttonCliked = 1;
+				System.out.println("Clicked: "+ buttonCliked);}	
+		});
+		
+		btEast.setOnAction(e -> {
+			if (e.getSource() == btEast) {	
+			buttonCliked = 2;
+			System.out.println("Clicked: "+ buttonCliked);}
+		});
+		btWest.setOnAction(e -> {
+			if (e.getSource() == btWest) {	
+				buttonCliked = 3;
+				System.out.println("Clicked: "+ buttonCliked);}
+		});
+		btSouth.setOnAction(e -> {
+			if (e.getSource() == btSouth) {	
+				buttonCliked = 4;
+				System.out.println("Clicked: "+ buttonCliked);}
+		});
+		
+		/*******Navigaition buttons***********/
 		
 		
 		btDetails.setOnAction(e -> {
-			controller.showGameDetails();
-			System.out.println(btDetails.getId());
+			//System.out.println( ((Button) e.getSource()));
+	/*		
+       if (e.getSource() == btDetails) {	
+	    buttonCliked = 1;
+	    System.out.println("Clicked: "+ buttonCliked);
+	 
 			
+			//System.out.println(btDetails.getId());
+			
+      }
+  */
+ 
+       controller.showGameDetails();	
 		});
 		
 
@@ -198,6 +236,16 @@ public class GUI extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setResizable(false); // disallow increasing window size
+		
+		
+		
+	}
+	public int getButtonClicked() {
+		Button checker = new Button();
+		int buttonClicked = 0;
+	
+		
+		return buttonClicked;
 		
 	}
 	
