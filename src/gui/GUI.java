@@ -6,7 +6,6 @@ import game_object.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,12 +19,14 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 public class GUI extends Application{
 	private Navigationn navigationn = new Navigationn();
+
     private Roomm roomm;
     private Player player;
    private boolean gamestateActive;
@@ -273,7 +274,8 @@ public class GUI extends Application{
 				setRoomDetails();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
 
-				System.out.println("Clicked: "+ buttonClicked);}
+				System.out.println("Clicked: "+ buttonClicked);
+				}
 		});
 		/*******Navigaition buttons***********/
 		
@@ -308,6 +310,25 @@ public class GUI extends Application{
 			controller.clearGameNav() ;
 		});
 		
+		btExit.setOnAction(EventHandler -> {
+			HBox hbExit = new HBox();
+			HBox hbExit2 = new HBox();
+			VBox vbExit = new VBox();
+			
+			Button btCancelExit = new Button("Bye for now");
+			Label lbExit = new Label("Game successfully exited...");
+			lbExit.setId("lbExit");
+			borderPane.getChildren().clear();
+			hbExit.getChildren().add(lbExit);
+			hbExit.setAlignment(Pos.BASELINE_CENTER);
+			hbExit.setId("hbExit");
+			hbExit2.getChildren().add(btCancelExit);
+			hbExit2.setAlignment(Pos.BASELINE_CENTER);
+			VBox.setMargin(hbExit, new Insets(8));
+			VBox.setMargin(hbExit2, new Insets(8));
+			vbExit.getChildren().addAll(hbExit);
+			borderPane.setCenter(vbExit);
+		});
 		
 		
 		Scene scene = new Scene(borderPane, windowWidth, windowHeight); // set size of the windwo
@@ -337,6 +358,9 @@ public class GUI extends Application{
 	
 	
 	class Controller{
+		
+	
+		
 		
 		//THese are the methods that the button call whenever someting needs to get done....
 		public void showGameDetails() {
