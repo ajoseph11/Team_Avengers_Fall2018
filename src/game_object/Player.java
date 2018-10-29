@@ -1,7 +1,11 @@
 package game_object;
 
+import java.util.Queue;
+import java.util.Stack;
 
 public class Player {
+	
+	Stack queue = new Stack<>();
  private String playerName;
  private int playerHealth;
  

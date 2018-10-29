@@ -483,7 +483,7 @@ public class GUI extends Application{
 			//nav = "default";
 			
 		
-			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle + "|| NAV. Clicked: " + nav );
+			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle + " || NAV. Clicked: " + nav );
 			
 			roomHeader.setId("roomHeader");
 			
@@ -673,7 +673,7 @@ public class GUI extends Application{
 			 txtB = navigationn.getTxtB();
 			 txtC = navigationn.getTxtC();
 			 
-			 nav = "E";
+			 nav = "W";
 			
 			break;
 			
