@@ -19,6 +19,21 @@
 	
 	
 }
+ #hbExit, lbExit{
+	-fx-background-color: #cfd9e2;
+	
+	-fx-background-radius: 0pt;
+	-fx-padding: 12;
+	-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
+	-fx-border-color:blue;
+	-fx-border-style: dotted;
+	-fx-border-width: 0.5;
+	-fx-border-insets: 5;
+
+
+	
+	
+}
 #lbNavigation{
 	-fx-background-color: #cfd9e2;
 	-fx-background-radius: 0pt;
@@ -92,13 +107,17 @@
 	
 }
 
-#roomDesc, #monstDesc, #attackStatus{
+#playerDetails, #roomHeader, #monstDesc, #attackStatus, #roomDesctn, #monstDesc, #attackStatus, #textA, #textB,#textC {
 	-fx-background-color: rgba(138,6,81,0.6);
 	-fx-font-size: 18pt;
 	-fx-text-align: center;
 	
-	-fx-font-family: Serif;
-	-fx-text-fill: #FFFFFF;
+	
+	-fx-font-family: sans-Serif;
+	-fx-font-size: 24pt; 
+	-fx-font-style: italic;
+	-fx-font-weight: normal;
+	-fx-text-fill: #ffffff;
 	
 }
 
@@ -109,4 +128,23 @@
 	-fx-background-position: center;
 	-fx-fill-width: true;
 	
+	
+	
+	
+}
+
+#loginVBox{
+	-fx-border-color:blue;
+	-fx-font-family: Serif;
+	-fx-font-weight: normal;
+	-fx-font-size: 18pt;
+	-fx-background-color: #cce6ff;
+	-fx-alignment: center;
+	-fx-margin: 20pt;
+	-fx-fill-width: true;
+	-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
+}
+
+.text_area{
+	-fx-height: 20;
 }
