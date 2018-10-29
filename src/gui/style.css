@@ -120,8 +120,16 @@
 
 #loginVBox{
 	-fx-border-color:blue;
-	-fx-font-family: monospace;
-	-fx-font-weight: bold;
-	-fx-font-size: 30pt;
+	-fx-font-family: Serif;
+	-fx-font-weight: normal;
+	-fx-font-size: 18pt;
 	-fx-background-color: #cce6ff;
+	-fx-alignment: center;
+	-fx-margin: 20pt;
+	-fx-fill-width: true;
+	-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
+}
+
+.text_area{
+	-fx-height: 20;
 }

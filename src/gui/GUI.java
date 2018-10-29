@@ -6,6 +6,7 @@ import game_object.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 public class GUI extends Application{
 	private Navigationn navigationn = new Navigationn();
@@ -371,13 +373,49 @@ public class GUI extends Application{
 
 		}
 	    
-	    
+	    /* Login page for game player Begin*/
 	    public VBox showLoginScreen() {
 			VBox loginVBox = new VBox();
 			loginVBox.setId("loginVBox");
+			Label lbUserName = new Label("Username:");
+			Label lbPassword = new Label("Password:");
+			TextArea txtUserName = new TextArea();
+			txtUserName.setPrefRowCount(1);
+			txtUserName.setPrefColumnCount(25);
+			txtUserName.setEditable(true);
+			TextArea txtPassword = new TextArea();
+			txtPassword.setPrefRowCount(1);
+			txtPassword.setPrefColumnCount(25);
+			txtPassword.setEditable(true);
+			Button btLogin = new Button("Login");
+			HBox top = new HBox();
+			top.getChildren().addAll(lbUserName, txtUserName);
+			HBox midA = new HBox();
+			midA.getChildren().addAll(lbPassword, txtPassword);
+			HBox midB = new HBox();
+			HBox base = new HBox(btLogin);
+			top.setAlignment(Pos.BASELINE_CENTER);
+			midA.setAlignment(Pos.BASELINE_CENTER);
+			midA.setAlignment(Pos.BASELINE_CENTER);
+			base.setAlignment(Pos.BASELINE_CENTER);
+			
+			VBox.setMargin(top, new Insets(4));
+			VBox.setMargin(midA, new Insets(4));
+			VBox.setMargin(midB, new Insets(4));
+			VBox.setMargin(base, new Insets(4));
+			loginVBox.setSpacing(10);
+			
+			loginVBox.getChildren().addAll(top, midA, midB, base);
+			btLogin.setOnAction(EventHandler -> {
+				gamestateActive = true;
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+			});
 			
 	    	return loginVBox;
 	    }
+	    /* Login page for game player True*/
+
 	    
 	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
 	        
