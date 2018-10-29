@@ -187,9 +187,14 @@ public class GUI extends Application{
 		borderPane = new BorderPane();
 		borderPane.getStyleClass().add("borderPane");
 		borderPane.setTop(hbTop);
-		//borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
-		
-		borderPane.setCenter(controller.showLoginScreen());
+      if(gamestateActive == false) {
+    	  borderPane.setCenter(controller.showLoginScreen());
+      }		
+      else {
+  		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+
+      }
+		//borderPane.setCenter(controller.showLoginScreen());
 
 		System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + txtA+ " " +  txtB+ " " + txtC);
 		
@@ -197,7 +202,7 @@ public class GUI extends Application{
 		borderPane.setRight(vbRight);
 		borderPane.setBottom(hbBottom);
 		
-		/*******Navigaition buttons***********/
+		/*******Navigation buttons***********/
 	
 		
 		btNorth.setOnAction(e -> {
@@ -381,11 +386,12 @@ public class GUI extends Application{
 			Label lbPassword = new Label("Password:");
 			TextArea txtUserName = new TextArea();
 			txtUserName.setPrefRowCount(1);
-			txtUserName.setPrefColumnCount(25);
+			txtUserName.setPrefColumnCount(15);
+			txtUserName.setWrapText(false);
 			txtUserName.setEditable(true);
 			TextArea txtPassword = new TextArea();
 			txtPassword.setPrefRowCount(1);
-			txtPassword.setPrefColumnCount(25);
+			txtPassword.setPrefColumnCount(15);
 			txtPassword.setEditable(true);
 			Button btLogin = new Button("Login");
 			HBox top = new HBox();
@@ -408,6 +414,7 @@ public class GUI extends Application{
 			loginVBox.getChildren().addAll(top, midA, midB, base);
 			btLogin.setOnAction(EventHandler -> {
 				gamestateActive = true;
+				buttonClicked = 1; 
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
 
 			});
@@ -418,8 +425,6 @@ public class GUI extends Application{
 
 	    
 	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
-	        
-	    if (!gamestateActive == false) {
 	    	
 	    	System.out.println(navigationn.toString());
 	    	//Room room = new Room(roomDescription);
@@ -491,7 +496,7 @@ public class GUI extends Application{
 			VBox.setMargin(baseC, new Insets(4));
 			System.out.println("Game state " + gamestateActive);
 			
-	    }
+	    
 			
 		
 	    return vbPlayField;
