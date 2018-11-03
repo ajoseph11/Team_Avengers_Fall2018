@@ -1,14 +1,20 @@
 package game_object2;
 
-
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Puzzle {
 private String id;
-String room_id;
+private String room_id;
 private String riddle;
 private String hint;
 private String answer;
+private Map<String, String> puzzleMap = new LinkedHashMap<>();
 
+public Puzzle() {
+	
+}
 
 public Puzzle(String id, String room_id, String riddle, String hint, String answer) {
 	super();
@@ -17,6 +23,18 @@ public Puzzle(String id, String room_id, String riddle, String hint, String answ
 	this.riddle = riddle;
 	this.hint = hint;
 	this.answer = answer;
+
+}
+
+
+public void setPuzzleMap(Map<String, String> puzzleMap) {
+	this.puzzleMap = puzzleMap;
+
+	
+}
+
+public Map<String, String> getPuzzleMap() {
+	return  puzzleMap;
 }
 public String getRoom_id() {
 	return room_id;
@@ -27,6 +45,7 @@ public void setRoom_id(String room_id) {
 public String getId() {
 	return id;
 }
+
 public void setId(String id) {
 	this.id = id;
 }

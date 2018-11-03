@@ -1,0 +1,41 @@
+ID: R1
+Room-ID: C1
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R2
+Room-ID: A3
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R3
+Room-ID: C5
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R4
+Room-ID: E3
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R5
+Room-ID: D2
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R6
+Room-ID: B2
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R7
+Room-ID: B4
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+ID: R8
+Room-ID: D4
+Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
+Hint: I am made from nickel silver
+Answer: Key
+
