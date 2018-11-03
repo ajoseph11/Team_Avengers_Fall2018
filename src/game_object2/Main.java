@@ -85,6 +85,11 @@ public class Main {
                 System.out.println("Go " + key);
             }
             String line = input.nextLine();
+            String checker;
+            if (line == line.toLowerCase()){
+            	line = line.toUpperCase();
+            }
+            
             if (currentExits.containsKey(line)) {
                 //traverse to the chosen room
                 currentID = currentExits.get(line);
