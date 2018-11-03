@@ -5,37 +5,37 @@ Hint: I am made from nickel silver
 Answer: Key
 ID: R2
 Room-ID: A3
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: Transcribe: 66678387  
+Hint: keypad
+Answer: Monster
 ID: R3
 Room-ID: C5
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: What can you put in a wooden box to make it lighter?  
+Hint: How does a boat sink fastest?
+Answer: Holes
 ID: R4
 Room-ID: E3
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: I never rest, I’m constantly moving, I follow you, your every move. What am I? 
+Hint: I scare children
+Answer: Shadow
 ID: R5
 Room-ID: D2
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: I have keys, but no locks. I have a space, but no room. You can enter, but you can’t go outside. What am I? 
+Hint: Where are your hands located as you type?
+Answer: Keyboard
 ID: R6
 Room-ID: B2
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: I have seas with no waters, coasts with no sand, towns without people and mountains with no land. What am I?  
+Hint: This is one of the tools that you were provided with at the beginning of the game.
+Answer: Map
 ID: R7
 Room-ID: B4
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: Imagine you are in a dark room. How do you get out?  
+Hint: Emphasis on “imagine”; it’s not real.
+Answer: Stop
 ID: R8
 Room-ID: D4
-Riddle: You might have to flip me upside down, even wiggle me a bit, and I am the only thing that can help you cross the threshold. What am I? 
-Hint: I am made from nickel silver
-Answer: Key
+Riddle: What room can no one enter?  
+Hint: I am a vegetable.
+Answer: Mushroom
 

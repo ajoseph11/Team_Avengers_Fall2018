@@ -1,0 +1,171 @@
+ID:A2
+RoomType: minion
+Desc:There is an eerie feeling in the room. The air is muggy. With every step you take another stream of sweat comes down your face. You initially see a few pig people. There is a dim fire in the corner, you can see the shadow of a chest. There are a few pigs standing around a table. There seems to be a carcass on the wall.
+Exits: N-A1  E-B2
+
+ID:B1
+RoomType: minion
+Desc: A cool breeze goes down your back. The pig people seem to be sleepwalking – they are moving in a daze. Seems as if gliding past them is an option. There appears to be nothing of use in the room… except, there is a back pack on the floor, a skeleton, and a few barrels of god-knows-what.
+Exits: W-A1 S-B2 E-C1
+
+ID:B2
+RoomType: minion
+Puzzle:R6
+Desc:The door falls open, a gust of wind comes in the room, and the candles mounted against the walls flames flicker. Stomachs are growling: the pig people are on the prowl. A smell of desperation is in the air. The closest object seems to be a crate there could still be something in there. There is a tool bench, as well as a work table. This room is filled with opportunity – or defeat.
+Exits: N-B1 W-A2 S-B3 E-C2
+
+ID:C1
+RoomType: minion
+Puzzle:R1
+Desc:This room appears to be cluttered with crates, barrels and shelves. They seem to be empty at a first glance, but the amount of furniture in this room is discomforting. This sneak attack is not so sneaky.
+Exits: W-B S-C2
+
+ID:C2
+RoomType: minion
+Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested… or continues to rest. The only way to find out is to tread ahead.
+Exits: N-C1 W-B2 S-C3 E-D2
+
+ID:A3
+RoomType: undead
+Puzzle:R2
+Desc: There is a stench of blood that reeks from a mile away. There are blood stained walls, and spotty places on the floor with built up gunk. The gunk appears to have things in it. What can of things? Let’s scavenge and find out. BUT be careful the undead are lurking.
+Exits: S-A4 E-B3
+
+ID:A4
+RoomType: undead
+Desc:A sight for sore eyes, the undead are ravaging a minions’ carcass. What a monster-eat-monster world this is. There must have been a combat between them, there are a couple of weapons on the floor. Disturbing them during the feast may be fatal
+Exits: N-A S-A5 E-B4
+
+ID:B3
+RoomType: undead
+Desc:This room looks like its smaller in size, but the gunk on the walls is incredibly thick. Oh no the undead are awakening from the walls. Will you have time to explore the room or will you just die. Put up a fight.
+Exits: N-B2 W-A3 S-B4 E-C3
+
+ID:B4
+RoomType: undead
+Puzzle: R7
+Desc: How peculiar, a dusty work table with beakers and tubes. Was this some kind of work area for the sorcerer at some point? There are quite a few items to inspect. Recognize this analysis was done in peace and quiet… but when are the undead ever quiet? Tread lightly!
+Exits: N-B3 W-A4 S-B5 E-C4
+
+ID:B5
+RoomType:undead
+Desc: Ready for combat, the undead are projecting their vile without warning or warrant. There must be a chest in here, the stakes are too high, but when do monsters ever play by the rules. A winner takes risks, you choose your fate. Explore the room, there is a barrel, mirror, and a crate at first glance.
+ Exits: N-B4 W-A5
+
+ID:D2
+RoomType: aquatic
+Puzzle: R5
+Desc: Mold grows on the walls just above the water that fills the room, which is still like a corpse. There are probably a few hidden beneath these waters. You hope that you do not join them.
+Exits:N-D1 W-C2 S-D3 E-E2
+
+ID:D1
+RoomType: aquatic
+Desc:Stepping through the door, you’re hit with a humid fungal stench. The room before you is square and flooded with water. Moving forward from the door you walk down submerged steps until you’re waste high in the filthy pool.
+Exits: S-D2 E-E1
+
+ID:D3
+RoomType: aquatic
+Desc: The cold in the air has not stopped the growth of fungal life here. You wonder if this flooding was intentional or just the result of neglect. Perhaps you should hurry and just get through this lest you contract some awful disease.
+Exits: N-D2 W-C3 S-D4 E-E3
+
+ID:E2
+RoomType: aquatic
+Desc:Foulness that one would have to smell to believe enters your nostrils. Resisting the urge to wretch, you look around the dank room to see a chest. Perhaps there is something of use here after all.
+Exits: N-E1 W-D2 S-E3
+
+ID:E3
+RoomType: aquatic
+Puzzle:R4
+Desc:Rotting fish carcasses float in the water that fills this room. Maybe you should turn back. At the very least you visit here should be quick, you think to yourself.
+Exits: N-E2 W-D3
+
+ID: C4
+RoomType: shadow
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
+(If lantern description) A room with no natural light of its own illuminated by your lantern. Yet, even the lanterns warmth cannot take the edge off the chill you feel.
+Exits: N-C3 W-B4 S-C5 E-D4
+
+ID:C5
+RoomType: shadow
+Puzzle:
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
+(If lantern description) These dark rooms are not so scary with a lantern in hand. At least, as far as you can tell. If only your lantern was as warm as it was bright.
+Exits: N-C4 E-D5
+
+ID:D4
+RoomType: shadow
+Puzzle: R8
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
+(If lantern description) Claw marks litter the wall almost with the same frequency as bones litter the floor. Something feeds here, and you quietly hope it is not home.
+Exits: N-D3 W-C4 S-D5 E-E4
+
+ID:D5
+RoomType: shadow
+Desc: (If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
+(If lantern description) A chest sits in the center of this room. Surely your lantern will stay lit long enough for you to open it...
+Exits:N-D4 W-C5 E-E5
+
+ID:E4
+RoomType:shadow
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
+(If lantern description) You notice something peculiar in the room. The air smells strongly of iron. Listening carefully, you hear... dripping?
+Exits: W-D4 E-E5
+
+ID:A1
+Items: KF1
+Monster: guard
+Desc: (As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly.) On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head?
+Exits: E-B1 S-A2
+
+ID:E1
+Items: KF2
+Monster: guard
+Desc: Wading quietly through the water, you enter a room that has a more foreboding atmosphere than you've felt in a while. The walls drip slowly with water and green ooze, and small splashes can be heard echoing about in the otherwise still air. (In the far corner, a somber form appears to be sizing you up.)
+Exits: W-D1 S-E2
+
+ID: A5
+Items: KF3
+Monster: guard
+Desc: Peeking slowly around the doorframe, you edge cautiously into this room. It reeks of rotting meat, and there are pools of vile fluids scattered here and there upon the floor. (A pair of glowing red eyes stares you down from the far corner, but do not make any motion. Yet.)
+Exits: E-B5 N-A4
+
+ID: E5
+Items: KF4
+Monster: guard
+Desc: Dark: You can't see much here, but you sense the shadows gathering even stronger in this room. A chill runs inadvertently down your spine. (A pair of red eyes suddenly blinks from the far corner, watching you intently.)
+Light: This room is furnished with a decrepit lounge chair and suede sofa, and might actually look quite cozy, were it not for the ambient shadows still stealing around the corners of your vision. (In the far corner, a silent sentinel leans against the wall, following your every move.)
+Exits: W-D5 N-E4
+
+ID:Entrance Antechamber
+Desc:A portcullis has been shut behind you. You remember the glare of the town guards as they left you to your fate, such a short time ago. The only way to proceed is deeper within the tower.
+Exits: E-Connecting Chamber
+
+ID:Connecting Chamber
+Monster: merchant
+Desc:This room is quiet, but the sound of the sea lapping at the shore outside still permeates the walls. In the corner lurks a funny little man, who grins at you. That's strange - everyone here was supposed to be dead.
+Exits: W-Entrance Antechamber E-F1 Spiral Staircase
+
+ID:F1 Spiral Staircase
+Desc:You arrive at a large, marble staircase, winding upward and downward into the unknown. From below, you can faintly hear a collection of strange noises - from above, only the faint grunts as of someone winded.
+Exits: Up-F2 Spiral Staircase Down-B1F Stairs
+
+ID:F2 Spiral Staircase
+Monster: guard
+Desc:From your vantage point, you can see the entrance chamber of the tower beneath you through a narrow window. The rain whirls outside still. Above you is a large door, with a peculiar shape engraved where a handle might normally be. (A large suit of armor with red eyes stares you down menacingly, but does not yet move to attack.)
+Exits:Up-F3 Spiral Staircase Down-F1 Spiral Staircase
+
+ID:F3 Spiral Staircase
+Items: Sorcerer's Pendant
+Monster: Sorcerer
+Desc:You enter the room cautiously. Around you lie various items of magical creation, but your attention is drawn to the crystal coffin in the room's center. Dare you approach?
+Exits:Down- F2 Spiral Staircase
+
+ID:B1F Stairs
+Desc:So, the rumors were true. A labyrinth of rooms seems to extend from where you now stand, each of them having a different sense of danger to the others. Your journey is far from over.
+Exits:N-C2 S-C4 W-B3 E-D3
+
+ID:Necromancer's Room
+Items: Necromancer's Staff
+Monster:Necromancer
+Desc:This room is as still as the grave. Eerie green mist slowly rises up the walls. On the far wall, you see the remnants of bodies lashed to the walls. This place reeks of death, and staying here too long could spell doom.
+Exits: Up-B1F Stairs

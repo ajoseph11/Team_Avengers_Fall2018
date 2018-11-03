@@ -3,10 +3,8 @@ package game_object2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 
 
@@ -28,12 +26,12 @@ public class Runner {
 	public static String errorMessage;
     public static void main(String [] args){
 	
-
+    
 	
 	
 	//Read text to set values for fields form the Puzzle.txt file
 	try {
-		setPuzzleFromText();
+		PuzzleController.setPuzzleFromText();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		errorMessage = "Error writing from file : Puzzle.txt";
@@ -41,6 +39,8 @@ public class Runner {
 		System.out.println(errorMessage);
 		
 	}
+	System.out.println("From: " + PuzzleController.class.getName());
+	System.out.print(PuzzleController.getPuzzleR1().getPuzzleMap().get("Riddle"));
 	
 		
 	
@@ -109,62 +109,70 @@ public static void setPuzzleFromText() throws IOException {
 	 
 		
 		//print key and value as a set
-		if (lineContent.length >= 2) {
-			lineNumber = String.valueOf(currentLine);
-			String key = lineContent[0];
-			String value = lineContent[1];
-			if ((currentLine > 0 ) && (currentLine <= 5 )) {
-				r1Map.put(key, value);
+		try {
+			if (lineContent.length >= 2) {
+				lineNumber = String.valueOf(currentLine);
+				String key = lineContent[0];
+				String value = lineContent[1];
+				if ((currentLine > 0 ) && (currentLine <= 5 )) {
+					r1Map.put(key, value);
+				}
+				if ((currentLine > 5 ) && (currentLine <= 10 )) {
+					r2Map.put(key, value);
+				}
+				
+				if ((currentLine > 10 ) && (currentLine <= 15 )) {
+					r3Map.put(key, value);
+				}
+				if ((currentLine > 15 ) && (currentLine <= 20 )) {
+					r4Map.put(key, value);
+				}
+				if ((currentLine > 20 ) && (currentLine <= 25 )) {
+					r5Map.put(key, value);
+				}
+				
+				if ((currentLine > 25 ) && (currentLine <= 30 )) {
+					r6Map.put(key, value);
+				}
+				if ((currentLine > 30 ) && (currentLine <= 35 )) {
+					r7Map.put(key, value);
+				}
+				if ((currentLine > 35 ) && (currentLine <= 40 )) {
+					r8Map.put(key, value);
+				}
+				
+				
+				
+				
+				
+				//set the current map as the value for each Puzzle Map object R1-R8;
+				puzzleR1.setPuzzleMap(r1Map);
+				puzzleR2.setPuzzleMap(r2Map);
+				puzzleR3.setPuzzleMap(r3Map);
+				puzzleR4.setPuzzleMap(r4Map);
+				puzzleR5.setPuzzleMap(r5Map);
+				puzzleR6.setPuzzleMap(r6Map);
+				puzzleR7.setPuzzleMap(r7Map);
+				puzzleR8.setPuzzleMap(r8Map);
+				
+				
 			}
-			if ((currentLine > 5 ) && (currentLine <= 10 )) {
-				r2Map.put(key, value);
+			else {
+				errorMessage = "One or more lines have issues with the number of cell  in them";
+				System.out.println(errorMessage);
 			}
-			
-			if ((currentLine > 10 ) && (currentLine <= 15 )) {
-				r3Map.put(key, value);
+		}
+			catch (Exception e) {
+				errorMessage = "One or more line may be empty and giving null String:: Please  checck";
+				System.out.print(errorMessage );
+				//e.printStackTrace();
 			}
-			if ((currentLine > 15 ) && (currentLine <= 20 )) {
-				r4Map.put(key, value);
-			}
-			if ((currentLine > 20 ) && (currentLine <= 25 )) {
-				r5Map.put(key, value);
-			}
-			
-			if ((currentLine > 25 ) && (currentLine <= 30 )) {
-				r6Map.put(key, value);
-			}
-			if ((currentLine > 30 ) && (currentLine <= 35 )) {
-				r7Map.put(key, value);
-			}
-			if ((currentLine > 35 ) && (currentLine <= 40 )) {
-				r8Map.put(key, value);
-			}
-			
-			
-			
-			
-			
-			//set the current map as the value for each Puzzle Map object R1-R8;
-			puzzleR1.setPuzzleMap(r1Map);
-			puzzleR2.setPuzzleMap(r2Map);
-			puzzleR3.setPuzzleMap(r3Map);
-			puzzleR4.setPuzzleMap(r4Map);
-			puzzleR5.setPuzzleMap(r5Map);
-			puzzleR6.setPuzzleMap(r6Map);
-			puzzleR7.setPuzzleMap(r7Map);
-			puzzleR8.setPuzzleMap(r8Map);
-			
-			
 		}
 		
 		
-		else {
-			errorMessage = "Ignoring LIne...";
-			//System.out.println(errorMessage);
-		}
 		
 		
-	}
+	
 	    
 	    //Create an array of puzzle objects
 	    Puzzle [] puzzleObjects = {puzzleR1, puzzleR2, puzzleR3, puzzleR4, puzzleR5, puzzleR6, puzzleR7, puzzleR8};
@@ -200,33 +208,33 @@ public static void setPuzzleFromText() throws IOException {
 	}
 	
 
-	          for (int i = 0; i < puzzleLinkedhashMapObjects.length; i++) {
-				puzzleObjects[i].setId(puzzleLinkedhashMapObjects[0].get("ID").toString());
-				puzzleObjects[i].setRoom_id(puzzleLinkedhashMapObjects[i].get("Room-ID").toString());
-				puzzleObjects[i].setRiddle(puzzleLinkedhashMapObjects[i].get("Riddle").toString());
-				puzzleObjects[i].setHint(puzzleLinkedhashMapObjects[i].get("Hint").toString());
-				puzzleObjects[i].setAnswer(puzzleLinkedhashMapObjects[i].get("Answer").toString());
-				System.out.println(puzzleObjects[i].toString());
+	          try {
+				for (int i = 0; i < puzzleLinkedhashMapObjects.length; i++) {
+					puzzleObjects[i].setId(puzzleLinkedhashMapObjects[i].get("ID").toString());
+					puzzleObjects[i].setRoom_id(puzzleLinkedhashMapObjects[i].get("Room-ID").toString());
+					puzzleObjects[i].setRiddle(puzzleLinkedhashMapObjects[i].get("Riddle").toString());
+					puzzleObjects[i].setHint(puzzleLinkedhashMapObjects[i].get("Hint").toString());
+					puzzleObjects[i].setAnswer(puzzleLinkedhashMapObjects[i].get("Answer").toString());
+					System.out.println(puzzleObjects[i].toString());
+				}
+			} catch (Exception e) {
+				errorMessage = "One or more lines is/are null/empty:: please check";
+				e.printStackTrace();
+				System.out.println(errorMessage + " " + e);
 			}
-	puzzleR2.setAnswer(puzzleR2.getPuzzleMap().get("Answer"));
-	System.out.println(puzzleR3.getAnswer());
-		
-	/*	Set<String> puzzleKeys = puzzleR1.getPuzzleMap().keySet();
-		Object [] obj = puzzleKeys.toArray();
-		String [] puzzleKeySetArr = new String[obj.length];
-		for (int i = 0; i < puzzleKeySetArr.length; i++) {
-			puzzleKeySetArr[i] = obj[i].toString();
-		}
-		
-		for(String jj : puzzleKeySetArr) {
-			System.out.println(jj);
-		}
-		*/
-		
-		  // System.out.println(puzzleR1.getPuzzleMap().get("Answer"));
-	    
-	
-	
+		puzzleR2.setAnswer(puzzleR2.getPuzzleMap().get("Answer"));
+		// System.out.println(puzzleR3.getAnswer());
+
+		/*
+		 * Set<String> puzzleKeys = puzzleR1.getPuzzleMap().keySet(); Object [] obj =
+		 * puzzleKeys.toArray(); String [] puzzleKeySetArr = new String[obj.length]; for
+		 * (int i = 0; i < puzzleKeySetArr.length; i++) { puzzleKeySetArr[i] =
+		 * obj[i].toString(); }
+		 * 
+		 * for(String jj : puzzleKeySetArr) { System.out.println(jj); }
+		 */
+
+		// System.out.println(puzzleR1.getPuzzleMap().get("Answer"));
 	
 	
 }
