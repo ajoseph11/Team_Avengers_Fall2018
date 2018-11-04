@@ -18,17 +18,51 @@ public class RoomController {
 	public static Map<String, String> a3Map = new LinkedHashMap<>();
 	public static Map<String, String> a4Map = new LinkedHashMap<>();
 	public static Map<String, String> b3Map = new LinkedHashMap<>();
+	public static Map<String, String> b4Map = new LinkedHashMap<>();
+	public static Map<String, String> b5Map = new LinkedHashMap<>();//10
 	
+	public static Map<String, String> d2Map = new LinkedHashMap<>();
+	public static Map<String, String> d1Map = new LinkedHashMap<>();
+	public static Map<String, String> d3Map = new LinkedHashMap<>();
+	public static Map<String, String> e2Map = new LinkedHashMap<>();
+	public static Map<String, String> e3Map = new LinkedHashMap<>();
+	public static Map<String, String> c4Map = new LinkedHashMap<>();
+	public static Map<String, String> c5Map = new LinkedHashMap<>();
+	public static Map<String, String> d4Map = new LinkedHashMap<>();
+	public static Map<String, String> d5Map = new LinkedHashMap<>();
+	public static Map<String, String> e4Map = new LinkedHashMap<>();//20
+	
+	public static Map<String, String> a1Map = new LinkedHashMap<>();
+	public static Map<String, String> e1Map = new LinkedHashMap<>();
+	public static Map<String, String> a5Map = new LinkedHashMap<>(); //23
+	
+	
+	public static Map<String, String> entranceChamberMap = new LinkedHashMap<>();
+	public static Map<String, String> connectingChamberMap = new LinkedHashMap<>();
+	public static Map<String, String> spiralStaircaseMap = new LinkedHashMap<>();
+	public static Map<String, String> guardLockedDoorMap = new LinkedHashMap<>();
+	public static Map<String, String> sorcererBossFightRoomMap = new LinkedHashMap<>();
+	public static Map<String, String> stairsB1FMap = new LinkedHashMap<>();
+	public static Map<String, String> necromancerRoomMap = new LinkedHashMap<>(); //30
+	
+	
+
 	public static String errorMessage;
 
-	public static Room_B roomA2;
-	public static Room_B roomB1;
-	public static Room_B roomB2;
-	public static Room_B roomC1;
-	public static Room_B roomC2;
-	public static Room_B roomA3;
-	public static Room_B roomA4;
-	public static Room_B roomB3;
+	public static Room_B roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4,roomB3, roomB4, roomB5; // First 10 rooms
+	public static Room_B roomD2, roomD1, roomD3, roomE2, roomE3, roomC4, roomC5,roomD4, roomD5, roomE4; // Second 10 rooms making 20
+	public static Room_B roomA1, roomE1, roomA5; // last 3 reular rooms making 27 regular rooms
+	public static Room_B entranceChamber, connectingChamber, spiralStaircase, guardLockedDoor, sorcererBossFightRoom, stairsB1F, necromancerRoom; //7 special rooms
+
+	//public static Room_B roomB1;
+	//public static Room_B roomB2;
+	//public static Room_B roomC1;
+	//public static Room_B roomC2;
+	//public static Room_B roomA3;
+	//public static Room_B roomA4;
+	//public static Room_B roomB3;
+	
+	
 
 
 
@@ -73,28 +107,28 @@ public class RoomController {
 						lineNumber = String.valueOf(currentLine);
 						String key = lineContent[0];
 						String value = lineContent[1];
-						if ((currentLine >= 1) && (currentLine <= 5)) {
+						if ((currentLine >= 1) && (currentLine <= 7)) {
 								a2Map.put(key, value);
 						}
-						if ((currentLine >= 7) && (currentLine <= 11)) {
+						if ((currentLine >= 9) && (currentLine <= 15)) {
 							b1Map.put(key, value);
 					   }
-						if ((currentLine >= 13) && (currentLine <= 17)) {
+						if ((currentLine >= 17) && (currentLine <= 23)) {
 							b2Map.put(key, value);
 					   }
-						if ((currentLine >= 19) && (currentLine <= 23)) {
+						if ((currentLine >= 25) && (currentLine <= 31)) {
 							c1Map.put(key, value);
 					   }
-						if ((currentLine >= 25) && (currentLine <= 29)) {
+						if ((currentLine >= 33) && (currentLine <= 39)) {
 							c2Map.put(key, value);
 					   }
-						if ((currentLine >= 31) && (currentLine <= 35)) {
+						if ((currentLine >= 41) && (currentLine <= 47)) {
 							a3Map.put(key, value);
 					   }
-						if ((currentLine >= 37) && (currentLine <= 41)) {
+						if ((currentLine >= 49) && (currentLine <= 55)) {
 							a4Map.put(key, value);
 					   }
-						if ((currentLine >= 43) && (currentLine <= 47)) {
+						if ((currentLine >= 57) && (currentLine <= 63)) {
 							b3Map.put(key, value);
 					   }
 						
@@ -148,7 +182,9 @@ public class RoomController {
 					for (int i = 0; i < roomLinkedhashMapObjects.length; i++) {
 					    roomObjects[i].setId(roomLinkedhashMapObjects[i].get("ID").toString());
 						roomObjects[i].setType(roomLinkedhashMapObjects[i].get("RoomType").toString());
-						roomObjects[i].setItem(roomLinkedhashMapObjects[i].get("Puzzle").toString());
+						roomObjects[i].setItem(roomLinkedhashMapObjects[i].get("Item").toString());
+						roomObjects[i].setMonster(roomLinkedhashMapObjects[i].get("Monster").toString());
+						roomObjects[i].setPuzzle(roomLinkedhashMapObjects[i].get("Puzzle").toString());
 						roomObjects[i].setDescription(roomLinkedhashMapObjects[i].get("Desc").toString());
 						roomObjects[i].setExit(roomLinkedhashMapObjects[i].get("Exits").toString());
 						// System.out.println(puzzleObjects[i].toString());

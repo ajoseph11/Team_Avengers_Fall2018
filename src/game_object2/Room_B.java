@@ -9,6 +9,8 @@ public class Room_B {
 	private String id;
 	private String type;
 	private String item;
+	private String monster;
+	private String puzzle;
 	private String description;
 	private String exit;
 	
@@ -23,11 +25,13 @@ public class Room_B {
 
 
 
-	public Room_B(String id, String type, String item, String description, String exit) {
+	public Room_B(String id, String type,  String item, String monster, String puzzle,String description, String exit) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.item = item;
+		this.monster = monster;
+		this.puzzle = puzzle;
 		this.description = description;
 		this.exit = exit;
 	}
@@ -56,6 +60,19 @@ public class Room_B {
 	public void setType(String type) {
 		this.type = type;
 	}
+   
+	
+	public String getPuzzle() {
+		return puzzle;
+	}
+
+
+
+	public void setPuzzle(String puzzle) {
+		this.puzzle = puzzle;
+	}
+
+
 
 	public String getItem() {
 		return item;
@@ -64,6 +81,19 @@ public class Room_B {
 	public void setItem(String item) {
 		this.item = item;
 	}
+    
+	
+	public String getMonster() {
+		return monster;
+	}
+
+
+
+	public void setMonster(String monster) {
+		this.monster = monster;
+	}
+
+
 
 	public String getDescription() {
 		return description;
@@ -79,6 +109,14 @@ public class Room_B {
 
 	public void setExit(String exit) {
 		this.exit = exit;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Room_B [id=" + id + ", type=" + type + ", item=" + item + ", monster=" + monster + ", puzzle=" + puzzle
+				+ ", description=" + description + ", exit=" + exit + ", roomMap=" + roomMap + "]";
 	}    
 
 	
@@ -86,11 +124,13 @@ public class Room_B {
 	
 
 
-	@Override
-	public String toString() {
-		return "Room_B [id=" + id + ", type=" + type + ", item=" + item + ", description=" + description
-				+ ", exit=" + exit + "]";
-	}
+
+
+
+	
+
+
+
 
 
 	

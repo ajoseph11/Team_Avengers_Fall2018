@@ -240,7 +240,7 @@ public class GUI extends Application{
 				nav = btNorth.getText();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
-					      "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 			            
+					      "*************"  + "****************", "Current-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 			            
 			        );
 			}
 			System.out.println("Clicked: "+ buttonClicked);
@@ -274,7 +274,7 @@ public class GUI extends Application{
 			nav = btEast.getText();
 			borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 			 data.addAll(
-				      "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 		            
+				      "*************"  + "****************", "Current-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 		            
 		        );
 		}
 		System.out.println("Clicked: "+ buttonClicked);
@@ -304,7 +304,7 @@ public class GUI extends Application{
 				nav = btSouth.getText();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
-					      "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 			            
+					      "*************"  + "****************", "Current-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 			            
 			        );
 			}
 			System.out.println("Clicked: "+ buttonClicked);
@@ -331,7 +331,7 @@ public class GUI extends Application{
 				nav = "W";
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
-			              "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 
+			              "*************"  + "****************", "Current-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
 			}
@@ -523,6 +523,7 @@ public class GUI extends Application{
 				buttonClicked = 1; 
 				roomDesc = RoomController.getRoomA2().getDescription();
 			    roomTitle = RoomController.getRoomA2().getId();
+			    monster = RoomController.getRoomA2().getMonster();
 				roomItem = RoomController.getRoomA2().getItem();
 				roomExits = RoomController.getRoomA2().getExit();
 				playerHealth = 20;
@@ -531,7 +532,7 @@ public class GUI extends Application{
 				nav = btLogin.getText();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
-			              "Player-Name: "  + playerName, "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 
+			              "Player-Name: "  + playerName, "Current-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
 
