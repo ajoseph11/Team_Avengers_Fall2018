@@ -1,6 +1,7 @@
 package game_object2;
 
 import java.util.HashMap;
+import java.util.Map;
 
 //class to hold information about each room
 public class Room {
@@ -53,7 +54,5 @@ public class Room {
         }
     }
 
-    public HashMap<String, String> getExits() {
-        return exits;
-    }
+   
 }
