@@ -54,5 +54,10 @@ public class Room {
         }
     }
 
+	public HashMap<String, String> getExits() {
+		// TODO Auto-generated method stub
+		return exits;
+	}
+
    
 }

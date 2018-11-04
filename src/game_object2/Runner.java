@@ -26,9 +26,9 @@ public class Runner {
 		System.out.println(errorMessage);
 		
 	}
-	System.out.println("From: " + PuzzleController.class.getName());
-	System.out.println(PuzzleController.getPuzzleR8().getPuzzleMap().get("Riddle"));
-	System.out.println(PuzzleController.getPuzzleR1().getPuzzleMap());
+	//System.out.println("From: " + PuzzleController.class.getName());
+	//System.out.println(PuzzleController.getPuzzleR8().getPuzzleMap().get("Riddle"));
+	//System.out.println(PuzzleController.getPuzzleR1().getPuzzleMap());
     
 	
 
@@ -46,8 +46,11 @@ public class Runner {
 	//System.out.println(RoomController.getRoomB3().getRoomMap().get("Riddle"));
 	//System.out.println(RoomController.getRoomB3().getRoomMap());
 	//System.out.println(RoomController.getRoomA2().toString());
-	System.out.println(RoomController.a2Map);
-	System.out.println(RoomController.b1Map);
+	//System.out.println(RoomController.a2Map);
+	//System.out.println(RoomController.b1Map);
+	System.out.println(RoomController.roomA2);
+	System.out.println(RoomController.roomB1);
+    System.out.println(RoomController.getRoomA2().getDescription());
 
 		
 	

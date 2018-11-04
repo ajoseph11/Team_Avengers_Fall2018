@@ -73,15 +73,22 @@ public class RoomController {
 						lineNumber = String.valueOf(currentLine);
 						String key = lineContent[0];
 						String value = lineContent[1];
-						if ((currentLine >= 1) && (currentLine <= 4)) {
+						if ((currentLine >= 1) && (currentLine <= 5)) {
 								a2Map.put(key, value);
 						}
-						if ((currentLine >= 6) && (currentLine <= 9)) {
+						if ((currentLine >= 7) && (currentLine <= 11)) {
 							b1Map.put(key, value);
 					   }
 						//set the current map as the value for each puzzle Map object
 						
-						roomA2.setRoomeMap(a2Map);
+						roomA2.setRoomMap(a2Map);
+						roomB1.setRoomMap(b1Map);
+						roomB2.setRoomMap(b2Map);
+						roomC1.setRoomMap(c1Map);
+						roomC2.setRoomMap(c2Map);
+						roomA3.setRoomMap(a3Map);
+						roomA4.setRoomMap(a4Map);
+						roomB3.setRoomMap(b3Map);
 						
 					}
 					else {
@@ -97,6 +104,40 @@ public class RoomController {
 					e.printStackTrace();
 				System.out.println(errorMessage);
 				}
+				}
+				// Create an array of puzzle objects
+				Room_B[] roomObjects = { roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4, roomB3 };
+				// Create an array of puzzle linked hash map objects from which you are calling
+				// values for the fields of the hashmap above
+				Map[] roomLinkedhashMapObjects = { roomA2.getRoomMap(), roomB1.getRoomMap(), roomB2.getRoomMap(),
+						roomC1.getRoomMap(), roomC2.getRoomMap(), roomA3.getRoomMap(), roomA4.getRoomMap(),
+						roomB3.getRoomMap() };
+				
+				// print key and value side by side as seperate entities
+				for (int i = 0; i < roomObjects.length; i++) {
+					for (String keyItem : roomObjects[i].getRoomMap().keySet()) {
+
+						String key = keyItem.toString();
+						String value = roomObjects[i].getRoomMap().get(keyItem).toString();
+						//System.out.println( key + " " + value);
+						// System.out.println("");
+
+					}
+				}
+				
+				try {
+					for (int i = 0; i < roomLinkedhashMapObjects.length; i++) {
+					     roomObjects[i].setId(roomLinkedhashMapObjects[i].get("ID").toString());
+						roomObjects[i].setType(roomLinkedhashMapObjects[i].get("RoomType").toString());
+						roomObjects[i].setItem(roomLinkedhashMapObjects[i].get("Puzzle").toString());
+						roomObjects[i].setDescription(roomLinkedhashMapObjects[i].get("Desc").toString());
+						roomObjects[i].setExit(roomLinkedhashMapObjects[i].get("Exits").toString());
+						// System.out.println(puzzleObjects[i].toString());
+					}
+				} catch (Exception e) {
+					errorMessage = "One or more lines is/are null/empty:: please check";
+					e.printStackTrace();
+					System.out.println(errorMessage + " " + e);
 				}
 	}
 

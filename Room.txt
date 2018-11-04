@@ -1,10 +1,12 @@
 ID:A2
 RoomType: minion
+Puzzle: No Puzzle
 Desc:There is an eerie feeling in the room. The air is muggy. With every step you take another stream of sweat comes down your face. You initially see a few pig people. There is a dim fire in the corner, you can see the shadow of a chest. There are a few pigs standing around a table. There seems to be a carcass on the wall.
-Exits: N-A1  E-B2
+Exits: N-A1 E-B2
 
 ID:B1
 RoomType: minion
+Puzzle: No Puzzle
 Desc: A cool breeze goes down your back. The pig people seem to be sleepwalking – they are moving in a daze. Seems as if gliding past them is an option. There appears to be nothing of use in the room… except, there is a back pack on the floor, a skeleton, and a few barrels of god-knows-what.
 Exits: W-A1 S-B2 E-C1
 
@@ -22,6 +24,7 @@ Exits: W-B S-C2
 
 ID:C2
 RoomType: minion
+Puzzle: No Puzzle
 Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested… or continues to rest. The only way to find out is to tread ahead.
 Exits: N-C1 W-B2 S-C3 E-D2
 

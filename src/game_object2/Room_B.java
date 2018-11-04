@@ -10,7 +10,7 @@ public class Room_B {
 	private String type;
 	private String item;
 	private String description;
-	private String [] exitArray;
+	private String exit;
 	
 	
 	
@@ -23,20 +23,20 @@ public class Room_B {
 
 
 
-	public Room_B(String id, String type, String item, String description, String[] exitArray) {
+	public Room_B(String id, String type, String item, String description, String exit) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.item = item;
 		this.description = description;
-		this.exitArray = exitArray;
+		this.exit = exit;
 	}
 
 	public Map<String, String> getRoomMap() {
 		return roomMap;
 	}
 
-	public void setRoomeMap(Map<String, String> roomMap) {
+	public void setRoomMap(Map<String, String> roomMap) {
 		this.roomMap = roomMap;
 	}
 
@@ -73,12 +73,12 @@ public class Room_B {
 		this.description = description;
 	}
 
-	public String[] getExitArray() {
-		return exitArray;
+	public String getExit() {
+		return exit;
 	}
 
-	public void setExitArray(String[] exitArray) {
-		this.exitArray = exitArray;
+	public void setExit(String exit) {
+		this.exit = exit;
 	}    
 
 	
@@ -89,7 +89,7 @@ public class Room_B {
 	@Override
 	public String toString() {
 		return "Room_B [id=" + id + ", type=" + type + ", item=" + item + ", description=" + description
-				+ ", exitArray=" + Arrays.toString(exitArray) + "]";
+				+ ", exit=" + exit + "]";
 	}
 
 
