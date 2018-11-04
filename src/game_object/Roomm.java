@@ -7,8 +7,8 @@ public class Roomm{
 	private String roomDesc;
 	private String monster;
 	private String attackStat;
-	private String txtA;
-	private String txtB;
+	private String roomItem;
+	private String roomExits;
 	private String txtC;
 	
 	
@@ -17,7 +17,7 @@ public class Roomm{
 	}
 
 
-	public Roomm(String roomTitle, String floorTitle, String roomDesc, String monster, String attackStat, String txtA,
+	public Roomm(String roomTitle, String floorTitle, String roomDesc, String monster, String attackStat, String roomItem,
 			String txtB, String txtC) {
 		super();
 		this.roomTitle = roomTitle;
@@ -25,8 +25,8 @@ public class Roomm{
 		this.roomDesc = roomDesc;
 		this.monster = monster;
 		this.attackStat = attackStat;
-		this.txtA = txtA;
-		this.txtB = txtB;
+		this.roomItem = roomItem;
+		this.roomExits = txtB;
 		this.txtC = txtC;
 	}
 
@@ -81,23 +81,23 @@ public class Roomm{
 	}
 
 
-	public String getTxtA() {
-		return txtA;
+	public String getRoomItem() {
+		return roomItem;
 	}
 
 
-	public void setTxtA(String txtA) {
-		this.txtA = txtA;
+	public void setRoomItem(String romItem) {
+		this.roomItem = roomItem;
 	}
 
 
-	public String getTxtB() {
-		return txtB;
+	public String getRoomExits() {
+		return roomExits;
 	}
 
 
-	public void setTxtB(String txtB) {
-		this.txtB = txtB;
+	public void setRoomExits(String txtB) {
+		this.roomExits = txtB;
 	}
 
 

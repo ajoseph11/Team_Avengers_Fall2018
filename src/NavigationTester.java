@@ -17,7 +17,7 @@ public class NavigationTester {
 		roomm.setMonster("Very Big Monster");
 		roomm.setRoomTitle("Room One");
 		roomm.setTxtA("Text a goes here...");
-		roomm.setTxtB("Text b goes here...");
+		roomm.setRoomExits("Text b goes here...");
 		roomm.setTxtC("Text c goes here...");
 		
 		

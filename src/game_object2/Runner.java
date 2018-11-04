@@ -56,7 +56,7 @@ public class Runner {
 	System.out.println(RoomController.roomB1);
 	System.out.println(RoomController.roomA3);
 	System.out.println(RoomController.roomA4);
-    System.out.println(RoomController.getRoomA3().getType());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
+    System.out.println(RoomController.getRoomB2().getDescription());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
 
 		
 	

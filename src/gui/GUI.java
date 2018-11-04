@@ -1,8 +1,10 @@
 package gui;
 
+import java.io.IOException;
+
 import game_object.*;
-
-
+import game_object2.Item;
+import game_object2.RoomController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +27,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 public class GUI extends Application{
+	
 	private Navigationn navigationn = new Navigationn();
 
     private Roomm roomm;
@@ -51,7 +54,7 @@ public class GUI extends Application{
    Button btWest;
    Button btUpperFloor;
    Button btLowerFloor;
-   Label lbDetails;
+   Label lbHistory;
    Label lbNavigation;
    Button btLaunchCM;
    Button btViewInstructions;
@@ -59,9 +62,11 @@ public class GUI extends Application{
    Button btDetails;
    Button btClearNav;
    Button btClearDetails;
-   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
    int  playerHealth;
   
+   
+   String lvPlayerName, lvRoomId;
    Text  txtErrorMsg;
    public static final ObservableList<String> data = 
    FXCollections.observableArrayList();
@@ -73,7 +78,21 @@ public class GUI extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		//vbPlayField = controller.getVBox();
+		//Reference the RoomCOntroller and set up values from the text file Room.txt
+		try {
+			RoomController.setPuzzleFromText();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			String errorMessage = "Error writing from file : Puzzle.txt";
+			e.printStackTrace();
+			System.out.println(errorMessage);
+			
+		}
+		System.out.println("From: " + RoomController.class.getName());
+	    System.out.println(RoomController.getRoomA2().getDescription());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
+
 		
+	   // lvRoomId = new String();
 		gamestateActive = false;
 		nav = "default";
 	    navigationn = new Navigationn(); // instance of Navigation
@@ -102,7 +121,7 @@ public class GUI extends Application{
 		//listView.setEditable(true);
 		//listView.setPrefSize(200, 250);
 		btNav = new Button("NAVIGATION");
-		btDetails = new Button("GAME-DETAILS");
+		btDetails = new Button("GAME-HISTORY");
 		btClearNav = new Button("Clear Navigation");
 		btClearDetails = new Button("Clear Details");
 		insets = new Insets(5,5, 5,5); //insets to set margin to nodes
@@ -112,7 +131,7 @@ public class GUI extends Application{
 		btLaunchCM = new Button("Launch Command Menu");
 		vbRight = new VBox();
 		lbTitle = new Label("WELCOME TO CITADEl OF STORMS");
-		lbDetails = new Label("GAME-DETAILS");
+		lbHistory = new Label("GAME-HISTORY");
 		lbNavigation =  new Label("NAVIGATION");
 		btExit = new Button("EXIT");
 		btNorth = new Button("N");
@@ -143,19 +162,16 @@ public class GUI extends Application{
 		
 		
 		vbLeft = new VBox();
-		lbDetails.setId("lbDetails");
+		lbHistory.setId("lbHistory");
 		lbNavigation.setId("lbNavigation");
-		//lbDetails.getStyleClass().addAll("hbox-htTop", "list-cell");
+		//lbHistory.getStyleClass().addAll("hbox-htTop", "list-cell");
 		
-		 data.addAll(
-		              "Username:", "Curren-Room: ", "HealthPoint: ", "Gems:", "Moster defeated:"
-		            
-		        ); //This is where all the details of the player goes to.
+		 //This is where all the details of the player goes to.
 		 listView.setItems(data);
 		 listView.getStyleClass().addAll("hbox-htTop");
 		
 		
-		//vbLeft.getChildren().addAll(lbDetails, listView);
+		//vbLeft.getChildren().addAll(lbHistory, listView);
 		vbLeft.getStyleClass().addAll("hbox-htTop", "vbox-vbLeft");
 		
 		//gpRight.getChildren().addAll(btNorth,hbWestEast, btSouth);
@@ -192,12 +208,12 @@ public class GUI extends Application{
     	  borderPane.setCenter(controller.showLoginScreen());
       }		
       else {
-  		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+  		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, txtC));
 
       }
 		//borderPane.setCenter(controller.showLoginScreen());
 
-		System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + txtA+ " " +  txtB+ " " + txtC);
+		System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + roomItem+ " " +  roomExits+ " " + txtC);
 		
 		borderPane.setLeft(vbLeft);
 		borderPane.setRight(vbRight);
@@ -209,54 +225,120 @@ public class GUI extends Application{
 		btNorth.setOnAction(e -> {
 			if (e.getSource() == btNorth) {	
 				buttonClicked = 1;
-				setRoomDetails();
+				//setRoomDetails();
 				//playerName = "Dan";
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+				//borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				gamestateActive = true;
+				buttonClicked = 1; 
+				roomDesc = RoomController.getRoomB1().getDescription();
+			    roomTitle = RoomController.getRoomB1().getId();
+				roomItem = RoomController.getRoomB1().getItem();
+				roomExits = RoomController.getRoomB1().getExit();
+				playerHealth = 20;
+				playerName = "Elijah";
+				monster= RoomController.getRoomB1().getItem();
+				nav = btNorth.getText();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				 data.addAll(
+					      "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 			            
+			        );
+			}
+			System.out.println("Clicked: "+ buttonClicked);
+			System.out.println("CurrentRoom: "+ currentRoom);
+			
 
-				System.out.println("Clicked: "+ buttonClicked);
-				System.out.println("CurrentRoom: "+ currentRoom);
-				System.out.println(navigationn.toString());
+			});
+			
+	    	
 				
-			}	
-		});
+				
+				
+				
+				
+		
 		
 		btEast.setOnAction(e -> {
 			if (e.getSource() == btEast) {	
 			buttonClicked = 2;
-			setRoomDetails();
-			borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
+			//setRoomDetails();
+			 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+			gamestateActive = true;
+			buttonClicked = 1; 
+			roomDesc = RoomController.getRoomC2().getDescription();
+		    roomTitle = RoomController.getRoomC2().getId();
+			roomItem = RoomController.getRoomC2().getItem();
+			roomExits = RoomController.getRoomC2().getExit();
+			playerHealth = 20;
+			playerName = "Elijah";
+			monster= RoomController.getRoomB1().getItem();
+			nav = btEast.getText();
+			borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+			 data.addAll(
+				      "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 		            
+		        );
+		}
+		System.out.println("Clicked: "+ buttonClicked);
+		System.out.println("CurrentRoom: "+ currentRoom);
+		
+		 //Repeat for button clicks and change corrsponding values respectively --END
 
-			System.out.println("Clicked: "+ buttonClicked);
-			System.out.println("CurrentRoom: "+ currentRoom);
-			System.out.println(navigationn.toString());
+		
 			
 			
 			
-			}
 		});
 		btSouth.setOnAction(e -> {
 			if (e.getSource() == btSouth) {	
 				buttonClicked = 3;
-				setRoomDetails();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
-
-				System.out.println("Clicked: "+ buttonClicked);
-				System.out.println("CurrentRoom: "+ currentRoom);
-				System.out.println(navigationn.toString());
-				
+				//setRoomDetails();
+				 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+				gamestateActive = true;
+				buttonClicked = 1; 
+				roomDesc = RoomController.getRoomC1().getDescription();
+			    roomTitle = RoomController.getRoomC1().getId();
+				roomItem = RoomController.getRoomC1().getItem();
+				roomExits = RoomController.getRoomC1().getExit();
+				playerHealth = 20;
+				playerName = "Elijah";
+				monster= RoomController.getRoomC1().getItem();
+				nav = btSouth.getText();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				 data.addAll(
+					      "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 			            
+			        );
 			}
+			System.out.println("Clicked: "+ buttonClicked);
+			System.out.println("CurrentRoom: "+ currentRoom);
+			
+			 //Repeat for button clicks and change corrsponding values respectively --END
+				
+			
 		});
 		btWest.setOnAction(e -> {
 			if (e.getSource() == btWest) {	
 				buttonClicked = 4;
-				setRoomDetails();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
-
-				System.out.println("Clicked: "+ buttonClicked);
-				System.out.println("CurrentRoom: "+ currentRoom);
-				System.out.println(navigationn.toString());
-				
+				//setRoomDetails();
+				 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+				gamestateActive = true;
+				buttonClicked = 1; 
+				roomDesc = RoomController.getRoomA3().getDescription();
+			    roomTitle = RoomController.getRoomA3().getId();
+				roomItem = RoomController.getRoomA3().getItem();
+				roomExits = RoomController.getRoomA3().getExit();
+				playerHealth = 20;
+				playerName = "Elijah";
+				monster= RoomController.getRoomA3().getItem();
+				nav = "W";
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				 data.addAll(
+			              "*************"  + "****************", "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 
+			            
+			        );
 			}
+			System.out.println("Clicked: "+ buttonClicked);
+			System.out.println("CurrentRoom: "+ currentRoom);
+			
+			 //Repeat for button clicks and change corrsponding values respectively --END
 		});
 		
 		
@@ -264,7 +346,7 @@ public class GUI extends Application{
 			if (e.getSource() == btUpperFloor) {	
 				buttonClicked = 5;
 				setRoomDetails();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, roomItem,  roomExits, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);}
 		});
@@ -272,7 +354,7 @@ public class GUI extends Application{
         	if (e.getSource() == btLowerFloor) {	
 				buttonClicked = 6;
 				setRoomDetails();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster, attackStat, txtA,  txtB, txtC));
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster,  roomItem,  roomExits, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);
 				}
@@ -367,7 +449,7 @@ public class GUI extends Application{
 			if(!gamestateActive ==false) {
 				try {
 					txtErrorMsg.setText("MESSAGE: Click Clear when done"); 
-					vbLeft.getChildren().addAll( lbDetails, listView, txtErrorMsg);
+					vbLeft.getChildren().addAll( lbHistory, listView, txtErrorMsg);
 				} catch (Exception e) {
 					txtErrorMsg.setText("MESSAGE: Details is already active"); 
 					System.out.println(e);
@@ -439,7 +521,19 @@ public class GUI extends Application{
 			btLogin.setOnAction(EventHandler -> {
 				gamestateActive = true;
 				buttonClicked = 1; 
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, txtA,  txtB, txtC));
+				roomDesc = RoomController.getRoomA2().getDescription();
+			    roomTitle = RoomController.getRoomA2().getId();
+				roomItem = RoomController.getRoomA2().getItem();
+				roomExits = RoomController.getRoomA2().getExit();
+				playerHealth = 20;
+				playerName = "Elijah";
+				monster= RoomController.getRoomA2().getItem();
+				nav = btLogin.getText();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				 data.addAll(
+			              "Player-Name: "  + playerName, "Curren-Room: " + roomTitle, "HealthPoint: " + playerHealth, "Moster: " + monster 
+			            
+			        );
 
 			});
 			
@@ -448,7 +542,7 @@ public class GUI extends Application{
 	    /* Login page for game player True*/
 
 	    
-	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String attackStat, String txtA, String txtB, String txtC) {
+	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String roomItem, String roomExits, String txtC) {
 	    	
 	    	System.out.println(navigationn.toString());
 	    	//Room room = new Room(roomDescription);
@@ -483,20 +577,21 @@ public class GUI extends Application{
 			//nav = "default";
 			
 		
-			Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle + " || NAV. Clicked: " + nav );
-			
+			//Label roomHeader = new Label("Room: " +roomTitle + " || Floor: "  + floorTitle + " || NAV. Clicked: " + nav );
+			Label roomHeader = new Label("Room: " +roomTitle + " || Current-Navigation: " + nav );
+
 			roomHeader.setId("roomHeader");
 			
-			Label roomDesctn = new Label("Room Desc: " + roomDesc);
+			Label roomDesctn = new Label("DESCRIPTION:::::::: " + roomDesc);
 			roomDesctn.setId("roomDesctn");
-			Label monstDesc = new Label("Monster Desc: " + monster);
+			Label monstDesc = new Label("Monster: " + monster);
 			monstDesc.setId("monstDesc");
 			Label attackStatus = new Label("Attack Status: " + attackStat);
 			attackStatus.setId("attackStatus");
 			
-			Label textA = new Label("TextA: " + txtA);
-			textA.setId("textA");
-			Label textB = new Label("TextB: " + txtB);
+			Label lbroomItem = new Label("Item: " + roomItem);
+			lbroomItem.setId("textA");
+			Label textB = new Label("Vaild_Exits-RoomID: " + roomExits);
 			textB.setId("textB");
 			Label textC = new Label("TextC: " + txtC);
 			textC.setId("textC");
@@ -506,10 +601,10 @@ public class GUI extends Application{
 			topB.getChildren().add(roomDesctn);
 			mid.getChildren().add(monstDesc);
 			base.getChildren().add(attackStatus);
-			baseA.getChildren().add(textA);
+			baseA.getChildren().add(lbroomItem);
 			baseB.getChildren().add(textB);
 			baseC.getChildren().add(textC);
-			vbPlayField.getChildren().addAll(topX, top, topB, mid, base, baseA, baseB, baseC);
+			vbPlayField.getChildren().addAll(topX, top, topB, mid,  baseA, baseB, baseC);
 			VBox.setMargin(topX, new Insets(4));
 			VBox.setMargin(top, new Insets(4));
 			VBox.setMargin(topB, new Insets(4));
@@ -540,8 +635,8 @@ public class GUI extends Application{
 					roomm.setFloorTitle("Floor 1");
 					roomm.setMonster("Very Big Monster");
 					roomm.setRoomTitle("Room One");
-					roomm.setTxtA("Text a goes here...");
-					roomm.setTxtB("Text b goes here...");
+					roomm.setRoomItem("Text a goes here...");
+					roomm.setRoomExits("Text b goes here...");
 					roomm.setTxtC("Text c goes here...");
 					
 					player.setPlayerName("Elijah");
@@ -564,8 +659,8 @@ public class GUI extends Application{
 					 roomDesc = navigationn.getRoomDesc();
 					 monster = navigationn.getMonster();
 					 attackStat = navigationn.getAttackStat();
-					 txtA = navigationn.getTxtA();
-					 txtB = navigationn.getTxtB();
+					 roomItem = navigationn.getRoomItem();
+					 roomExits = navigationn.getRoomExits();
 					 txtC = navigationn.getTxtC();
 					 nav = "N";
 					
@@ -577,8 +672,8 @@ public class GUI extends Application{
 				roomm.setFloorTitle("Not known");
 				roomm.setMonster("Not known");
 				roomm.setRoomTitle("Not known");
-				roomm.setTxtA("Not known");
-				roomm.setTxtB("Not known");
+				roomm.setRoomItem("Not known");
+				roomm.setRoomExits("Not known");
 				roomm.setTxtC("Not known");
 				
 				 player.setPlayerHealth(20);
@@ -599,8 +694,8 @@ public class GUI extends Application{
 				 roomDesc = navigationn.getRoomDesc();
 				 monster = navigationn.getMonster();
 				 attackStat = navigationn.getAttackStat();
-				 txtA = navigationn.getTxtA();
-				 txtB = navigationn.getTxtB();
+				 roomItem = navigationn.getRoomItem();
+				 roomExits = navigationn.getRoomExits();
 				 txtC = navigationn.getTxtC();
 				
 				 nav = "E";
@@ -612,8 +707,8 @@ public class GUI extends Application{
 			roomm.setFloorTitle("Not known");
 			roomm.setMonster("Not known");
 			roomm.setRoomTitle("Not known");
-			roomm.setTxtA("Not known");
-			roomm.setTxtB("Not known");
+			roomm.setRoomItem("Not known");
+			roomm.setRoomExits("Not known");
 			roomm.setTxtC("Not known");
 			
 			player.setPlayerHealth(20);
@@ -634,8 +729,8 @@ public class GUI extends Application{
 			 roomDesc = navigationn.getRoomDesc();
 			 monster = navigationn.getMonster();
 			 attackStat = navigationn.getAttackStat();
-			 txtA = navigationn.getTxtA();
-			 txtB = navigationn.getTxtB();
+			 roomItem = navigationn.getRoomItem();
+			 roomExits = navigationn.getRoomExits();
 			 txtC = navigationn.getTxtC();
 			 
 			 nav = "S";
@@ -647,8 +742,8 @@ public class GUI extends Application{
 			roomm.setFloorTitle("Not known");
 			roomm.setMonster("Not known");
 			roomm.setRoomTitle("Not known");
-			roomm.setTxtA("Not known");
-			roomm.setTxtB("Not known");
+			roomm.setRoomItem("Not known");
+			roomm.setRoomExits("Not known");
 			roomm.setTxtC("Not known");
 			
 			player.setPlayerHealth(20);
@@ -669,8 +764,8 @@ public class GUI extends Application{
 			 roomDesc = navigationn.getRoomDesc();
 			 monster = navigationn.getMonster();
 			 attackStat = navigationn.getAttackStat();
-			 txtA = navigationn.getTxtA();
-			 txtB = navigationn.getTxtB();
+			 roomItem = navigationn.getRoomItem();
+			 roomExits = navigationn.getRoomExits();
 			 txtC = navigationn.getTxtC();
 			 
 			 nav = "W";
@@ -683,8 +778,8 @@ public class GUI extends Application{
 					roomm.setFloorTitle("Not known");
 					roomm.setMonster("Not known");
 					roomm.setRoomTitle("Not known");
-					roomm.setTxtA("Not known");
-					roomm.setTxtB("Not known");
+					roomm.setRoomItem("Not known");
+					roomm.setRoomExits("Not known");
 					roomm.setTxtC("Not known");
 					
 					player.setPlayerHealth(20);
@@ -705,8 +800,8 @@ public class GUI extends Application{
 					 roomDesc = navigationn.getRoomDesc();
 					 monster = navigationn.getMonster();
 					 attackStat = navigationn.getAttackStat();
-					 txtA = navigationn.getTxtA();
-					 txtB = navigationn.getTxtB();
+					 roomItem = navigationn.getRoomItem();
+					 roomExits = navigationn.getRoomExits();
 					 txtC = navigationn.getTxtC();
 					 
 					 nav = "Upper-Floor";
@@ -717,8 +812,8 @@ public class GUI extends Application{
 					roomm.setFloorTitle("Not known");
 					roomm.setMonster("Not known");
 					roomm.setRoomTitle("Not known");
-					roomm.setTxtA("Not known");
-					roomm.setTxtB("Not known");
+					roomm.setRoomItem("Not known");
+					roomm.setRoomExits("Not known");
 					roomm.setTxtC("Not known");
 					
 					player.setPlayerHealth(20);
@@ -739,8 +834,8 @@ public class GUI extends Application{
 					 roomDesc = navigationn.getRoomDesc();
 					 monster = navigationn.getMonster();
 					 attackStat = navigationn.getAttackStat();
-					 txtA = navigationn.getTxtA();
-					 txtB = navigationn.getTxtB();
+					 roomItem = navigationn.getRoomItem();
+					 roomExits = navigationn.getRoomExits();
 					 txtC = navigationn.getTxtC();
 					
 					 nav = "Lower-Floor";

@@ -1,12 +1,12 @@
 ID:A2
 RoomType: minion
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc:There is an eerie feeling in the room. The air is muggy. With every step you take another stream of sweat comes down your face. You initially see a few pig people. There is a dim fire in the corner, you can see the shadow of a chest. There are a few pigs standing around a table. There seems to be a carcass on the wall.
 Exits: N-A1 E-B2
 
 ID:B1
 RoomType: minion
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc: A cool breeze goes down your back. The pig people seem to be sleepwalking – they are moving in a daze. Seems as if gliding past them is an option. There appears to be nothing of use in the room… except, there is a back pack on the floor, a skeleton, and a few barrels of god-knows-what.
 Exits: W-A1 S-B2 E-C1
 
@@ -24,7 +24,7 @@ Exits: W-B S-C2
 
 ID:C2
 RoomType: minion
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested… or continues to rest. The only way to find out is to tread ahead.
 Exits: N-C1 W-B2 S-C3 E-D2
 
@@ -36,13 +36,13 @@ Exits: S-A4 E-B3
 
 ID:A4
 RoomType: undead
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc:A sight for sore eyes, the undead are ravaging a minions’ carcass. What a monster-eat-monster world this is. There must have been a combat between them, there are a couple of weapons on the floor. Disturbing them during the feast may be fatal
 Exits: N-A S-A5 E-B4
 
 ID:B3
 RoomType: undead
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc:This room looks like its smaller in size, but the gunk on the walls is incredibly thick. Oh no the undead are awakening from the walls. Will you have time to explore the room or will you just die. Put up a fight.
 Exits: N-B2 W-A3 S-B4 E-C3
 
@@ -54,7 +54,7 @@ Exits: N-B3 W-A4 S-B5 E-C4
 
 ID:B5
 RoomType:undead
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc: Ready for combat, the undead are projecting their vile without warning or warrant. There must be a chest in here, the stakes are too high, but when do monsters ever play by the rules. A winner takes risks, you choose your fate. Explore the room, there is a barrel, mirror, and a crate at first glance.
  Exits: N-B4 W-A5
 
@@ -71,13 +71,13 @@ Exits: S-D2 E-E1
 
 ID:D3
 RoomType: aquati
-Puzzle: No Puzzlec
+Puzzle: None in current roomc
 Desc: The cold in the air has not stopped the growth of fungal life here. You wonder if this flooding was intentional or just the result of neglect. Perhaps you should hurry and just get through this lest you contract some awful disease.
 Exits: N-D2 W-C3 S-D4 E-E3
 
 ID:E2
 RoomType: aquatic
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc:Foulness that one would have to smell to believe enters your nostrils. Resisting the urge to wretch, you look around the dank room to see a chest. Perhaps there is something of use here after all.
 Exits: N-E1 W-D2 S-E3
 
@@ -89,7 +89,7 @@ Exits: N-E2 W-D3
 
 ID: C4
 RoomType: shadow
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) A room with no natural light of its own illuminated by your lantern. Yet, even the lanterns warmth cannot take the edge off the chill you feel.
 Exits: N-C3 W-B4 S-C5 E-D4
@@ -110,14 +110,14 @@ Exits: N-D3 W-C4 S-D5 E-E4
 
 ID:D5
 RoomType: shadow
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc: (If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) A chest sits in the center of this room. Surely your lantern will stay lit long enough for you to open it...
 Exits:N-D4 W-C5 E-E5
 
 ID:E4
 RoomType:shadow
-Puzzle: No Puzzle
+Puzzle: None in current room
 Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) You notice something peculiar in the room. The air smells strongly of iron. Listening carefully, you hear... dripping?
 Exits: W-D4 E-E5

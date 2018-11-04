@@ -96,11 +96,11 @@ public class Navigationn extends Roomm {
 		this.txtA = txtA;
 	}
 
-	public String getTxtB() {
+	public String getRoomExits() {
 		return txtB;
 	}
 
-	public void setTxtB(String txtB) {
+	public void setRoomExits(String txtB) {
 		this.txtB = txtB;
 	}
 
