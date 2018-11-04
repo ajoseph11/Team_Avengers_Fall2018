@@ -79,6 +79,25 @@ public class RoomController {
 						if ((currentLine >= 7) && (currentLine <= 11)) {
 							b1Map.put(key, value);
 					   }
+						if ((currentLine >= 13) && (currentLine <= 17)) {
+							b2Map.put(key, value);
+					   }
+						if ((currentLine >= 19) && (currentLine <= 23)) {
+							c1Map.put(key, value);
+					   }
+						if ((currentLine >= 25) && (currentLine <= 29)) {
+							c2Map.put(key, value);
+					   }
+						if ((currentLine >= 31) && (currentLine <= 35)) {
+							a3Map.put(key, value);
+					   }
+						if ((currentLine >= 37) && (currentLine <= 41)) {
+							a4Map.put(key, value);
+					   }
+						if ((currentLine >= 43) && (currentLine <= 47)) {
+							b3Map.put(key, value);
+					   }
+						
 						//set the current map as the value for each puzzle Map object
 						
 						roomA2.setRoomMap(a2Map);
@@ -127,7 +146,7 @@ public class RoomController {
 				
 				try {
 					for (int i = 0; i < roomLinkedhashMapObjects.length; i++) {
-					     roomObjects[i].setId(roomLinkedhashMapObjects[i].get("ID").toString());
+					    roomObjects[i].setId(roomLinkedhashMapObjects[i].get("ID").toString());
 						roomObjects[i].setType(roomLinkedhashMapObjects[i].get("RoomType").toString());
 						roomObjects[i].setItem(roomLinkedhashMapObjects[i].get("Puzzle").toString());
 						roomObjects[i].setDescription(roomLinkedhashMapObjects[i].get("Desc").toString());

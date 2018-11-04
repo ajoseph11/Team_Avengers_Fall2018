@@ -36,11 +36,13 @@ Exits: S-A4 E-B3
 
 ID:A4
 RoomType: undead
+Puzzle: No Puzzle
 Desc:A sight for sore eyes, the undead are ravaging a minions’ carcass. What a monster-eat-monster world this is. There must have been a combat between them, there are a couple of weapons on the floor. Disturbing them during the feast may be fatal
 Exits: N-A S-A5 E-B4
 
 ID:B3
 RoomType: undead
+Puzzle: No Puzzle
 Desc:This room looks like its smaller in size, but the gunk on the walls is incredibly thick. Oh no the undead are awakening from the walls. Will you have time to explore the room or will you just die. Put up a fight.
 Exits: N-B2 W-A3 S-B4 E-C3
 
@@ -52,6 +54,7 @@ Exits: N-B3 W-A4 S-B5 E-C4
 
 ID:B5
 RoomType:undead
+Puzzle: No Puzzle
 Desc: Ready for combat, the undead are projecting their vile without warning or warrant. There must be a chest in here, the stakes are too high, but when do monsters ever play by the rules. A winner takes risks, you choose your fate. Explore the room, there is a barrel, mirror, and a crate at first glance.
  Exits: N-B4 W-A5
 
@@ -67,12 +70,14 @@ Desc:Stepping through the door, you’re hit with a humid fungal stench. The roo
 Exits: S-D2 E-E1
 
 ID:D3
-RoomType: aquatic
+RoomType: aquati
+Puzzle: No Puzzlec
 Desc: The cold in the air has not stopped the growth of fungal life here. You wonder if this flooding was intentional or just the result of neglect. Perhaps you should hurry and just get through this lest you contract some awful disease.
 Exits: N-D2 W-C3 S-D4 E-E3
 
 ID:E2
 RoomType: aquatic
+Puzzle: No Puzzle
 Desc:Foulness that one would have to smell to believe enters your nostrils. Resisting the urge to wretch, you look around the dank room to see a chest. Perhaps there is something of use here after all.
 Exits: N-E1 W-D2 S-E3
 
@@ -84,13 +89,14 @@ Exits: N-E2 W-D3
 
 ID: C4
 RoomType: shadow
+Puzzle: No Puzzle
 Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) A room with no natural light of its own illuminated by your lantern. Yet, even the lanterns warmth cannot take the edge off the chill you feel.
 Exits: N-C3 W-B4 S-C5 E-D4
 
 ID:C5
 RoomType: shadow
-Puzzle:
+Puzzle: R3
 Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) These dark rooms are not so scary with a lantern in hand. At least, as far as you can tell. If only your lantern was as warm as it was bright.
 Exits: N-C4 E-D5
@@ -104,12 +110,14 @@ Exits: N-D3 W-C4 S-D5 E-E4
 
 ID:D5
 RoomType: shadow
+Puzzle: No Puzzle
 Desc: (If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) A chest sits in the center of this room. Surely your lantern will stay lit long enough for you to open it...
 Exits:N-D4 W-C5 E-E5
 
 ID:E4
 RoomType:shadow
+Puzzle: No Puzzle
 Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
 (If lantern description) You notice something peculiar in the room. The air smells strongly of iron. Listening carefully, you hear... dripping?
 Exits: W-D4 E-E5

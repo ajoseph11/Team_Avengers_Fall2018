@@ -50,7 +50,13 @@ public class Runner {
 	//System.out.println(RoomController.b1Map);
 	System.out.println(RoomController.roomA2);
 	System.out.println(RoomController.roomB1);
-    System.out.println(RoomController.getRoomA2().getDescription());
+	System.out.println(RoomController.roomB2);
+	System.out.println(RoomController.roomC1);
+	System.out.println(RoomController.roomC2);
+	System.out.println(RoomController.roomB1);
+	System.out.println(RoomController.roomA3);
+	System.out.println(RoomController.roomA4);
+    System.out.println(RoomController.getRoomA3().getType());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
 
 		
 	
