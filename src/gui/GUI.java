@@ -327,6 +327,7 @@ public class GUI extends Application{
 				roomExits = RoomController.getRoomA3().getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
+				txtC = " ";
 				monster= RoomController.getRoomA3().getMonster();
 				nav = "W";
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
@@ -345,7 +346,22 @@ public class GUI extends Application{
 		btUpperFloor.setOnAction(e -> {
 			if (e.getSource() == btUpperFloor) {	
 				buttonClicked = 5;
-				setRoomDetails();
+				//setRoomDetails();
+				roomDesc = "";
+			    roomTitle = "";
+				roomItem = "";
+				roomExits = "";
+				playerHealth = 0;
+				playerName = "Elijah";
+				txtC = "WRONG-TURN: NO EXIT HERE! ";
+				monster= "";
+				nav = btUpperFloor.getText();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				 data.addAll(
+			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+			            
+			        );
+				
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, roomItem,  roomExits, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);}
@@ -353,7 +369,21 @@ public class GUI extends Application{
         btLowerFloor.setOnAction(e -> {
         	if (e.getSource() == btLowerFloor) {	
 				buttonClicked = 6;
-				setRoomDetails();
+				//setRoomDetails();
+				roomDesc = RoomController.getNecromancerRoom().getDescription();
+			    roomTitle = RoomController.getNecromancerRoom().getId();
+				roomItem = RoomController.getNecromancerRoom().getItem();
+				roomExits = RoomController.getNecromancerRoom().getExit();
+				playerHealth = 20;
+				playerName = "Elijah";
+				txtC = " ";
+				monster= RoomController.getNecromancerRoom().getMonster();
+				nav = btLowerFloor.getText();
+				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				 data.addAll(
+			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+			            
+			        );
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster,  roomItem,  roomExits, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);
@@ -530,6 +560,7 @@ public class GUI extends Application{
 				playerName = "Elijah";
 				monster= RoomController.getRoomA2().getMonster();
 				nav = btLogin.getText();
+				txtC = " ";
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 			              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
@@ -594,7 +625,7 @@ public class GUI extends Application{
 			lbroomItem.setId("textA");
 			Label textB = new Label("Valid_Exit-RoomIDs: " + roomExits);
 			textB.setId("textB");
-			Label textC = new Label("TextC: " + txtC);
+			Label textC = new Label(" " + txtC);
 			textC.setId("textC");
 			
 			topX.getChildren().add(playerDetails);

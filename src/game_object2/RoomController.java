@@ -562,11 +562,44 @@ public class RoomController {
 	public static void setSorcererBossFightRoom(Room_B sorcererBossFightRoom) {
 		RoomController.sorcererBossFightRoom = sorcererBossFightRoom;
 	}
+    
+	
+	public static Room_B getRoomE5() {
+		return roomE5;
+	}
+
+	public static void setRoomE5(Room_B roomE5) {
+		RoomController.roomE5 = roomE5;
+	}
+
+	public static Room_B getEntranceChamberRoom() {
+		return entranceChamberRoom;
+	}
+
+	public static void setEntranceChamberRoom(Room_B entranceChamberRoom) {
+		RoomController.entranceChamberRoom = entranceChamberRoom;
+	}
+
+	public static Room_B getGuardLockedDoorRoom() {
+		return guardLockedDoorRoom;
+	}
+
+	public static void setGuardLockedDoorRoom(Room_B guardLockedDoorRoom) {
+		RoomController.guardLockedDoorRoom = guardLockedDoorRoom;
+	}
+
+	public static Room_B getNecromancerRoom() {
+		return necromancerRoom;
+	}
+
+	public static void setNecromancerRoom(Room_B necromancerRoom) {
+		RoomController.necromancerRoom = necromancerRoom;
+	}
 
 	public static Room_B getStairsB1FRoom() {
 		return stairsB1FRoom;
 	}
-
+     
 	public static void setStairsB1FRoom(Room_B stairsB1FRoom) {
 		RoomController.stairsB1FRoom = stairsB1FRoom;
 	}
