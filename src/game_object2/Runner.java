@@ -86,7 +86,7 @@ public class Runner {
 	System.out.println(RoomController.stairsB1FRoom); 
 	System.out.println(RoomController.necromancerRoom); //7 special
 	
-	System.out.println(RoomController.necromancerRoom); // First 10 Rooms being printed in console for testing purposes. 
+	//System.out.println(RoomController.necromancerRoom); // First 10 Rooms being printed in console for testing purposes. 
  //System.out.println(RoomController.toString());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
 
 		

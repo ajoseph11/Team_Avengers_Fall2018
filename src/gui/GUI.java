@@ -351,7 +351,7 @@ public class GUI extends Application{
 			    roomTitle = "";
 				roomItem = "";
 				roomExits = "";
-				playerHealth = 0;
+				playerHealth = 20;
 				playerName = "Elijah";
 				txtC = "WRONG-TURN: NO EXIT HERE! ";
 				monster= "";
@@ -604,7 +604,7 @@ public class GUI extends Application{
 			VBox vbPlayField = new VBox();
 			vbPlayField.setId("playField");
 			
-			Label playerDetails = new Label("Player: " + playerName + " || HealthPoint: "  + playerHealth);
+			Label playerDetails = new Label("Player: " + playerName + " || Current HP: "  + playerHealth);
 			playerDetails.setId("playerDetails");
 			//nav = "default";
 			
