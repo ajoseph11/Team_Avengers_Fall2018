@@ -52,7 +52,7 @@ public class RoomController {
 	public static Room_B roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4,roomB3, roomB4, roomB5; // First 10 rooms
 	public static Room_B roomD2, roomD1, roomD3, roomE2, roomE3, roomC4, roomC5,roomD4, roomD5, roomE4; // Second 10 rooms making 20
 	public static Room_B roomA1, roomE1, roomA5; // last 3 reular rooms making 27 regular rooms
-	public static Room_B entranceChamber, connectingChamber, spiralStaircase, guardLockedDoor, sorcererBossFightRoom, stairsB1F, necromancerRoom; //7 special rooms
+	public static Room_B entranceChamberRoom, connectingChamberRoom, spiralStaircaseRoom, guardLockedDoorRoom, sorcererBossFightRoom, stairsB1FRoom, necromancerRoom; //7 special rooms
 
 	//public static Room_B roomB1;
 	//public static Room_B roomB2;
@@ -142,7 +142,26 @@ public class RoomController {
 						roomA3.setRoomMap(a3Map);
 						roomA4.setRoomMap(a4Map);
 						roomB3.setRoomMap(b3Map);
-						
+					    roomB4.setRoomMap(b4Map); 
+					    roomB5.setRoomMap(b5Map);
+					    roomD2.setRoomMap(d2Map);
+					    roomD1.setRoomMap(d1Map);
+					    roomD3.setRoomMap(d3Map);
+					    roomE2.setRoomMap(e2Map);
+					    roomE3.setRoomMap(e3Map);
+					    roomC4.setRoomMap(c4Map);
+					    roomC5.setRoomMap(c5Map);
+					    roomD4.setRoomMap(d4Map);
+					    roomD5.setRoomMap(d5Map);
+					    roomE4.setRoomMap(e4Map);
+						//Speacial ROoms
+					    entranceChamberRoom.setRoomMap(entranceChamberMap);
+					    connectingChamberRoom.setRoomMap(connectingChamberMap);
+					    spiralStaircaseRoom.setRoomMap(spiralStaircaseMap);
+					    guardLockedDoorRoom.setRoomMap(guardLockedDoorMap);
+					    sorcererBossFightRoom.setRoomMap(sorcererBossFightRoomMap);
+					    stairsB1FRoom.setRoomMap(stairsB1FMap);
+					    necromancerRoom.setRoomMap(necromancerRoomMap);
 					}
 					else {
 						errorMessage = "Room_B Class :: Program Beginning.....";
@@ -159,7 +178,10 @@ public class RoomController {
 				}
 				}
 				// Create an array of puzzle objects
-				Room_B[] roomObjects = { roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4, roomB3 };
+				Room_B[] roomObjects = { roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4,roomB3, roomB4, roomB5, 
+						roomD2, roomD1, roomD3, roomE2, roomE3, roomC4, roomC5,roomD4, roomD5, roomE4,
+						entranceChamberRoom, connectingChamberRoom, spiralStaircaseRoom, guardLockedDoorRoom, sorcererBossFightRoom, stairsB1FRoom, necromancerRoom
+				};
 				// Create an array of puzzle linked hash map objects from which you are calling
 				// values for the fields of the hashmap above
 				Map[] roomLinkedhashMapObjects = { roomA2.getRoomMap(), roomB1.getRoomMap(), roomB2.getRoomMap(),
