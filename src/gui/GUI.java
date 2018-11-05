@@ -80,7 +80,7 @@ public class GUI extends Application{
 		//vbPlayField = controller.getVBox();
 		//Reference the RoomCOntroller and set up values from the text file Room.txt
 		try {
-			RoomController.setPuzzleFromText();
+			RoomController.setRoomFromText();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			String errorMessage = "Error writing from file : Puzzle.txt";
@@ -236,7 +236,7 @@ public class GUI extends Application{
 				roomExits = RoomController.getRoomB1().getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
-				monster= RoomController.getRoomB1().getItem();
+				monster= RoomController.getRoomB1().getMonster();
 				nav = btNorth.getText();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
@@ -270,7 +270,7 @@ public class GUI extends Application{
 			roomExits = RoomController.getRoomC2().getExit();
 			playerHealth = 20;
 			playerName = "Elijah";
-			monster= RoomController.getRoomB1().getItem();
+			monster= RoomController.getRoomB1().getMonster();
 			nav = btEast.getText();
 			borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 			 data.addAll(
@@ -300,7 +300,7 @@ public class GUI extends Application{
 				roomExits = RoomController.getRoomC1().getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
-				monster= RoomController.getRoomC1().getItem();
+				monster= RoomController.getRoomC1().getMonster();
 				nav = btSouth.getText();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
@@ -327,7 +327,7 @@ public class GUI extends Application{
 				roomExits = RoomController.getRoomA3().getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
-				monster= RoomController.getRoomA3().getItem();
+				monster= RoomController.getRoomA3().getMonster();
 				nav = "W";
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
@@ -528,7 +528,7 @@ public class GUI extends Application{
 				roomExits = RoomController.getRoomA2().getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
-				monster= RoomController.getRoomA2().getItem();
+				monster= RoomController.getRoomA2().getMonster();
 				nav = btLogin.getText();
 				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
@@ -592,7 +592,7 @@ public class GUI extends Application{
 			
 			Label lbroomItem = new Label("Item: " + roomItem);
 			lbroomItem.setId("textA");
-			Label textB = new Label("Vaild_Exits-RoomID: " + roomExits);
+			Label textB = new Label("Valid_Exit-RoomIDs: " + roomExits);
 			textB.setId("textB");
 			Label textC = new Label("TextC: " + txtC);
 			textC.setId("textC");

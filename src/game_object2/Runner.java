@@ -34,7 +34,7 @@ public class Runner {
 
 	//test Room object andn values from PuzzleController class.
 	try {
-		RoomController.setPuzzleFromText();
+		RoomController.setRoomFromText();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		String errorMessage = "Error writing from file : Puzzle.txt";
@@ -53,10 +53,12 @@ public class Runner {
 	System.out.println(RoomController.roomB2);
 	System.out.println(RoomController.roomC1);
 	System.out.println(RoomController.roomC2);
-	System.out.println(RoomController.roomB1);
 	System.out.println(RoomController.roomA3);
 	System.out.println(RoomController.roomA4);
-    System.out.println(RoomController.getRoomB2().getDescription());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
+	System.out.println(RoomController.roomB3);
+	System.out.println(RoomController.roomB4);
+	System.out.println(RoomController.roomB5); // First 10 Rooms being printed in console for testing purposes. 
+ //System.out.println(RoomController.toString());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
 
 		
 	

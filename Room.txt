@@ -67,7 +67,7 @@ RoomType: undead
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: R7
-Desc: How peculiar, a dusty work table with beakers and tubes. Was this some kind of work area for the sorcerer at some point? There are quite a few items to inspect. Recognize this analysis was done in peace and quiet… but when are the undead ever quiet? Tread lightly!
+Desc: How peculiar, a dusty work table with beakers and tubes. Was this some kind of work area for the sorcerer at some point? There are quite a few Item to inspect. Recognize this analysis was done in peace and quiet… but when are the undead ever quiet? Tread lightly!
 Exits: N-B3 W-A4 S-B5 E-C4
 
 ID:B5
@@ -123,8 +123,7 @@ RoomType: shadow
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: None in current room
-Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
-(If lantern description) A room with no natural light of its own illuminated by your lantern. Yet, even the lanterns warmth cannot take the edge off the chill you feel.
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere. || (If lantern description) A room with no natural light of its own illuminated by your lantern. Yet, even the lanterns warmth cannot take the edge off the chill you feel.
 Exits: N-C3 W-B4 S-C5 E-D4
 
 ID:C5
@@ -132,8 +131,7 @@ RoomType: shadow
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: R3
-Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
-(If lantern description) These dark rooms are not so scary with a lantern in hand. At least, as far as you can tell. If only your lantern was as warm as it was bright.
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere. || (If lantern description) These dark rooms are not so scary with a lantern in hand. At least, as far as you can tell. If only your lantern was as warm as it was bright.
 Exits: N-C4 E-D5
 
 ID:D4
@@ -141,8 +139,7 @@ RoomType: shadow
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: R8
-Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
-(If lantern description) Claw marks litter the wall almost with the same frequency as bones litter the floor. Something feeds here, and you quietly hope it is not home.
+Desc:(If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere || (If lantern description) Claw marks litter the wall almost with the same frequency as bones litter the floor. Something feeds here, and you quietly hope it is not home.
 Exits: N-D3 W-C4 S-D5 E-E4
 
 ID:D5
@@ -150,8 +147,7 @@ RoomType: shadow
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: None in current room
-Desc: (If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere.
-(If lantern description) A chest sits in the center of this room. Surely your lantern will stay lit long enough for you to open it...
+Desc: (If no lantern description) Stepping through the door, you feel a chill. The room is pitch black. Perhaps you may find a light elsewhere. || (If lantern description) A chest sits in the center of this room. Surely your lantern will stay lit long enough for you to open it...
 Exits:N-D4 W-C5 E-E5
 
 ID:E4
@@ -165,7 +161,7 @@ Exits: W-D4 E-E5
 
 ID:A1
 RoomType: special!!!
-Items: KF1
+Item: KF1
 Monster: guard
 Puzzle: None in current room
 Desc: (As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly.) On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head?
@@ -173,7 +169,7 @@ Exits: E-B1 S-A2
 
 ID:E1
 RoomType: special!!!
-Items: KF2
+Item: KF2
 Monster: guard
 Puzzle: None in current room
 Desc: Wading quietly through the water, you enter a room that has a more foreboding atmosphere than you've felt in a while. The walls drip slowly with water and green ooze, and small splashes can be heard echoing about in the otherwise still air. (In the far corner, a somber form appears to be sizing you up.)
@@ -181,7 +177,7 @@ Exits: W-D1 S-E2
 
 ID: A5
 RoomType: special!!!
-Items: KF3
+Item: KF3
 Monster: guard
 Puzzle: None in current room
 Desc: Peeking slowly around the doorframe, you edge cautiously into this room. It reeks of rotting meat, and there are pools of vile fluids scattered here and there upon the floor. (A pair of glowing red eyes stares you down from the far corner, but do not make any motion. Yet.)
@@ -189,11 +185,10 @@ Exits: E-B5 N-A4
 
 ID: E5
 RoomType: special!!!
-Items: KF4
+Item: KF4
 Monster: guard
 Puzzle: None in current room
-Desc: Dark: You can't see much here, but you sense the shadows gathering even stronger in this room. A chill runs inadvertently down your spine. (A pair of red eyes suddenly blinks from the far corner, watching you intently.)
-Light: This room is furnished with a decrepit lounge chair and suede sofa, and might actually look quite cozy, were it not for the ambient shadows still stealing around the corners of your vision. (In the far corner, a silent sentinel leans against the wall, following your every move.)
+Desc: Dark: You can't see much here, but you sense the shadows gathering even stronger in this room. A chill runs inadvertently down your spine. (A pair of red eyes suddenly blinks from the far corner, watching you intently.) || Light: This room is furnished with a decrepit lounge chair and suede sofa, and might actually look quite cozy, were it not for the ambient shadows still stealing around the corners of your vision. (In the far corner, a silent sentinel leans against the wall, following your every move.)
 Exits: W-D5 N-E4
 
 ID:Entrance Antechamber
@@ -230,10 +225,10 @@ Exits:Up-F3 Spiral Staircase Down-F1 Spiral Staircase
 
 ID:F3 Spiral Staircase
 RoomType: special!!!
-Items: Sorcerer's Pendant
+Item: Sorcerer's Pendant
 Monster: Sorcerer
 Puzzle: None in current room
-Desc:You enter the room cautiously. Around you lie various items of magical creation, but your attention is drawn to the crystal coffin in the room's center. Dare you approach?
+Desc:You enter the room cautiously. Around you lie various Item of magical creation, but your attention is drawn to the crystal coffin in the room's center. Dare you approach?
 Exits:Down- F2 Spiral Staircase
 
 ID:B1F Stairs
@@ -241,13 +236,12 @@ RoomType: special!!!
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: None in current room
-Puzzle: None in current room
 Desc:So, the rumors were true. A labyrinth of rooms seems to extend from where you now stand, each of them having a different sense of danger to the others. Your journey is far from over.
 Exits:N-C2 S-C4 W-B3 E-D3
 
 ID:Necromancer's Room
 RoomType: special!!!
-Items: Necromancer's Staff
+Item: Necromancer's Staff
 Monster:Necromancer
 Puzzle: None in current room
 Desc:This room is as still as the grave. Eerie green mist slowly rises up the walls. On the far wall, you see the remnants of bodies lashed to the walls. This place reeks of death, and staying here too long could spell doom.

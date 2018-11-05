@@ -35,6 +35,8 @@ public class RoomController {
 	public static Map<String, String> a1Map = new LinkedHashMap<>();
 	public static Map<String, String> e1Map = new LinkedHashMap<>();
 	public static Map<String, String> a5Map = new LinkedHashMap<>(); //23
+	public static Map<String, String> e5Map = new LinkedHashMap<>(); //23
+
 	
 	
 	public static Map<String, String> entranceChamberMap = new LinkedHashMap<>();
@@ -51,7 +53,7 @@ public class RoomController {
 
 	public static Room_B roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4,roomB3, roomB4, roomB5; // First 10 rooms
 	public static Room_B roomD2, roomD1, roomD3, roomE2, roomE3, roomC4, roomC5,roomD4, roomD5, roomE4; // Second 10 rooms making 20
-	public static Room_B roomA1, roomE1, roomA5; // last 3 reular rooms making 27 regular rooms
+	public static Room_B roomA1, roomE1, roomA5, roomE5; // last 3 rgeular rooms making 27 regular rooms
 	public static Room_B entranceChamberRoom, connectingChamberRoom, spiralStaircaseRoom, guardLockedDoorRoom, sorcererBossFightRoom, stairsB1FRoom, necromancerRoom; //7 special rooms
 
 	//public static Room_B roomB1;
@@ -68,14 +70,14 @@ public class RoomController {
 
 
 
-	public static void setPuzzleFromText() throws IOException {
+	public static void setRoomFromText() throws IOException {
 		
 		// track which line you are currently reading
 				int currentLine = 0;
 				String lineNumber = "";
 
 				// concrete instantiation of maps to store information for each room
-				a2Map = new LinkedHashMap<>();
+				/*a2Map = new LinkedHashMap<>();
 				b1Map = new LinkedHashMap<>();
 				b2Map = new LinkedHashMap<>();
 				c1Map = new LinkedHashMap<>();
@@ -83,6 +85,10 @@ public class RoomController {
 				a3Map = new LinkedHashMap<>();
 				a4Map = new LinkedHashMap<>();
 				b3Map = new LinkedHashMap<>();
+				b4Map = new LinkedHashMap<>();
+				b5Map = new LinkedHashMap<>();*/
+				
+				
 
 				// concrete instantiation of room object to store information for each room
 
@@ -94,6 +100,32 @@ public class RoomController {
 				roomA3 = new Room_B();
 				roomA4 = new Room_B();
 				roomB3 = new Room_B();
+				roomB4 = new Room_B();
+				roomB5 = new Room_B();
+				
+				roomD2 = new Room_B();
+				roomD1 = new Room_B();
+				roomD3 = new Room_B();
+				roomE2 = new Room_B();
+				roomE3 = new Room_B();
+				roomC4 = new Room_B();
+				roomC5 = new Room_B();
+				roomD4 = new Room_B();
+				roomD5 = new Room_B();
+				roomE4 = new Room_B();
+				
+				roomA1 = new Room_B();
+				roomE1 = new Room_B();
+				roomA5 = new Room_B();
+				roomE5 = new Room_B();
+				
+				entranceChamberRoom = new Room_B();
+				connectingChamberRoom = new Room_B();
+				spiralStaircaseRoom = new Room_B();
+				guardLockedDoorRoom = new Room_B();
+				sorcererBossFightRoom = new Room_B();
+				stairsB1FRoom = new Room_B();
+				necromancerRoom = new Room_B();
 
 				String roomFile = "Room.txt";
 				String line;
@@ -131,7 +163,75 @@ public class RoomController {
 						if ((currentLine >= 57) && (currentLine <= 63)) {
 							b3Map.put(key, value);
 					   }
-						
+						if ((currentLine >= 65) && (currentLine <= 71)) {
+							b4Map.put(key, value);
+					   }
+						if ((currentLine >= 73) && (currentLine <= 79)) {
+							b5Map.put(key, value);
+					   }
+						if ((currentLine >= 81) && (currentLine <= 87)) {
+							d2Map.put(key, value);
+					   }
+						if ((currentLine >= 89) && (currentLine <= 95)) {
+							d1Map.put(key, value);
+					   }
+						if ((currentLine >= 97) && (currentLine <= 103)) {
+							d3Map.put(key, value);
+					   }
+						if ((currentLine >= 105) && (currentLine <= 111)) {
+							e2Map.put(key, value);
+					   }
+						if ((currentLine >= 113) && (currentLine <= 119)) {
+							e3Map.put(key, value);
+					   }
+						if ((currentLine >= 121) && (currentLine <= 127)) {
+							c4Map.put(key, value);
+					   }
+						if ((currentLine >= 129) && (currentLine <= 135)) {
+							c5Map.put(key, value);
+					   }
+						if ((currentLine >=137) && (currentLine <= 143)) {
+							d4Map.put(key, value);
+					   }
+						if ((currentLine >= 145) && (currentLine <= 151)) {
+							d5Map.put(key, value);
+					   }
+						if ((currentLine >= 153) && (currentLine <= 160)) {
+							e4Map.put(key, value);
+					   }
+						if ((currentLine >= 162) && (currentLine <= 168)) {
+							a1Map.put(key, value);
+					   }
+						if ((currentLine >= 170) && (currentLine <= 176)) {
+							e1Map.put(key, value);
+					   }
+						if ((currentLine >= 178) && (currentLine <= 184)) {
+							a5Map.put(key, value);
+					   }
+						if ((currentLine >= 186) && (currentLine <= 192)) {
+							e5Map.put(key, value);
+					   }
+						if ((currentLine >= 194) && (currentLine <= 200)) {
+							entranceChamberMap.put(key, value);
+					   }
+						if ((currentLine >= 202) && (currentLine <= 208)) {
+							connectingChamberMap.put(key, value);
+					   }
+						if ((currentLine >= 210) && (currentLine <= 216)) {
+							spiralStaircaseMap.put(key, value);
+					   }
+						if ((currentLine >= 218) && (currentLine <= 224)) {
+							guardLockedDoorMap.put(key, value);
+					   }
+						if ((currentLine >= 226) && (currentLine <= 232)) {
+							sorcererBossFightRoomMap.put(key, value);
+					   }
+						if ((currentLine >= 234) && (currentLine <= 240)) {
+							stairsB1FMap.put(key, value);
+					   }
+						if ((currentLine >= 242) && (currentLine <= 248)) {
+							necromancerRoomMap.put(key, value);
+					   }
 						//set the current map as the value for each puzzle Map object
 						
 						roomA2.setRoomMap(a2Map);
@@ -156,7 +256,8 @@ public class RoomController {
 					    roomE4.setRoomMap(e4Map);//20
 					    roomA1.setRoomMap(a1Map);
 					    roomE1.setRoomMap(e1Map);
-					    roomA5.setRoomMap(a5Map);//3
+					    roomA5.setRoomMap(a5Map);
+					    roomE5.setRoomMap(e5Map);//4
 					    
 						//Speacial 7 ROoms
 					    entranceChamberRoom.setRoomMap(entranceChamberMap);
@@ -183,7 +284,8 @@ public class RoomController {
 				}
 				// Create an array of puzzle objects
 				Room_B[] roomObjects = { roomA2, roomB1, roomB2, roomC1, roomC2, roomA3, roomA4,roomB3, roomB4, roomB5, 
-						roomD2, roomD1, roomD3, roomE2, roomE3, roomC4, roomC5,roomD4, roomD5, roomE4,
+						roomD2, roomD1, roomD3, roomE2, roomE3, roomC4, roomC5,roomD4, roomD5, roomE4, 
+						roomA1, roomE1, roomA5, roomE5,
 						entranceChamberRoom, connectingChamberRoom, spiralStaircaseRoom, guardLockedDoorRoom, sorcererBossFightRoom, stairsB1FRoom, necromancerRoom
 				};
 				// Create an array of puzzle linked hash map objects from which you are calling
@@ -194,7 +296,7 @@ public class RoomController {
 						//roomB3.getRoomMap() 
 						roomA2.getRoomMap(), roomB1.getRoomMap(), roomB2.getRoomMap(), roomC1.getRoomMap(), roomC2.getRoomMap(), roomA3.getRoomMap(), roomA4.getRoomMap(),roomB3.getRoomMap(), roomB4.getRoomMap(), roomB5.getRoomMap(), //10
 						roomD2.getRoomMap(), roomD1.getRoomMap(), roomD3.getRoomMap(), roomE2.getRoomMap(), roomE3.getRoomMap(), roomC4.getRoomMap(), roomC5.getRoomMap(),roomD4.getRoomMap(), roomD5.getRoomMap(), roomE4.getRoomMap(),//10
-						roomA1.getRoomMap(), roomE1.getRoomMap(), roomA5.getRoomMap(),//3
+						roomA1.getRoomMap(), roomE1.getRoomMap(), roomA5.getRoomMap(), roomE5.getRoomMap(),//4
 						entranceChamberRoom.getRoomMap(), connectingChamberRoom.getRoomMap(), spiralStaircaseRoom.getRoomMap(), guardLockedDoorRoom.getRoomMap(), sorcererBossFightRoom.getRoomMap(), stairsB1FRoom.getRoomMap(), necromancerRoom.getRoomMap()//7
 				
 				};
@@ -469,8 +571,14 @@ public class RoomController {
 		RoomController.stairsB1FRoom = stairsB1FRoom;
 	}
 
+	
+	public String toString() {
+		return "RoomController [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
 
 	
 	
-
+   
 }
