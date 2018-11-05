@@ -1,11 +1,11 @@
-package game_object2;
+package model;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-public class Room_B {
+public class Room {
 	private String id;
 	private String type;
 	private String item;
@@ -19,13 +19,13 @@ public class Room_B {
 	
 	private Map<String, String> roomMap = new LinkedHashMap<>();
 	
-	public Room_B (){
+	public Room (){
 		
 	}
 
 
 
-	public Room_B(String id, String type,  String item, String monster, String puzzle,String description, String exit) {
+	public Room(String id, String type,  String item, String monster, String puzzle,String description, String exit) {
 		super();
 		this.id = id;
 		this.type = type;

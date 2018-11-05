@@ -35,7 +35,7 @@ RoomType: minion
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: None in current room
-Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested… or continues to rest. The only way to find out is to tread ahead.
+Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested� or continues to rest. The only way to find out is to tread ahead.
 Exits: N-C1 W-B2 S-C3 E-D2
 
 ID:A3
@@ -43,7 +43,7 @@ RoomType: undead
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle:R2
-Desc: There is a stench of blood that reeks from a mile away. There are blood stained walls, and spotty places on the floor with built up gunk. The gunk appears to have things in it. What can of things? Let’s scavenge and find out. BUT be careful the undead are lurking.
+Desc: There is a stench of blood that reeks from a mile away. There are blood stained walls, and spotty places on the floor with built up gunk. The gunk appears to have things in it. What can of things? Let's scavenge and find out. BUT be careful the undead are lurking.
 Exits: S-A4 E-B3
 
 ID:A4

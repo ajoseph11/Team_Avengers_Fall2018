@@ -1,6 +1,8 @@
-package game_object2;
+package model;
 
 import java.util.Arrays;
+
+
 
 public class Item extends Room{
 	private String itemCategory;

@@ -1,10 +1,9 @@
-package gui;
+package view;
 
 import java.io.IOException;
 
-import game_object.*;
-import game_object2.Item;
-import game_object2.RoomController;
+import controller.RoomController;
+import model.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Item;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -28,9 +28,8 @@ import javafx.scene.control.TextArea;
 
 public class GUI extends Application{
 	
-	private Navigationn navigationn = new Navigationn();
 
-    private Roomm roomm;
+    private Room room;
     private Player player;
    private boolean gamestateActive;
 	private int currentRoom;
@@ -70,7 +69,7 @@ public class GUI extends Application{
    Text  txtErrorMsg;
    public static final ObservableList<String> data = 
    FXCollections.observableArrayList();
-   Controller controller;
+   GUIController gUIController;
    VBox vbPlayField;
 	       
    ListView<String> listView;
@@ -95,9 +94,8 @@ public class GUI extends Application{
 	   // lvRoomId = new String();
 		gamestateActive = false;
 		nav = "default";
-	    navigationn = new Navigationn(); // instance of Navigation
-	    roomm = new Roomm(); // instance of Room
-	    player = new Player(); // instance of Player
+	   
+	    
 	    /*************Game, Player and NAvigation Begin***************/
 	   
 	
@@ -107,7 +105,7 @@ public class GUI extends Application{
 		
 		/********************Game, Player, and Navigation End***************************/
 	    currentRoom = 1;
-		controller = new Controller();
+		gUIController = new GUIController();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
 		txtErrorMsg.setStrokeWidth(20);
@@ -205,10 +203,10 @@ public class GUI extends Application{
 		borderPane.getStyleClass().add("borderPane");
 		borderPane.setTop(hbTop);
       if(gamestateActive == false) {
-    	  borderPane.setCenter(controller.showLoginScreen());
+    	  borderPane.setCenter(gUIController.showLoginScreen());
       }		
       else {
-  		borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, txtC));
+  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, txtC));
 
       }
 		//borderPane.setCenter(controller.showLoginScreen());
@@ -238,7 +236,7 @@ public class GUI extends Application{
 				playerName = "Elijah";
 				monster= RoomController.getRoomB1().getMonster();
 				nav = btNorth.getText();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 					      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 			            
 			        );
@@ -272,7 +270,7 @@ public class GUI extends Application{
 			playerName = "Elijah";
 			monster= RoomController.getRoomB1().getMonster();
 			nav = btEast.getText();
-			borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+			borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 			 data.addAll(
 				      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 		            
 		        );
@@ -302,7 +300,7 @@ public class GUI extends Application{
 				playerName = "Elijah";
 				monster= RoomController.getRoomC1().getMonster();
 				nav = btSouth.getText();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 					      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 			            
 			        );
@@ -330,7 +328,7 @@ public class GUI extends Application{
 				txtC = " ";
 				monster= RoomController.getRoomA3().getMonster();
 				nav = "W";
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
@@ -356,13 +354,13 @@ public class GUI extends Application{
 				txtC = "WRONG-TURN: NO EXIT HERE! ";
 				monster= "";
 				nav = btUpperFloor.getText();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
 				
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, roomItem,  roomExits, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);}
 		});
@@ -379,12 +377,12 @@ public class GUI extends Application{
 				txtC = " ";
 				monster= RoomController.getNecromancerRoom().getMonster();
 				nav = btLowerFloor.getText();
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster,  roomItem,  roomExits, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);
 				}
@@ -405,21 +403,21 @@ public class GUI extends Application{
       }
   */
  
-       controller.showGameDetails();	
+       gUIController.showGameDetails();	
 		});
 		
 
 		btNav.setOnAction(e -> {
-			controller.showGameNav() ;
+			gUIController.showGameNav() ;
 		});
 		
 		btClearDetails.setOnAction(e -> {
-			controller.clearGameDetails();
+			gUIController.clearGameDetails();
 		});
 		
 
 		btClearNav.setOnAction(e -> {
-			controller.clearGameNav() ;
+			gUIController.clearGameNav() ;
 		});
 		
 		btExit.setOnAction(EventHandler -> {
@@ -444,7 +442,7 @@ public class GUI extends Application{
 		
 		
 		Scene scene = new Scene(borderPane, windowWidth, windowHeight); // set size of the windwo
-		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("viewStyle.css").toExternalForm()); // Add your stylesheet to the GUI
 		primaryStage.setTitle("Citadel_Of_Storms");
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -469,7 +467,7 @@ public class GUI extends Application{
 	}
 	
 	
-	class Controller{
+	class GUIController{
 		
 	
 		
@@ -561,7 +559,7 @@ public class GUI extends Application{
 				monster= RoomController.getRoomA2().getMonster();
 				nav = btLogin.getText();
 				txtC = " ";
-				borderPane.setCenter(controller.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
 				 data.addAll(
 			              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
@@ -576,7 +574,7 @@ public class GUI extends Application{
 	    
 	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String roomItem, String roomExits, String txtC) {
 	    	
-	    	System.out.println(navigationn.toString());
+	    	
 	    	//Room room = new Room(roomDescription);
 	    	HBox topX = new HBox();
 	    	topX.setAlignment(Pos.CENTER);
@@ -657,227 +655,7 @@ public class GUI extends Application{
 		
 	}
 	
-	public void setRoomDetails() {
 	
-		switch (buttonClicked) {
-		case 1:
-			        
-				    roomm.setRoomDesc("Description of room goes here");
-					roomm.setAttackStat("being attacked...");
-					roomm.setFloorTitle("Floor 1");
-					roomm.setMonster("Very Big Monster");
-					roomm.setRoomTitle("Room One");
-					roomm.setRoomItem("Text a goes here...");
-					roomm.setRoomExits("Text b goes here...");
-					roomm.setTxtC("Text c goes here...");
-					
-					player.setPlayerName("Elijah");
-					player.setPlayerHealth(20);
-					
-					
-					navigationn.setRoomTitle(roomm.getRoomTitle());
-					navigationn.setRoomm(roomm);
-					navigationn.setFloorTitle(roomm.getFloorTitle());
-					navigationn.setMonster(roomm.getMonster());
-					navigationn.setPlayer(player);
-					navigationn.setAttackStat(roomm.getAttackStat());
-					navigationn.setPlayerHealth(player.getPlayerHealth());
-					navigationn.setPlayerName(player.getPlayerName());
-					navigationn.setRoomDesc(roomm.getRoomDesc());
-					  /******Values that get printed on the canvas Begin*******/
-					 playerName = navigationn.getPlayerName();
-					 roomTitle = navigationn.getRoomTitle();
-					 floorTitle  = navigationn.getFloorTitle();
-					 roomDesc = navigationn.getRoomDesc();
-					 monster = navigationn.getMonster();
-					 attackStat = navigationn.getAttackStat();
-					 roomItem = navigationn.getRoomItem();
-					 roomExits = navigationn.getRoomExits();
-					 txtC = navigationn.getTxtC();
-					 nav = "N";
-					
-			break;
-		    case 2:
- 
-			    roomm.setRoomDesc("Not known");
-				roomm.setAttackStat("Not known");
-				roomm.setFloorTitle("Not known");
-				roomm.setMonster("Not known");
-				roomm.setRoomTitle("Not known");
-				roomm.setRoomItem("Not known");
-				roomm.setRoomExits("Not known");
-				roomm.setTxtC("Not known");
-				
-				 player.setPlayerHealth(20);
-				
-				navigationn.setRoomTitle(roomm.getRoomTitle());
-				navigationn.setRoomm(roomm);
-				navigationn.setFloorTitle(roomm.getFloorTitle());
-				navigationn.setMonster(roomm.getMonster());
-				navigationn.setPlayer(player);
-				navigationn.setAttackStat(roomm.getAttackStat());
-				navigationn.setPlayerHealth(player.getPlayerHealth());
-				navigationn.setPlayerName(player.getPlayerName());
-				navigationn.setRoomDesc(roomm.getRoomDesc());
-				  /******Values that get printed on the canvas Begin*******/
-				 playerName = navigationn.getPlayerName();
-				 roomTitle = navigationn.getRoomTitle();
-				 floorTitle  = navigationn.getFloorTitle();
-				 roomDesc = navigationn.getRoomDesc();
-				 monster = navigationn.getMonster();
-				 attackStat = navigationn.getAttackStat();
-				 roomItem = navigationn.getRoomItem();
-				 roomExits = navigationn.getRoomExits();
-				 txtC = navigationn.getTxtC();
-				
-				 nav = "E";
-					break;
-		case 3:
-			    
-			roomm.setRoomDesc("Not known");
-			roomm.setAttackStat("Not known");
-			roomm.setFloorTitle("Not known");
-			roomm.setMonster("Not known");
-			roomm.setRoomTitle("Not known");
-			roomm.setRoomItem("Not known");
-			roomm.setRoomExits("Not known");
-			roomm.setTxtC("Not known");
-			
-			player.setPlayerHealth(20);
-			
-			navigationn.setRoomTitle(roomm.getRoomTitle());
-			navigationn.setRoomm(roomm);
-			navigationn.setFloorTitle(roomm.getFloorTitle());
-			navigationn.setMonster(roomm.getMonster());
-			navigationn.setPlayer(player);
-			navigationn.setAttackStat(roomm.getAttackStat());
-			navigationn.setPlayerHealth(player.getPlayerHealth());
-			navigationn.setPlayerName(player.getPlayerName());
-			navigationn.setRoomDesc(roomm.getRoomDesc());
-			  /******Values that get printed on the canvas Begin*******/
-			 playerName = navigationn.getPlayerName();
-			 roomTitle = navigationn.getRoomTitle();
-			 floorTitle  = navigationn.getFloorTitle();
-			 roomDesc = navigationn.getRoomDesc();
-			 monster = navigationn.getMonster();
-			 attackStat = navigationn.getAttackStat();
-			 roomItem = navigationn.getRoomItem();
-			 roomExits = navigationn.getRoomExits();
-			 txtC = navigationn.getTxtC();
-			 
-			 nav = "S";
-			 break;
-		     case 4:
-			
-			roomm.setRoomDesc("Not known");
-			roomm.setAttackStat("Not known");
-			roomm.setFloorTitle("Not known");
-			roomm.setMonster("Not known");
-			roomm.setRoomTitle("Not known");
-			roomm.setRoomItem("Not known");
-			roomm.setRoomExits("Not known");
-			roomm.setTxtC("Not known");
-			
-			player.setPlayerHealth(20);
-			
-			navigationn.setRoomTitle(roomm.getRoomTitle());
-			navigationn.setRoomm(roomm);
-			navigationn.setFloorTitle(roomm.getFloorTitle());
-			navigationn.setMonster(roomm.getMonster());
-			navigationn.setPlayer(player);
-			navigationn.setAttackStat(roomm.getAttackStat());
-			navigationn.setPlayerHealth(player.getPlayerHealth());
-			navigationn.setPlayerName(player.getPlayerName());
-			navigationn.setRoomDesc(roomm.getRoomDesc());
-			  /******Values that get printed on the canvas Begin*******/
-			 playerName = navigationn.getPlayerName();
-			 roomTitle = navigationn.getRoomTitle();
-			 floorTitle  = navigationn.getFloorTitle();
-			 roomDesc = navigationn.getRoomDesc();
-			 monster = navigationn.getMonster();
-			 attackStat = navigationn.getAttackStat();
-			 roomItem = navigationn.getRoomItem();
-			 roomExits = navigationn.getRoomExits();
-			 txtC = navigationn.getTxtC();
-			 
-			 nav = "W";
-			
-			break;
-			
-		     case 5:
-		    	 roomm.setRoomDesc("Not known");
-					roomm.setAttackStat("Not known");
-					roomm.setFloorTitle("Not known");
-					roomm.setMonster("Not known");
-					roomm.setRoomTitle("Not known");
-					roomm.setRoomItem("Not known");
-					roomm.setRoomExits("Not known");
-					roomm.setTxtC("Not known");
-					
-					player.setPlayerHealth(20);
-					
-					navigationn.setRoomTitle(roomm.getRoomTitle());
-					navigationn.setRoomm(roomm);
-					navigationn.setFloorTitle(roomm.getFloorTitle());
-					navigationn.setMonster(roomm.getMonster());
-					navigationn.setPlayer(player);
-					navigationn.setAttackStat(roomm.getAttackStat());
-					navigationn.setPlayerHealth(player.getPlayerHealth());
-					navigationn.setPlayerName(player.getPlayerName());
-					navigationn.setRoomDesc(roomm.getRoomDesc());
-					  /******Values that get printed on the canvas Begin*******/
-					 playerName = navigationn.getPlayerName();
-					 roomTitle = navigationn.getRoomTitle();
-					 floorTitle  = navigationn.getFloorTitle();
-					 roomDesc = navigationn.getRoomDesc();
-					 monster = navigationn.getMonster();
-					 attackStat = navigationn.getAttackStat();
-					 roomItem = navigationn.getRoomItem();
-					 roomExits = navigationn.getRoomExits();
-					 txtC = navigationn.getTxtC();
-					 
-					 nav = "Upper-Floor";
-					 break;
-		     case 6:
-		    	     roomm.setRoomDesc("Not known");
-					roomm.setAttackStat("Not known");
-					roomm.setFloorTitle("Not known");
-					roomm.setMonster("Not known");
-					roomm.setRoomTitle("Not known");
-					roomm.setRoomItem("Not known");
-					roomm.setRoomExits("Not known");
-					roomm.setTxtC("Not known");
-					
-					player.setPlayerHealth(20);
-					
-					navigationn.setRoomTitle(roomm.getRoomTitle());
-					navigationn.setRoomm(roomm);
-					navigationn.setFloorTitle(roomm.getFloorTitle());
-					navigationn.setMonster(roomm.getMonster());
-					navigationn.setPlayer(player);
-					navigationn.setAttackStat(roomm.getAttackStat());
-					navigationn.setPlayerHealth(player.getPlayerHealth());
-					navigationn.setPlayerName(player.getPlayerName());
-					navigationn.setRoomDesc(roomm.getRoomDesc());
-					  /******Values that get printed on the canvas Begin*******/
-					 playerName = navigationn.getPlayerName();
-					 roomTitle = navigationn.getRoomTitle();
-					 floorTitle  = navigationn.getFloorTitle();
-					 roomDesc = navigationn.getRoomDesc();
-					 monster = navigationn.getMonster();
-					 attackStat = navigationn.getAttackStat();
-					 roomItem = navigationn.getRoomItem();
-					 roomExits = navigationn.getRoomExits();
-					 txtC = navigationn.getTxtC();
-					
-					 nav = "Lower-Floor";
-					 break;
-
-		       default:
-			     nav = "default";
-			break;
-		}
-	}
 	
 	
 	

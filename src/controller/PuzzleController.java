@@ -1,10 +1,12 @@
-package game_object2;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import model.Puzzle;
 
 public class PuzzleController {
 

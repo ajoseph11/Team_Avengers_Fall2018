@@ -1,4 +1,4 @@
-package game_object2;
+package model;
 
 public class Monster {
 	private String name;
