@@ -153,8 +153,12 @@ public class RoomController {
 					    roomC5.setRoomMap(c5Map);
 					    roomD4.setRoomMap(d4Map);
 					    roomD5.setRoomMap(d5Map);
-					    roomE4.setRoomMap(e4Map);
-						//Speacial ROoms
+					    roomE4.setRoomMap(e4Map);//20
+					    roomA1.setRoomMap(a1Map);
+					    roomE1.setRoomMap(e1Map);
+					    roomA5.setRoomMap(a5Map);//3
+					    
+						//Speacial 7 ROoms
 					    entranceChamberRoom.setRoomMap(entranceChamberMap);
 					    connectingChamberRoom.setRoomMap(connectingChamberMap);
 					    spiralStaircaseRoom.setRoomMap(spiralStaircaseMap);
@@ -184,9 +188,16 @@ public class RoomController {
 				};
 				// Create an array of puzzle linked hash map objects from which you are calling
 				// values for the fields of the hashmap above
-				Map[] roomLinkedhashMapObjects = { roomA2.getRoomMap(), roomB1.getRoomMap(), roomB2.getRoomMap(),
-						roomC1.getRoomMap(), roomC2.getRoomMap(), roomA3.getRoomMap(), roomA4.getRoomMap(),
-						roomB3.getRoomMap() };
+				Map[] roomLinkedhashMapObjects = { 
+						//roomA2.getRoomMap(), roomB1.getRoomMap(), roomB2.getRoomMap(),
+						//roomC1.getRoomMap(), roomC2.getRoomMap(), roomA3.getRoomMap(), roomA4.getRoomMap(),
+						//roomB3.getRoomMap() 
+						roomA2.getRoomMap(), roomB1.getRoomMap(), roomB2.getRoomMap(), roomC1.getRoomMap(), roomC2.getRoomMap(), roomA3.getRoomMap(), roomA4.getRoomMap(),roomB3.getRoomMap(), roomB4.getRoomMap(), roomB5.getRoomMap(), //10
+						roomD2.getRoomMap(), roomD1.getRoomMap(), roomD3.getRoomMap(), roomE2.getRoomMap(), roomE3.getRoomMap(), roomC4.getRoomMap(), roomC5.getRoomMap(),roomD4.getRoomMap(), roomD5.getRoomMap(), roomE4.getRoomMap(),//10
+						roomA1.getRoomMap(), roomE1.getRoomMap(), roomA5.getRoomMap(),//3
+						entranceChamberRoom.getRoomMap(), connectingChamberRoom.getRoomMap(), spiralStaircaseRoom.getRoomMap(), guardLockedDoorRoom.getRoomMap(), sorcererBossFightRoom.getRoomMap(), stairsB1FRoom.getRoomMap(), necromancerRoom.getRoomMap()//7
+				
+				};
 				
 				// print key and value side by side as seperate entities
 				for (int i = 0; i < roomObjects.length; i++) {
@@ -218,83 +229,248 @@ public class RoomController {
 				}
 	}
 
+	public static Map<String, String> getSpiralStaircaseMap() {
+		return spiralStaircaseMap;
+	}
+
+	public static void setSpiralStaircaseMap(Map<String, String> spiralStaircaseMap) {
+		RoomController.spiralStaircaseMap = spiralStaircaseMap;
+	}
+
+	public static Map<String, String> getSorcererBossFightRoomMap() {
+		return sorcererBossFightRoomMap;
+	}
+
+	public static void setSorcererBossFightRoomMap(Map<String, String> sorcererBossFightRoomMap) {
+		RoomController.sorcererBossFightRoomMap = sorcererBossFightRoomMap;
+	}
+
+	public static Map<String, String> getStairsB1FMap() {
+		return stairsB1FMap;
+	}
+
+	public static void setStairsB1FMap(Map<String, String> stairsB1FMap) {
+		RoomController.stairsB1FMap = stairsB1FMap;
+	}
 
 	public static Room_B getRoomA2() {
 		return roomA2;
 	}
 
-
 	public static void setRoomA2(Room_B roomA2) {
 		RoomController.roomA2 = roomA2;
 	}
-
 
 	public static Room_B getRoomB1() {
 		return roomB1;
 	}
 
-
 	public static void setRoomB1(Room_B roomB1) {
 		RoomController.roomB1 = roomB1;
 	}
-
 
 	public static Room_B getRoomB2() {
 		return roomB2;
 	}
 
-
 	public static void setRoomB2(Room_B roomB2) {
 		RoomController.roomB2 = roomB2;
 	}
-
 
 	public static Room_B getRoomC1() {
 		return roomC1;
 	}
 
-
 	public static void setRoomC1(Room_B roomC1) {
 		RoomController.roomC1 = roomC1;
 	}
-
 
 	public static Room_B getRoomC2() {
 		return roomC2;
 	}
 
-
 	public static void setRoomC2(Room_B roomC2) {
 		RoomController.roomC2 = roomC2;
 	}
-
 
 	public static Room_B getRoomA3() {
 		return roomA3;
 	}
 
-
 	public static void setRoomA3(Room_B roomA3) {
 		RoomController.roomA3 = roomA3;
 	}
-
 
 	public static Room_B getRoomA4() {
 		return roomA4;
 	}
 
-
 	public static void setRoomA4(Room_B roomA4) {
 		RoomController.roomA4 = roomA4;
 	}
-	
+
 	public static Room_B getRoomB3() {
 		return roomB3;
 	}
 
-
 	public static void setRoomB3(Room_B roomB3) {
 		RoomController.roomB3 = roomB3;
 	}
+
+	public static Room_B getRoomB4() {
+		return roomB4;
+	}
+
+	public static void setRoomB4(Room_B roomB4) {
+		RoomController.roomB4 = roomB4;
+	}
+
+	public static Room_B getRoomB5() {
+		return roomB5;
+	}
+
+	public static void setRoomB5(Room_B roomB5) {
+		RoomController.roomB5 = roomB5;
+	}
+
+	public static Room_B getRoomD2() {
+		return roomD2;
+	}
+
+	public static void setRoomD2(Room_B roomD2) {
+		RoomController.roomD2 = roomD2;
+	}
+
+	public static Room_B getRoomD1() {
+		return roomD1;
+	}
+
+	public static void setRoomD1(Room_B roomD1) {
+		RoomController.roomD1 = roomD1;
+	}
+
+	public static Room_B getRoomD3() {
+		return roomD3;
+	}
+
+	public static void setRoomD3(Room_B roomD3) {
+		RoomController.roomD3 = roomD3;
+	}
+
+	public static Room_B getRoomE2() {
+		return roomE2;
+	}
+
+	public static void setRoomE2(Room_B roomE2) {
+		RoomController.roomE2 = roomE2;
+	}
+
+	public static Room_B getRoomE3() {
+		return roomE3;
+	}
+
+	public static void setRoomE3(Room_B roomE3) {
+		RoomController.roomE3 = roomE3;
+	}
+
+	public static Room_B getRoomC4() {
+		return roomC4;
+	}
+
+	public static void setRoomC4(Room_B roomC4) {
+		RoomController.roomC4 = roomC4;
+	}
+
+	public static Room_B getRoomC5() {
+		return roomC5;
+	}
+
+	public static void setRoomC5(Room_B roomC5) {
+		RoomController.roomC5 = roomC5;
+	}
+
+	public static Room_B getRoomD4() {
+		return roomD4;
+	}
+
+	public static void setRoomD4(Room_B roomD4) {
+		RoomController.roomD4 = roomD4;
+	}
+
+	public static Room_B getRoomD5() {
+		return roomD5;
+	}
+
+	public static void setRoomD5(Room_B roomD5) {
+		RoomController.roomD5 = roomD5;
+	}
+
+	public static Room_B getRoomE4() {
+		return roomE4;
+	}
+
+	public static void setRoomE4(Room_B roomE4) {
+		RoomController.roomE4 = roomE4;
+	}
+
+	public static Room_B getRoomA1() {
+		return roomA1;
+	}
+
+	public static void setRoomA1(Room_B roomA1) {
+		RoomController.roomA1 = roomA1;
+	}
+
+	public static Room_B getRoomE1() {
+		return roomE1;
+	}
+
+	public static void setRoomE1(Room_B roomE1) {
+		RoomController.roomE1 = roomE1;
+	}
+
+	public static Room_B getRoomA5() {
+		return roomA5;
+	}
+
+	public static void setRoomA5(Room_B roomA5) {
+		RoomController.roomA5 = roomA5;
+	}
+
+	public static Room_B getConnectingChamberRoom() {
+		return connectingChamberRoom;
+	}
+
+	public static void setConnectingChamberRoom(Room_B connectingChamberRoom) {
+		RoomController.connectingChamberRoom = connectingChamberRoom;
+	}
+
+	public static Room_B getSpiralStaircaseRoom() {
+		return spiralStaircaseRoom;
+	}
+
+	public static void setSpiralStaircaseRoom(Room_B spiralStaircaseRoom) {
+		RoomController.spiralStaircaseRoom = spiralStaircaseRoom;
+	}
+
+	public static Room_B getSorcererBossFightRoom() {
+		return sorcererBossFightRoom;
+	}
+
+	public static void setSorcererBossFightRoom(Room_B sorcererBossFightRoom) {
+		RoomController.sorcererBossFightRoom = sorcererBossFightRoom;
+	}
+
+	public static Room_B getStairsB1FRoom() {
+		return stairsB1FRoom;
+	}
+
+	public static void setStairsB1FRoom(Room_B stairsB1FRoom) {
+		RoomController.stairsB1FRoom = stairsB1FRoom;
+	}
+
+
+	
+	
 
 }

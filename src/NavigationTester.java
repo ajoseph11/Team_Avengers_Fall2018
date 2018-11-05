@@ -16,7 +16,7 @@ public class NavigationTester {
 		roomm.setFloorTitle("Floor 1");
 		roomm.setMonster("Very Big Monster");
 		roomm.setRoomTitle("Room One");
-		roomm.setTxtA("Text a goes here...");
+		roomm.setTxtC("Text a goes here...");
 		roomm.setRoomExits("Text b goes here...");
 		roomm.setTxtC("Text c goes here...");
 		
@@ -33,8 +33,8 @@ public class NavigationTester {
 		navigationn.setRoomDesc(roomm.getRoomDesc());
 	
 	
-	System.out.println(navigationn.toString());
-	System.out.println(roomm.getRoomTitle());
+	//System.out.println(navigationn.toString());
+	//System.out.println(roomm.getRoomTitle());
 	
 }
 	
