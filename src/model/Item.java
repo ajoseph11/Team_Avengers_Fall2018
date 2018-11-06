@@ -12,7 +12,7 @@ public class Item extends Room{
 	private String itemDescription;
 	private String itemRoomID;
 	private String characterCompatibiltiy;
-	private int gemValue;
+	private String gemValue ;
 	private boolean stackable;
 
 	private Map<String, String> itemMap = new LinkedHashMap<>();
@@ -21,7 +21,7 @@ public class Item extends Room{
     }
 
 	public Item(String itemCategory, String itemName, String itemID, String itemDescription, String itemRoomID,
-				String characterCompatibiltiy, int gemValue, boolean stackable) {
+				String characterCompatibiltiy, String gemValue, boolean stackable) {
 		super();
 		this.itemCategory = itemCategory;
 		this.itemName = itemName;
@@ -70,10 +70,10 @@ public class Item extends Room{
 	public void setCharacterCompatibiltiy(String characterCompatibiltiy) {
 		this.characterCompatibiltiy = characterCompatibiltiy;
 	}
-	public int getGemValue() {
+	public String getGemValue() {
 		return gemValue;
 	}
-	public void setGemValue(int gemValue) {
+	public void setGemValue(String gemValue) {
 		this.gemValue = gemValue;
 	}
 	public boolean isStackable() {

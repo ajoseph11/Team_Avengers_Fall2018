@@ -3,7 +3,25 @@ ItemName: Cutlass
 ItemID: W1
 ItemDesc: Sword
 ItemRoomID: D1 D2 D3 E2 E3
-CharacterCompatibility : Aquatics Player
+CharacterCompatibility: Aquatics Player
+Value: 3
+Stackable: No
+
+ItemCategory: Weapon
+ItemName: Axe
+ItemID: W2
+ItemDesc: Axe Specialized for Combat
+ItemRoomID: A1 A5 E1 E5
+CharacterCompatibility: Guards Player
+Value: 3
+Stackable: No
+
+ItemCategory: Weapon
+ItemName: Hallberd
+ItemID: W3
+ItemDesc: Combined Spear and Battle axe
+ItemRoomID: Floor 3
+CharacterCompatibility: top Guard Player
 Value: 3
 Stackable: No
 
