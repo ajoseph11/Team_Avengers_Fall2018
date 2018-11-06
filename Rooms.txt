@@ -2,7 +2,7 @@ ID:A2
 RoomType: minion
 Desc:There is an eerie feeling in the room. The air is muggy. With every step you take another stream of sweat comes down your face. You initially see a few pig people. There is a dim fire in the corner, you can see the shadow of a chest. There are a few pigs standing around a table. There seems to be a carcass on the wall.
 Exits: N-A1  E-B2
-endRoom;
+endRoom;;
 ID:B1
 RoomType: minion
 Desc: A cool breeze goes down your back. The pig people seem to be sleepwalking – they are moving in a daze. Seems as if gliding past them is an option. There appears to be nothing of use in the room… except, there is a back pack on the floor, a skeleton, and a few barrels of god-knows-what.
@@ -112,17 +112,19 @@ ID:E4
                 Exits: W-D4 E-E5
                     endRoom;;
 ID:A1
-    Items: KF1
-        Monster: guard
-            Desc: (As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly.) On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head?
-                Exits: E-B1 S-A2
-                    endRoom;;
+Items: KF1
+Monster: guard
+Desc: (As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly.) On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head?
+Exits: E-B1 S-A2
+endRoom;;
+
 ID:E1
-    Items: KF2
-        Monster: guard
-            Desc: Wading quietly through the water, you enter a room that has a more foreboding atmosphere than you've felt in a while. The walls drip slowly with water and green ooze, and small splashes can be heard echoing about in the otherwise still air. (In the far corner, a somber form appears to be sizing you up.)
-                Exits: W-D1 S-E2
-                    endRoom;;
+Items: KF2
+Monster: guard
+Desc: Wading quietly through the water, you enter a room that has a more foreboding atmosphere than you've felt in a while. The walls drip slowly with water and green ooze, and small splashes can be heard echoing about in the otherwise still air. (In the far corner, a somber form appears to be sizing you up.)
+Exits: W-D1 S-E2
+endRoom;;
+
 ID: A5
     Items: KF3
         Monster: guard
@@ -156,7 +158,7 @@ ID:F2 Spiral Staircase
                     endRoom;;
 ID:F3 Spiral Staircase
     Items: Sorcerer's Pendant
-       Monster: Sorcerer
+       Monster: NSorcerer
             Desc:You enter the room cautiously. Around you lie various items of magical creation, but your attention is drawn to the crystal coffin in the room's center. Dare you approach?
                 Exits:Down- F2 Spiral Staircase
                     endRoom;;

@@ -1,7 +1,8 @@
 package model;
 
 import java.util.Arrays;
-
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 public class Item extends Room{
@@ -10,12 +11,17 @@ public class Item extends Room{
 	private String itemID;
 	private String itemDescription;
 	private String itemRoomID;
-	private String [] characterCompatibiltiy;
+	private String characterCompatibiltiy;
 	private int gemValue;
 	private boolean stackable;
-	
+
+	private Map<String, String> itemMap = new LinkedHashMap<>();
+	public Item(){
+
+    }
+
 	public Item(String itemCategory, String itemName, String itemID, String itemDescription, String itemRoomID,
-			String[] characterCompatibiltiy, int gemValue, boolean stackable) {
+				String characterCompatibiltiy, int gemValue, boolean stackable) {
 		super();
 		this.itemCategory = itemCategory;
 		this.itemName = itemName;
@@ -25,7 +31,8 @@ public class Item extends Room{
 		this.characterCompatibiltiy = characterCompatibiltiy;
 		this.gemValue = gemValue;
 		this.stackable = stackable;
-		
+
+
 	}
 	public String getItemCategory() {
 		return itemCategory;
@@ -57,10 +64,10 @@ public class Item extends Room{
 	public void setItemRoomID(String itemRoomID) {
 		this.itemRoomID = itemRoomID;
 	}
-	public String[] getCharacterCompatibiltiy() {
+	public String getCharacterCompatibiltiy() {
 		return characterCompatibiltiy;
 	}
-	public void setCharacterCompatibiltiy(String[] characterCompatibiltiy) {
+	public void setCharacterCompatibiltiy(String characterCompatibiltiy) {
 		this.characterCompatibiltiy = characterCompatibiltiy;
 	}
 	public int getGemValue() {
@@ -75,11 +82,21 @@ public class Item extends Room{
 	public void setStackable(boolean stackable) {
 		this.stackable = stackable;
 	}
-	@Override
+
+    public Map<String, String> getItemMap() {
+        return itemMap;
+    }
+
+    public void setItemMap(Map<String, String> itemMap) {
+        this.itemMap = itemMap;
+    }
+
+
+    @Override
 	public String toString() {
 		return "Item [itemCategory=" + itemCategory + ", itemName=" + itemName + ", itemID=" + itemID
 				+ ", itemDescription=" + itemDescription + ", itemRoomID=" + itemRoomID + ", characterCompatibiltiy="
-				+ Arrays.toString(characterCompatibiltiy) + ", gemValue=" + gemValue + ", stackable=" + stackable + "]";
+				+ characterCompatibiltiy + ", gemValue=" + gemValue + ", stackable=" + stackable + "]";
 	}
 	
 	
