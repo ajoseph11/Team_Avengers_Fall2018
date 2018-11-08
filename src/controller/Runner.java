@@ -1,5 +1,7 @@
 package controller;
 
+import model.Monster;
+
 import java.io.IOException;
 
 public class Runner {
@@ -13,7 +15,8 @@ public class Runner {
    //PuzzleController.setPuzzleFromText();
    //System.out.println(ItemController.itemW2);
    System.out.println(ItemController.getItemk15());
-
+		//System.out.println(MonsterController.getM2Monster());
+		MonsterController.setMonsterFromText();
 	}
 
 }

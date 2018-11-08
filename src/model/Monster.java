@@ -12,28 +12,24 @@ public class Monster {
 	private int monsterHealth;
 	private boolean canAttack;
 	private boolean canDefend;
-<<<<<<< HEAD
-	private String specialMove;
+	private int healthLoss;
+	private int valueLoss;
+	private String monsterDesc;
+	//private String specialMove;
+
+	private Map<String, String> monsterMap = new LinkedHashMap<>();
 
 	public Monster(){
 
 	}
 	public Monster(String name, String roomLocation, String itemDropChance, String armor, int healthPoint,
 			boolean canAttack, boolean canDefend, String specialMove) {
-=======
-	private int healthLoss;
-	private int valueLoss;
-	private String mosterDesc;
-	
-	private Map<String, String> mosterMap = new LinkedHashMap<>();
 
-	public Monster() {
-		super();
 	}
 
 	public Monster(String monsterName, String roomLocation, String itemsDrop, int valueGain, String armor,
-			int monsterHealth, boolean canAttack, boolean canDefend, int healthLoss, int valueLoss, String mosterDesc) {
->>>>>>> e69d3a4477729b9bd0839782f9ff6b9f169e778f
+			int monsterHealth, boolean canAttack, boolean canDefend, int healthLoss, int valueLoss, String monsterDesc) {
+
 		super();
 		this.monsterName = monsterName;
 		this.roomLocation = roomLocation;
@@ -45,7 +41,7 @@ public class Monster {
 		this.canDefend = canDefend;
 		this.healthLoss = healthLoss;
 		this.valueLoss = valueLoss;
-		this.mosterDesc = mosterDesc;
+		this.monsterDesc = monsterDesc;
 	}
 
 	public String getMonsterName() {
@@ -128,20 +124,20 @@ public class Monster {
 		this.valueLoss = valueLoss;
 	}
 
-	public String getMosterDesc() {
-		return mosterDesc;
+	public String getMonsterDesc() {
+		return monsterDesc;
 	}
 
-	public void setMosterDesc(String mosterDesc) {
-		this.mosterDesc = mosterDesc;
+	public void setMonsterDesc(String monsterDesc) {
+		this.monsterDesc = monsterDesc;
 	}
 
-	public Map<String, String> getMosterMap() {
-		return mosterMap;
+	public Map<String, String> getMonsterMap() {
+		return monsterMap;
 	}
 
-	public void setMosterMap(Map<String, String> mosterMap) {
-		this.mosterMap = mosterMap;
+	public void setMonsterMap(Map<String, String> monsterMap) {
+		this.monsterMap = monsterMap;
 	}
 
 	@Override
@@ -149,7 +145,7 @@ public class Monster {
 		return "Monster [monsterName=" + monsterName + ", roomLocation=" + roomLocation + ", itemsDrop=" + itemsDrop
 				+ ", valueGain=" + valueGain + ", armor=" + armor + ", monsterHealth=" + monsterHealth + ", canAttack="
 				+ canAttack + ", canDefend=" + canDefend + ", healthLoss=" + healthLoss + ", valueLoss=" + valueLoss
-				+ ", mosterDesc=" + mosterDesc + "]";
+				+ ", monsterDesc=" + monsterDesc + "]";
 	}
 
 	
