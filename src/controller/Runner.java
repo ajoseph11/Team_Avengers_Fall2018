@@ -12,7 +12,7 @@ public class Runner {
    //System.out.println(ItemController.getItemW2().getItemMap());
    //PuzzleController.setPuzzleFromText();
    //System.out.println(ItemController.itemW2);
-   System.out.println(ItemController.getItemW2());
+   System.out.println(ItemController.getItemk15());
 
 	}
 
