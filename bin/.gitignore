@@ -1,6 +1,13 @@
 /controller/
+<<<<<<< HEAD
 /CharacterData.class
 /CharacterData/
 /Characterdata/
 /inventory/
+=======
+/image/
+/model/
+/view/
+/game_object2/
+>>>>>>> 0c88b9020557f05ba74a13ee5881b7bba40cd97d
 /Monster.txt
