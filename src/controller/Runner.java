@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 
+import model.Monster;
+
 public class Runner {
 
 	public static void main(String[] args) throws IOException {
@@ -13,6 +15,8 @@ public class Runner {
    //PuzzleController.setPuzzleFromText();
    //System.out.println(ItemController.itemW2);
    System.out.println(ItemController.getItemk15());
+   Monster moster = new Monster();
+   
 
 	}
 
