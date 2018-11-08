@@ -114,7 +114,7 @@ public class PuzzleController {
 				// errorMessage = "One or more line may be empty and giving null String:: Please
 				// checck";
 				System.out.print(errorMessage);
-				// e.printStackTrace();
+			     e.printStackTrace();
 			}
 		}
 
@@ -161,7 +161,7 @@ public class PuzzleController {
 			e.printStackTrace();
 			// System.out.println(errorMessage + " " + e);
 		}
-		puzzleR2.setAnswer(puzzleR2.getPuzzleMap().get("Answer"));
+		//puzzleR2.setAnswer(puzzleR2.getPuzzleMap().get("Answer"));
 
 	}
 

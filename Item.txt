@@ -1,4 +1,4 @@
-ItemCategory: Weapon
+ItemCategory:Weapon
 ItemName: Cutlass
 ItemID: W1
 ItemDesc: Sword
