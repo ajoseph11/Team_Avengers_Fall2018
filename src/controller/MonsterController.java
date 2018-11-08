@@ -57,28 +57,28 @@ public class MonsterController {
                     String key = lineContent[0];
                     String value = lineContent[1];
                     if ((currentLine > 0) && (currentLine <= 11)) {
-                        m2Map.put(key, value);
+                        m1Map.put(key, value);
                     }
                     if ((currentLine >= 13) && (currentLine <= 23)) {
                         m2Map.put(key, value);
                     }
                     if ((currentLine >= 25) && (currentLine <= 35)) {
-                        m2Map.put(key, value);
+                        m3Map.put(key, value);
                     }
                     if ((currentLine >= 37) && (currentLine <= 47)) {
-                        m2Map.put(key, value);
+                        m4Map.put(key, value);
                     }
                     if ((currentLine >= 49) && (currentLine <= 59)) {
-                        m2Map.put(key, value);
+                        m5Map.put(key, value);
                     }
                     if ((currentLine >= 61) && (currentLine <= 71)) {
-                        m2Map.put(key, value);
+                        m6Map.put(key, value);
                     }
                     if ((currentLine >= 73) && (currentLine <= 83)) {
-                        m2Map.put(key, value);
+                        m7Map.put(key, value);
                     }
                     if ((currentLine >= 85) && (currentLine <= 95)) {
-                        m2Map.put(key, value);
+                        m8Map.put(key, value);
                     }
 
                     m1Monster.setMonsterMap(m1Map);
@@ -125,13 +125,13 @@ public class MonsterController {
                 monsterObjects[i].setMonsterName(monsterLinkedHashMapObjects[i].get("MonsterName").toString());
                 monsterObjects[i].setRoomLocation(monsterLinkedHashMapObjects[i].get("RoomLocation").toString());
                 monsterObjects[i].setItemsDrop(monsterLinkedHashMapObjects[i].get("ItemsDrop").toString());
-               monsterObjects[i].setValueGain(Integer.parseInt(monsterLinkedHashMapObjects[i].get("ValueGain").toString()));
+                monsterObjects[i].setValueGain(monsterLinkedHashMapObjects[i].get("ValueGain").toString());
                 monsterObjects[i].setArmor(monsterLinkedHashMapObjects[i].get("Armor").toString());
-                monsterObjects[i].setMonsterHealth(Integer.parseInt(monsterLinkedHashMapObjects[i].get("MonterHealth").toString()));
+                monsterObjects[i].setMonsterHealth(monsterLinkedHashMapObjects[i].get("MonsterHealth").toString());
                 monsterObjects[i].setCanAttack(Boolean.parseBoolean(monsterLinkedHashMapObjects[i].get("Attack").toString()));
                 monsterObjects[i].setCanDefend(Boolean.parseBoolean(monsterLinkedHashMapObjects[i].get("Defend").toString()));
-                monsterObjects[i].setHealthLoss(Integer.parseInt(monsterLinkedHashMapObjects[i].get("HealthLoss").toString()));
-                monsterObjects[i].setValueLoss(Integer.parseInt(monsterLinkedHashMapObjects[i].get("ValueLoss").toString()));
+                monsterObjects[i].setHealthLoss(monsterLinkedHashMapObjects[i].get("HealthLoss").toString());
+                monsterObjects[i].setValueLoss(monsterLinkedHashMapObjects[i].get("ValueLoss").toString());
                 monsterObjects[i].setMonsterDesc(monsterLinkedHashMapObjects[i].get("MonsterDesc").toString());
 
 

@@ -1,96 +1,96 @@
 MonsterName: Necromancer
 RoomLocation: B2F
 ItemsDrop: D2
-ValueGain: 23
+ValueGain:23
 Armor: None
-MonsterHealth: 18
+MonsterHealth:18
 Attack: No
 Defend: No
-HealthLoss: 1
-ValueLoss: 0
+HealthLoss:1
+ValueLoss:0
 MonsterDesc: A hooded figure, with the stench of death about it. The tattered purple robe it wears is stained countless times with dried blood. With a quiet coughing laugh, it beckons you forward.
 
 MonsterName: Sorcecer
 RoomLocation: Floor 3
 ItemsDrop: K13
-ValueGain: 0
+ValueGain:0
 Armor: No
-MonsterHealth: 20
+MonsterHealth:20
 Attack: Yes
 Defend: Yes
-HealthLoss: 0
-ValueLoss: 0
+HealthLoss:0
+ValueLoss:0
 MonsterDesc: Robes clean, eyes dull, the sorcerer gives you a cursory glance and no more. Turning back to his work, he says quietly, “You must be strong to have bested Fredrick.” Satisfied with his work, he turns back to you. With a bored expression, he continues, “However… you will find that strength is a relative term.”
 
 MonsterName: Merchant
 RoomLocation: Floor 1 Connecting Chamber
 ItemsDrop: D2 W4 A4
-ValueGain: 999
+ValueGain:999
 Armor: Heavy
-MonsterHealth: 12
+MonsterHealth:12
 Attack: Yes
 Defend: Yes
-HealthLoss: 2
-ValueLoss: 6
+HealthLoss:2
+ValueLoss:6
 MonsterDesc: A homely little goblin… or is it an orc? A demon? A silvery metal pipe in hand, and well armored. It sees you and jingles a bag of gems before directing your attention to its wares. His intentions may be ill, they do not seem to lethal at least. Money is everyone’s friends in times like these.
 
 MonsterName: Pig Person
 RoomLocation: B1 C1 A2 B2 C2
 ItemsDrop: A1 W5 D2
-ValueGain: 6
+ValueGain:6
 Armor: Light
-MonsterHealth: 8
+MonsterHealth:8
 Attack: Yes
 Defend: Yes
-HealthLoss: 0
-ValueLoss: 0
+HealthLoss:0
+ValueLoss:0
 MonsterDesc: Like the pig men of folk tales meant to scare bad children, but these abominations prove far uglier than any mother could have imagined. A pitch-fork in hand, they seem to be even deadlier as well.
 
 MonsterName: Fish Person
 RoomLocation: D1 D2 E2 D3 E1
 ItemsDrop: W1
-ValueGain: 7
+ValueGain:7
 Armor: Light
-MonsterHealth: 8
+MonsterHealth:8
 Attack: Yes
 Defend: Yes
-HealthLoss: 1
-ValueLoss: 0
+HealthLoss: 
+ValueLoss:0
 MonsterDesc: Looking at its scaly, up turned face, you’re not quite sure what the fish is thinking. It clarifies this by drawing its cutlass and walking towards you.
 
 MonsterName: Shadow Fiend
 RoomLocation: C4 D4 E4 C5 D5
 ItemsDrop: No
-ValueGain: 6
+ValueGain:6
 Armor: No
-MonsterHealth: 7
+MonsterHealth:7
 Attack: Yes
 Defend: No
-HealthLoss: 0
-ValueLoss: 0
+HealthLoss:0
+ValueLoss:0
 MonsterDesc: (With light item) These shadows do not dance to the flicker of your flame. A black mass emerges from the ground with what look like…. Claws? (Without light item) The eerie moans you hear are not those of any creature living or dead. Even in darkness you can feel somethings presence. Perhaps, you think, it would be best to turn back.
 
 MonsterName: Undead
 RoomLocation: A3 B3 A4 B4 B5
 ItemsDrop: No
-ValueGain: 5
+ValueGain:5
 Armor: No
-MonsterHealth: 4
+MonsterHealth:4
 Attack: Yes
 Defend: No
-HealthLoss: 1
-ValueLoss: 0
+HealthLoss:1
+ValueLoss:0
 MonsterDesc: Flesh rotting and falling from bone. What horror is this? The shambling corpse seems to have taken an interest in you. Best take the time to dissuade it.
 
 MonsterName: Guard
 RoomLocation: A1 E1 A5 E5 Floor2
 ItemsDrop: A5 W2 D2
-ValueGain: 9
+ValueGain:9
 Armor: Heavy
 MonsterHealth: 11
 Attack: Yes
 Defend: Yes
-HealthLoss: 0.2
+HealthLoss:0.2
 ValueLoss:0
 MonsterDesc: Tall, bulky, and well plated, the guard looks at you as though you were no more than a mere trifle. Readying his axe, the look on his face is almost like a dare.
 

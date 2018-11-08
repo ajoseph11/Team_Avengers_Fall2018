@@ -7,13 +7,13 @@ public class Monster {
 	private String monsterName;
 	private String roomLocation;
 	private String itemsDrop;
-	private int valueGain;
+	private String valueGain;
 	private String armor;
-	private int monsterHealth;
+	private String monsterHealth;
 	private boolean canAttack;
 	private boolean canDefend;
-	private int healthLoss;
-	private int valueLoss;
+	private String healthLoss;
+	private String valueLoss;
 	private String monsterDesc;
 	//private String specialMove;
 
@@ -27,8 +27,8 @@ public class Monster {
 
 	}
 
-	public Monster(String monsterName, String roomLocation, String itemsDrop, int valueGain, String armor,
-			int monsterHealth, boolean canAttack, boolean canDefend, int healthLoss, int valueLoss, String monsterDesc) {
+	public Monster(String monsterName, String roomLocation, String itemsDrop, String valueGain, String armor,
+			String monsterHealth, boolean canAttack, boolean canDefend, String healthLoss, String valueLoss, String monsterDesc) {
 
 		super();
 		this.monsterName = monsterName;
@@ -68,11 +68,11 @@ public class Monster {
 		this.itemsDrop = itemsDrop;
 	}
 
-	public int getValueGain() {
+	public String getValueGain() {
 		return valueGain;
 	}
 
-	public void setValueGain(int valueGain) {
+	public void setValueGain(String valueGain) {
 		this.valueGain = valueGain;
 	}
 
@@ -84,12 +84,12 @@ public class Monster {
 		this.armor = armor;
 	}
 
-	public int getMonsterHealth() {
+	public String getMonsterHealth() {
 		return monsterHealth;
 	}
 
-	public void setMonsterHealth(int monsterHealth) {
-		this.monsterHealth = monsterHealth;
+	public void setMonsterHealth(String string) {
+		this.monsterHealth = string;
 	}
 
 	public boolean isCanAttack() {
@@ -108,19 +108,19 @@ public class Monster {
 		this.canDefend = canDefend;
 	}
 
-	public int getHealthLoss() {
+	public String getHealthLoss() {
 		return healthLoss;
 	}
 
-	public void setHealthLoss(int healthLoss) {
+	public void setHealthLoss(String healthLoss) {
 		this.healthLoss = healthLoss;
 	}
 
-	public int getValueLoss() {
+	public String getValueLoss() {
 		return valueLoss;
 	}
 
-	public void setValueLoss(int valueLoss) {
+	public void setValueLoss(String valueLoss) {
 		this.valueLoss = valueLoss;
 	}
 
