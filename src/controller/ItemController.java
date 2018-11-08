@@ -202,34 +202,7 @@ public class ItemController {
                     itemc1.setItemMap(c1Map);
                     
 
-               /*     w1Map,
-                    w2Map,
-                    w3Map,
-                    w4Map,
-                    w5Map,
-                    w6Map,
-                    w7Map,
-                    a1Map,
-                    a2Map,
-                    a3Map,
-                    a4Map,
-                    a5Map,
-                    d1Map,
-                    d2Map,
-                    d3Map,
-                    d4Map,
-                    d5Map,
-                    d6Map,
-                    d7Map,
-                    k11Map,
-                    k12Map,
-                    k13Map,
-                    k15Map,
-                    c1Map*/
-
-
-
-                    
+                        
 
                 }
                 else{
@@ -271,7 +244,7 @@ public class ItemController {
 
     				String key = keyItem.toString();
     				String value = itemObjects[i].getItemMap().get(keyItem).toString();
-    				System.out.println( key + " " + value);
+    			//	System.out.println( key + " " + value);
     				// System.out.println("");
 
     			}
