@@ -21,7 +21,195 @@ ItemName: Hallberd
 ItemID: W3
 ItemDesc: Combined Spear and Battle axe
 ItemRoomID: Floor 3
-CharacterCompatibility: top Guard Player
+CharacterCompatibility: Top Guard Player
 Value: 3
 Stackable: No
 
+ItemCategory: Weapon
+ItemName: Silver Metal Pipe
+ItemID: W4
+ItemDesc: Common metal found in dungeon
+ItemRoomID: Connecting Chamber
+CharacterCompatibility: Merchant Player
+Value: 20
+Stackable: No
+
+ItemCategory: Weapon
+ItemName: Pitchfork
+ItemID: W5
+ItemDesc: Common agricultural tool
+ItemRoomID: A2 B1 B2 C1 C2
+CharacterCompatibility: Minions Player
+Value: 1
+Stackable: No
+
+ItemCategory: Weapon
+ItemName: Dagger
+ItemID: W6
+ItemDesc: Stabbing weapon
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 1
+Stackable: No
+
+ItemCategory: Weapon
+ItemName: Toxic Vomit
+ItemID: W7
+ItemDesc: Projectile blood
+ItemRoomID: A3 A4 B3 B4 B5
+CharacterCompatibility: Undead Player
+Value: 0
+Stackable: No
+
+ItemCategory: Armor
+ItemName: Prisoner Gear
+ItemID: A1
+ItemDesc: Clothes to cover up, does not protect
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 5
+Stackable: Yes
+
+ItemCategory: Armor
+ItemName: Leather Armor
+ItemID: A2
+ItemDesc: Protects from some damage
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 12
+Stackable: Yes
+
+ItemCategory: Armor
+ItemName: Chain Mail Armor
+ItemID: A3
+ItemDesc: Protects from some damage
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 25
+Stackable: Yes
+
+ItemCategory: Armor
+ItemName: Bronze Plate Armor
+ItemID: A4
+ItemDesc: Virtually no damage
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 35
+Stackable: Yes
+
+ItemCategory: Armor
+ItemName: Steel Armor
+ItemID: A5
+ItemDesc: Virtually no damage
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 50
+Stackable: Yes
+
+ItemCategory: Device
+ItemName: Crystal Ball
+ItemID: D1
+ItemDesc: Tell you where you can find chests
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 8
+Stackable: Yes
+
+ItemCategory: Consumable
+ItemName: First Aid Kit
+ItemID: D2
+ItemDesc: Restores full health
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 10
+Stackable: Yes
+
+ItemCategory: Device
+ItemName: Boomerang
+ItemID: D3
+ItemDesc: Takes you back to the previous connecting chamber
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 10
+Stackable: Yes
+
+ItemCategory: Consumable
+ItemName: Holy Water
+ItemID: D4
+ItemDesc: To cure infection from the undead
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 12
+Stackable: Yes
+
+ItemCategory: Device
+ItemName: Lantern
+ItemID: D5
+ItemDesc: Shadows don't attack in dark rooms
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 500
+Stackable: Yes
+
+ItemCategory: Consumable
+ItemName: Elixir
+ItemID: D6
+ItemDesc: Gives you gills makes you stronger for a time period
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 30
+Stackable: Yes
+
+ItemCategory: Device
+ItemName: Boar's Head
+ItemID: D7
+ItemDesc: Put it on and blend in with minions so they dont attack
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 2
+Stackable: Yes
+
+ItemCategory: Key Item
+ItemName: Key
+ItemID: K11
+ItemDesc: To unlock sorcerer tower there’s four pieces that you must find and it will piece together when at his door
+ItemRoomID: A1 A5 E1 E5
+CharacterCompatibility: Player
+Value: N/A
+Stackable: No
+
+ItemCategory: Key Item
+ItemName: Staff
+ItemID: K12
+ItemDesc: Available once necromancer is defeated. Allows undead to attack on each of your turns during battle
+ItemRoomID: Basement
+CharacterCompatibility: Necromancer Player
+Value: 2000
+Stackable: No
+
+ItemCategory: Key Item
+ItemName: Sorcerer Pendant
+ItemID: K13
+ItemDesc: Available once Sorcerer is defeated. Holds power to end curse
+ItemRoomID: Floor3
+CharacterCompatibility: Player
+Value: N/A
+Stackable: No
+
+ItemCategory: Key Item
+ItemName: Chest
+ItemID: K15
+ItemDesc: Contains different items such as weapons, devices, and armor
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: N/A
+Stackable: No
+
+ItemCategory: Currency
+ItemName: Gems
+ItemID: C1
+ItemDesc: Gems can be found in every chest, They can be used to buy artifacts from merchant, They can be used in puzzles once player has hit attempt limit
+ItemRoomID: ALL
+CharacterCompatibility: Player
+Value: 1
+Stackable: Yes
