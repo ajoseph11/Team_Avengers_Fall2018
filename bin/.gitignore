@@ -1,5 +1,6 @@
 /controller/
-/image/
-/model/
-/view/
-/game_object2/
+/CharacterData.class
+/CharacterData/
+/Characterdata/
+/inventory/
+/Monster.txt
