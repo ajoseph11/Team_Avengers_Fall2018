@@ -259,8 +259,8 @@ public class ItemController {
         	// print key and value side by side as seperate entities
     	for (String keyItem : itemW1.getItemMap().keySet()) {
 
-    			String key = keyItem.toString();
-    			String value = itemW1.getItemMap().get(keyItem).toString();
+    			//String key = keyItem.toString();
+    			//String value = itemW1.getItemMap().get(keyItem).toString();
     			//System.out.println( key + " " + value);
     			//System.out.println("");
 
@@ -300,25 +300,251 @@ public class ItemController {
 
         }
 
+
+	public static Item getItemW1() {
+		return itemW1;
+	}
+
+
+	public static void setItemW1(Item itemW1) {
+		ItemController.itemW1 = itemW1;
+	}
+
+
+	public static Item getItemW2() {
+		return itemW2;
+	}
+
+
+	public static void setItemW2(Item itemW2) {
+		ItemController.itemW2 = itemW2;
+	}
+
+
+	public static Item getItemW3() {
+		return itemW3;
+	}
+
+
+	public static void setItemW3(Item itemW3) {
+		ItemController.itemW3 = itemW3;
+	}
+
+
+	public static Item getItemW4() {
+		return itemW4;
+	}
+
+
+	public static void setItemW4(Item itemW4) {
+		ItemController.itemW4 = itemW4;
+	}
+
+
+	public static Item getItemW5() {
+		return itemW5;
+	}
+
+
+	public static void setItemW5(Item itemW5) {
+		ItemController.itemW5 = itemW5;
+	}
+
+
+	public static Item getItemW6() {
+		return itemW6;
+	}
+
+
+	public static void setItemW6(Item itemW6) {
+		ItemController.itemW6 = itemW6;
+	}
+
+
+	public static Item getItemW7() {
+		return itemW7;
+	}
+
+
+	public static void setItemW7(Item itemW7) {
+		ItemController.itemW7 = itemW7;
+	}
+
+
+	public static Item getItema1() {
+		return itema1;
+	}
+
+
+	public static void setItema1(Item itema1) {
+		ItemController.itema1 = itema1;
+	}
+
+
+	public static Item getItema2() {
+		return itema2;
+	}
+
+
+	public static void setItema2(Item itema2) {
+		ItemController.itema2 = itema2;
+	}
+
+
+	public static Item getItema3() {
+		return itema3;
+	}
+
+
+	public static void setItema3(Item itema3) {
+		ItemController.itema3 = itema3;
+	}
+
+
+	public static Item getItema4() {
+		return itema4;
+	}
+
+
+	public static void setItema4(Item itema4) {
+		ItemController.itema4 = itema4;
+	}
+
+
+	public static Item getItema5() {
+		return itema5;
+	}
+
+
+	public static void setItema5(Item itema5) {
+		ItemController.itema5 = itema5;
+	}
+
+
+	public static Item getItemd1() {
+		return itemd1;
+	}
+
+
+	public static void setItemd1(Item itemd1) {
+		ItemController.itemd1 = itemd1;
+	}
+
+
+	public static Item getItemd2() {
+		return itemd2;
+	}
+
+
+	public static void setItemd2(Item itemd2) {
+		ItemController.itemd2 = itemd2;
+	}
+
+
+	public static Item getItemd3() {
+		return itemd3;
+	}
+
+
+	public static void setItemd3(Item itemd3) {
+		ItemController.itemd3 = itemd3;
+	}
+
+
+	public static Item getItemd4() {
+		return itemd4;
+	}
+
+
+	public static void setItemd4(Item itemd4) {
+		ItemController.itemd4 = itemd4;
+	}
+
+
+	public static Item getItemd5() {
+		return itemd5;
+	}
+
+
+	public static void setItemd5(Item itemd5) {
+		ItemController.itemd5 = itemd5;
+	}
+
+
+	public static Item getItemd6() {
+		return itemd6;
+	}
+
+
+	public static void setItemd6(Item itemd6) {
+		ItemController.itemd6 = itemd6;
+	}
+
+
+	public static Item getItemd7() {
+		return itemd7;
+	}
+
+
+	public static void setItemd7(Item itemd7) {
+		ItemController.itemd7 = itemd7;
+	}
+
+
+	public static Item getItemk11() {
+		return itemk11;
+	}
+
+
+	public static void setItemk11(Item itemk11) {
+		ItemController.itemk11 = itemk11;
+	}
+
+
+	public static Item getItemk12() {
+		return itemk12;
+	}
+
+
+	public static void setItemk12(Item itemk12) {
+		ItemController.itemk12 = itemk12;
+	}
+
+
+	public static Item getItemk13() {
+		return itemk13;
+	}
+
+
+	public static void setItemk13(Item itemk13) {
+		ItemController.itemk13 = itemk13;
+	}
+
+
+	public static Item getItemk15() {
+		return itemk15;
+	}
+
+
+	public static void setItemk15(Item itemk15) {
+		ItemController.itemk15 = itemk15;
+	}
+
+
+	public static Item getItemc1() {
+		return itemc1;
+	}
+
+
+	public static void setItemc1(Item itemc1) {
+		ItemController.itemc1 = itemc1;
+	}
+
     
     
     //getters and setters for the item objects
 
-    public static Item getItemW2() {
-        return itemW2;
-    }
-
-    public static void setItemW2(Item itemW2) {
-        ItemController.itemW2 = itemW2;
-    }
-
-    public static Item getItemW1() {
-        return itemW1;
-    }
-
-    public static void setItemW1(Item itemW1) {
-        ItemController.itemW1 = itemW1;
-    }
+  
 }
 
 
