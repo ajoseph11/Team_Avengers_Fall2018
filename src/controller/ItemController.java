@@ -271,7 +271,7 @@ public class ItemController {
 
     				String key = keyItem.toString();
     				String value = itemObjects[i].getItemMap().get(keyItem).toString();
-    				// System.out.println( key + " " + value);
+    				System.out.println( key + " " + value);
     				// System.out.println("");
 
     			}
@@ -281,7 +281,7 @@ public class ItemController {
 
          try {
                 for (int i = 0; i < itemLinkedHashMapObjects.length; i++) {
-                    itemObjects[i].setItemCategory(itemLinkedHashMapObjects[i].get("ItemName").toString());
+                    //itemObjects[i].setItemCategory(itemLinkedHashMapObjects[i].get("Category").toString());
                     itemObjects[i].setItemName(itemLinkedHashMapObjects[i].get("ItemName").toString());
                     itemObjects[i].setItemID(itemLinkedHashMapObjects[i].get("ItemID").toString());
                     itemObjects[i].setItemDescription(itemLinkedHashMapObjects[i].get("ItemDesc").toString());
