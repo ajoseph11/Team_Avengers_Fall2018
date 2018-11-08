@@ -9,6 +9,10 @@ public class Monster {
 	private boolean canAttack;
 	private boolean canDefend;
 	private String specialMove;
+
+	public Monster(){
+
+	}
 	public Monster(String name, String roomLocation, String itemDropChance, String armor, int healthPoint,
 			boolean canAttack, boolean canDefend, String specialMove) {
 		super();
