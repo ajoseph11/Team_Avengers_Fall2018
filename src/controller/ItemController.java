@@ -106,6 +106,74 @@ public class ItemController {
                     if ((currentLine > 10) && (currentLine <= 17)) {
                         w2Map.put(key, value);
                     }
+                    if ((currentLine > 19) && (currentLine <= 26)) {
+                        w3Map.put(key, value);
+                    }
+                    
+                    if ((currentLine > 28) && (currentLine <= 35)) {
+                        w4Map.put(key, value);
+                    }
+                    if ((currentLine > 37) && (currentLine <= 44)) {
+                        w5Map.put(key, value);
+                    }
+                    
+                    if ((currentLine > 46) && (currentLine <= 53)) {
+                        w6Map.put(key, value);
+                    }
+                    if ((currentLine > 55) && (currentLine <= 62)) {
+                        w7Map.put(key, value);
+                    }
+                    if ((currentLine > 64) && (currentLine <= 71)) {
+                        a1Map.put(key, value);
+                    }
+                    if ((currentLine > 73) && (currentLine <= 80)) {
+                        a2Map.put(key, value);
+                    }
+                    if ((currentLine > 82) && (currentLine <= 89)) {
+                        a3Map.put(key, value);
+                    }
+                    if ((currentLine > 91) && (currentLine <= 98)) {
+                        a4Map.put(key, value);
+                    }
+                    if ((currentLine > 100) && (currentLine <= 107)) {
+                        a5Map.put(key, value);
+                    }
+                    if ((currentLine > 109) && (currentLine <= 116)) {
+                        d1Map.put(key, value);
+                    }
+                    if ((currentLine > 118) && (currentLine <= 125)) {
+                        d2Map.put(key, value);
+                    }
+                    if ((currentLine > 127) && (currentLine <= 134)) {
+                        d3Map.put(key, value);
+                    }
+                    if ((currentLine > 136) && (currentLine <= 143)) {
+                        d4Map.put(key, value);
+                    }
+                    if ((currentLine > 145) && (currentLine <= 152)) {
+                        d5Map.put(key, value);
+                    }
+                    if ((currentLine > 154) && (currentLine <= 161)) {
+                        d6Map.put(key, value);
+                    }
+                    if ((currentLine > 163) && (currentLine <= 170)) {
+                        d7Map.put(key, value);
+                    }
+                    if ((currentLine > 172) && (currentLine <= 179)) {
+                        k11Map.put(key, value);
+                    }
+                    if ((currentLine > 181) && (currentLine <= 188)) {
+                        k12Map.put(key, value);
+                    }
+                    if ((currentLine > 190) && (currentLine <= 197)) {
+                        k13Map.put(key, value);
+                    }
+                    if ((currentLine > 199) && (currentLine <= 206)) {
+                        k15Map.put(key, value);
+                    }
+                    if ((currentLine > 208) && (currentLine <= 215)) {
+                        c1Map.put(key, value);
+                    }
 					// set the current map as the value for each Item Map object R1-R8;
 
                     itemW1.setItemMap(w1Map);
