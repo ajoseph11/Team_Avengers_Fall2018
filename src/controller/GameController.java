@@ -14,12 +14,11 @@ public class GameController {
 		MonsterController.setMonsterFromText();//This gets monsters  from text, store in map and relates to monster object
 
 		
-		// System.out.println(ItemController.getItemW1().getItemID());
-   //System.out.println(ItemController.getItemW1().getItemMap());
-   //System.out.println(ItemController.getItemW2().getItemMap());
-   //PuzzleController.setPuzzleFromText();
-   //System.out.println(ItemController.itemW2);
-   //System.out.println(ItemController.getItemk11());
+		// STesting all the Controller classes to make sure the text hava been properly passd and read
+   System.out.println(ItemController.itema4);
+   System.out.println(RoomController.roomA5);
+   System.out.println(PuzzleController.puzzleR7);
+  
    System.out.println(MonsterController.m4Monster);
    
   // System.out.println(Integer.parseInt(MonsterController.m3Monster.getMonsterMap().get("ValueLoss")) + 2);

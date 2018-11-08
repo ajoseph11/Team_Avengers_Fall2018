@@ -115,7 +115,7 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "Room_B [id=" + id + ", type=" + type + ", item=" + item + ", monster=" + monster + ", puzzle=" + puzzle
+		return "Room [id=" + id + ", type=" + type + ", item=" + item + ", monster=" + monster + ", puzzle=" + puzzle
 				+ ", description=" + description + ", exit=" + exit + "]";
 	}    
 
