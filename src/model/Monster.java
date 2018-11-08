@@ -1,13 +1,18 @@
 package model;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Monster {
-	private String name;
+	private String monsterName;
 	private String roomLocation;
-	private String itemDropChance;
+	private String itemsDrop;
+	private int valueGain;
 	private String armor;
-	private int healthPoint;
+	private int monsterHealth;
 	private boolean canAttack;
 	private boolean canDefend;
+<<<<<<< HEAD
 	private String specialMove;
 
 	public Monster(){
@@ -15,71 +20,141 @@ public class Monster {
 	}
 	public Monster(String name, String roomLocation, String itemDropChance, String armor, int healthPoint,
 			boolean canAttack, boolean canDefend, String specialMove) {
+=======
+	private int healthLoss;
+	private int valueLoss;
+	private String mosterDesc;
+	
+	private Map<String, String> mosterMap = new LinkedHashMap<>();
+
+	public Monster() {
 		super();
-		this.name = name;
+	}
+
+	public Monster(String monsterName, String roomLocation, String itemsDrop, int valueGain, String armor,
+			int monsterHealth, boolean canAttack, boolean canDefend, int healthLoss, int valueLoss, String mosterDesc) {
+>>>>>>> e69d3a4477729b9bd0839782f9ff6b9f169e778f
+		super();
+		this.monsterName = monsterName;
 		this.roomLocation = roomLocation;
-		this.itemDropChance = itemDropChance;
+		this.itemsDrop = itemsDrop;
+		this.valueGain = valueGain;
 		this.armor = armor;
-		this.healthPoint = healthPoint;
+		this.monsterHealth = monsterHealth;
 		this.canAttack = canAttack;
 		this.canDefend = canDefend;
-		this.specialMove = specialMove;
+		this.healthLoss = healthLoss;
+		this.valueLoss = valueLoss;
+		this.mosterDesc = mosterDesc;
 	}
-	public String getName() {
-		return name;
+
+	public String getMonsterName() {
+		return monsterName;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setMonsterName(String monsterName) {
+		this.monsterName = monsterName;
 	}
+
 	public String getRoomLocation() {
 		return roomLocation;
 	}
+
 	public void setRoomLocation(String roomLocation) {
 		this.roomLocation = roomLocation;
 	}
-	public String getItemDropChance() {
-		return itemDropChance;
+
+	public String getItemsDrop() {
+		return itemsDrop;
 	}
-	public void setItemDropChance(String itemDropChance) {
-		this.itemDropChance = itemDropChance;
+
+	public void setItemsDrop(String itemsDrop) {
+		this.itemsDrop = itemsDrop;
 	}
+
+	public int getValueGain() {
+		return valueGain;
+	}
+
+	public void setValueGain(int valueGain) {
+		this.valueGain = valueGain;
+	}
+
 	public String getArmor() {
 		return armor;
 	}
+
 	public void setArmor(String armor) {
 		this.armor = armor;
 	}
-	public int getHealthPoint() {
-		return healthPoint;
+
+	public int getMonsterHealth() {
+		return monsterHealth;
 	}
-	public void setHealthPoint(int healthPoint) {
-		this.healthPoint = healthPoint;
+
+	public void setMonsterHealth(int monsterHealth) {
+		this.monsterHealth = monsterHealth;
 	}
+
 	public boolean isCanAttack() {
 		return canAttack;
 	}
+
 	public void setCanAttack(boolean canAttack) {
 		this.canAttack = canAttack;
 	}
+
 	public boolean isCanDefend() {
 		return canDefend;
 	}
+
 	public void setCanDefend(boolean canDefend) {
 		this.canDefend = canDefend;
 	}
-	public String getSpecialMove() {
-		return specialMove;
+
+	public int getHealthLoss() {
+		return healthLoss;
 	}
-	public void setSpecialMove(String specialMove) {
-		this.specialMove = specialMove;
+
+	public void setHealthLoss(int healthLoss) {
+		this.healthLoss = healthLoss;
 	}
+
+	public int getValueLoss() {
+		return valueLoss;
+	}
+
+	public void setValueLoss(int valueLoss) {
+		this.valueLoss = valueLoss;
+	}
+
+	public String getMosterDesc() {
+		return mosterDesc;
+	}
+
+	public void setMosterDesc(String mosterDesc) {
+		this.mosterDesc = mosterDesc;
+	}
+
+	public Map<String, String> getMosterMap() {
+		return mosterMap;
+	}
+
+	public void setMosterMap(Map<String, String> mosterMap) {
+		this.mosterMap = mosterMap;
+	}
+
 	@Override
 	public String toString() {
-		return "Monster [name=" + name + ", roomLocation=" + roomLocation + ", itemDropChance=" + itemDropChance
-				+ ", armor=" + armor + ", healthPoint=" + healthPoint + ", canAttack=" + canAttack + ", canDefend="
-				+ canDefend + ", specialMove=" + specialMove + "]";
+		return "Monster [monsterName=" + monsterName + ", roomLocation=" + roomLocation + ", itemsDrop=" + itemsDrop
+				+ ", valueGain=" + valueGain + ", armor=" + armor + ", monsterHealth=" + monsterHealth + ", canAttack="
+				+ canAttack + ", canDefend=" + canDefend + ", healthLoss=" + healthLoss + ", valueLoss=" + valueLoss
+				+ ", mosterDesc=" + mosterDesc + "]";
 	}
+
 	
+	
+
 	
 	
 
