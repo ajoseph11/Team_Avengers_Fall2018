@@ -2,7 +2,7 @@
 	-fx-border-color:blue;
 	-fx-font-family: monospace;
 	-fx-font-weight: bold;
-	-fx-font-size: 30pt;
+	-fx-font-size: 25pt;
 	-fx-background-color: #cce6ff;
 }
 
@@ -14,7 +14,7 @@
 #lbHistory{
 	-fx-background-color: #cfd9e2;
 	-fx-background-radius: 0pt;
-	-fx-padding: 12;
+	-fx-padding: 10;
 	-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
 	
 	
@@ -37,28 +37,36 @@
 #lbNavigation{
 	-fx-background-color: #cfd9e2;
 	-fx-background-radius: 0pt;
-	-fx-padding: 12;
+	-fx-padding: 10;
 	-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
 	
 	
 }
 .button{
 	-fx-background-radius: 12pt;
-	-fx-margin: 20pt;
-	-fx-border-color: grey;
 	
-	-fx-border-radius: 12pt;
-	-fx-border-width: 3 2 1 0;
+	-fx-border-color: grey;
+	-fx-font-size: 11pt;
+	-fx-border-radius: 10pt;
+	-fx-border-width: 2 1 0 0;
 	-fx-border-radius: 12pt;
 	
 	
 	
 }
-
+.buttonSplit{
+	-fx-background-radius: 10pt;
+	
+	-fx-border-color: grey;
+	-fx-font-size: 11pt;
+	-fx-border-radius: 8pt;
+	-fx-border-width: 2 1 0 0;
+	-fx-border-radius: 10pt;
+}
 .button:hover{
 	
 	-fx-background-radius: 12pt;
-	-fx-margin: 20pt;
+	
 	
 	
 	-fx-border-radius: 12pt;
@@ -68,7 +76,7 @@
 .button:pressed{
 	-fx-background-color: cyan;
 	-fx-background-radius: 12pt;
-	-fx-margin: 20pt;
+	
 	-fx-border-color: grey;
 	-fx-border-width: 3 2 1 1;
 	-fx-border-radius: 12pt;
@@ -80,7 +88,7 @@
 -fx-spacing: 20;
 -fx-font-size: 13pt;
 -fx-padding: 28pt;
--fx-margin: 20;
+
 
 }
 
@@ -111,7 +119,6 @@
 #playerDetails, #roomHeader, #monstDesc, #attackStatus, #roomDesctn, #monstDesc, #attackStatus, #textA, #textB,#textC {
 	-fx-background-color: rgba(138,6,81,0.7);
 	
-	-fx-text-align: center;
 	
 	
 	-fx-font-family: sans-Serif;
@@ -141,14 +148,12 @@
 	-fx-font-size: 18pt;
 	-fx-background-color: #cce6ff;
 	-fx-alignment: center;
-	-fx-margin: 20pt;
+	
 	-fx-fill-width: true;
 	-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
 }
 
-.text_area{
-	-fx-height: 20;
-}
+
 
 .label{
 	-fx-padding: 10pt;

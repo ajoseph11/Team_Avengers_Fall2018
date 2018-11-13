@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Item;
@@ -24,18 +25,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 
 public class GUI extends Application{
 	
 
-    private Room room;
-    private Player player;
+    
    private boolean gamestateActive;
 	private int currentRoom;
 	private int buttonClicked;
    final private int windowWidth = 1500; // width of Window
-    final private int windowHeight = 900; //height of window
+    final private int windowHeight = 950; //height of window
    VBox vbCenter; // vertical pane in the center of the window's borderPane
    VBox vbLeft;  // vertical pane in the left  of the window's borderPane
    GridPane gpNav;  // grid pane to palce the navigation option east , west , north, and south
@@ -53,11 +55,15 @@ public class GUI extends Application{
    Button btWest;
    Button btUpperFloor;
    Button btLowerFloor;
+   HBox hpControlMenu;
    Label lbHistory;
    Label lbNavigation;
    Button btLaunchCM;
    Button btViewInstructions;
    Button btNav;
+   SplitMenuButton btPuzzleMenu;
+   SplitMenuButton btMonsterMenu;
+   SplitMenuButton btItemMenu;
    Button btDetails;
    Button btClearNav;
    Button btClearDetails;
@@ -148,7 +154,23 @@ public class GUI extends Application{
 		btUpperFloor = new Button("Upper-Floor");
 		btLowerFloor = new Button("Lower-Floor");
 		
-	
+		HBox hbControlMenu = new HBox(10);
+		//hbControlMenu.getStyleClass().addAll("button");
+		btPuzzleMenu = new SplitMenuButton();
+		btPuzzleMenu.setText("4 Puzzle");
+		btPuzzleMenu.getStyleClass().addAll("buttonSplit");
+		btPuzzleMenu.getItems().addAll(new MenuItem("equip"), new MenuItem("Unequip"), new MenuItem("Buy"), new MenuItem("Sell"));
+		btMonsterMenu = new SplitMenuButton();
+		btMonsterMenu.setText("4 Monster");
+		btMonsterMenu.getStyleClass().addAll("buttonSplit");
+		btMonsterMenu.getItems().addAll(new MenuItem("Attack"), new MenuItem("Defend"), new MenuItem("Flee"), new MenuItem());
+		btItemMenu = new SplitMenuButton();
+		btItemMenu.setText("4 Item");
+		btItemMenu.getStyleClass().addAll("buttonSplit");
+		btItemMenu.getItems().addAll(new MenuItem("Hint"), new MenuItem("Solve"), new MenuItem("Reattemp"), new MenuItem("Ignore"));
+
+		hbControlMenu.getChildren().addAll(btPuzzleMenu, btItemMenu, btMonsterMenu);
+
 		hbTop = new HBox();
 		hbTop.setPrefWidth(1.0);
 		hbTop.getStyleClass().add("hbox-htTop");
@@ -211,10 +233,10 @@ public class GUI extends Application{
       }
 		//borderPane.setCenter(controller.showLoginScreen());
 
-		System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + roomItem+ " " +  roomExits+ " " + txtC);
+		//System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + roomItem+ " " +  roomExits+ " " + txtC);
 		
 		borderPane.setLeft(vbLeft);
-		borderPane.setRight(vbRight);
+		borderPane.setRight(hbControlMenu);
 		borderPane.setBottom(hbBottom);
 		
 		/*******Navigation buttons***********/
@@ -491,12 +513,14 @@ public class GUI extends Application{
 	    if (!gamestateActive == false) {
 	    	try {
 	    		txtErrorMsg.setText("MESSAGE: Click Clear when done"); 
-	    		vbRight.getChildren().addAll(lbNavigation, btUpperFloor, gpNav, btLowerFloor, txtErrorMsg);
+
+	    		
+				vbRight.getChildren().addAll(lbNavigation, btUpperFloor, gpNav, btLowerFloor, txtErrorMsg);
 			}
 	    	catch (Exception e) {
 
 	    		txtErrorMsg.setText("MESSAGE: Nav. Bar is already active"); 
-	    		
+	    		e.printStackTrace();
 	    		System.out.println(e);
 		}
 	    }
