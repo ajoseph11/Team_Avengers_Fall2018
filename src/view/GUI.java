@@ -61,6 +61,7 @@ public class GUI extends Application{
    Button btLaunchCM;
    Button btViewInstructions;
    Button btNav;
+   HBox hbControlMenu;
    SplitMenuButton btPuzzleMenu;
    SplitMenuButton btMonsterMenu;
    SplitMenuButton btItemMenu;
@@ -154,7 +155,7 @@ public class GUI extends Application{
 		btUpperFloor = new Button("Upper-Floor");
 		btLowerFloor = new Button("Lower-Floor");
 		
-		HBox hbControlMenu = new HBox(10);
+		hbControlMenu = new HBox(15);
 		//hbControlMenu.getStyleClass().addAll("button");
 		btPuzzleMenu = new SplitMenuButton();
 		btPuzzleMenu.setText("4 Puzzle");
@@ -163,7 +164,7 @@ public class GUI extends Application{
 		btMonsterMenu = new SplitMenuButton();
 		btMonsterMenu.setText("4 Monster");
 		btMonsterMenu.getStyleClass().addAll("buttonSplit");
-		btMonsterMenu.getItems().addAll(new MenuItem("Attack"), new MenuItem("Defend"), new MenuItem("Flee"), new MenuItem());
+		btMonsterMenu.getItems().addAll(new MenuItem("Attack"), new MenuItem("Defend"), new MenuItem("Flee"), new MenuItem("Run away!!!"));
 		btItemMenu = new SplitMenuButton();
 		btItemMenu.setText("4 Item");
 		btItemMenu.getStyleClass().addAll("buttonSplit");
@@ -236,7 +237,7 @@ public class GUI extends Application{
 		//System.out.println("Scene Print: " + playerName + " " + playerHealth+ " " + roomTitle+ " " +  floorTitle+ " " + roomDesc+ " " + monster+ " " + attackStat+ " " + roomItem+ " " +  roomExits+ " " + txtC);
 		
 		borderPane.setLeft(vbLeft);
-		borderPane.setRight(hbControlMenu);
+		borderPane.setRight(vbRight);
 		borderPane.setBottom(hbBottom);
 		
 		/*******Navigation buttons***********/
@@ -515,7 +516,7 @@ public class GUI extends Application{
 	    		txtErrorMsg.setText("MESSAGE: Click Clear when done"); 
 
 	    		
-				vbRight.getChildren().addAll(lbNavigation, btUpperFloor, gpNav, btLowerFloor, txtErrorMsg);
+				vbRight.getChildren().addAll(lbNavigation,  hbControlMenu, btUpperFloor, gpNav, btLowerFloor, txtErrorMsg);
 			}
 	    	catch (Exception e) {
 
