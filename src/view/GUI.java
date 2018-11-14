@@ -2,11 +2,20 @@ package view;
 
 import java.io.IOException;
 
+import com.sun.corba.se.spi.orbutil.fsm.Action;
+
+import controller.PuzzleController;
 import controller.RoomController;
+import controller.MonsterController;
+import controller.ItemController;
 import model.*;
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -34,10 +43,10 @@ public class GUI extends Application{
 
     
    private boolean gamestateActive;
-	private int currentRoom;
-	private int buttonClicked;
+   private int currentRoom;
+   private int buttonClicked;
    final private int windowWidth = 1500; // width of Window
-    final private int windowHeight = 950; //height of window
+    final private int windowHeight = 900; //height of window
    VBox vbCenter; // vertical pane in the center of the window's borderPane
    VBox vbLeft;  // vertical pane in the left  of the window's borderPane
    GridPane gpNav;  // grid pane to palce the navigation option east , west , north, and south
@@ -67,9 +76,12 @@ public class GUI extends Application{
    SplitMenuButton btItemMenu;
    Button btDetails;
    Button btClearNav;
+   ActionEvent event; 
    Button btClearDetails;
-   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, puzzle,txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
    int  playerHealth;
+   MenuItem miHint, miSolve, miReatttempt, miIgnore, miFlee, miAttack, miDefend, miRunAway, miEquip, miUnequip, miBuy, miSell;
+   String menuItemClicked = "";
   
    
    String lvPlayerName, lvRoomId;
@@ -80,6 +92,7 @@ public class GUI extends Application{
    VBox vbPlayField;
 	       
    ListView<String> listView;
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
@@ -87,6 +100,9 @@ public class GUI extends Application{
 		//Reference the RoomCOntroller and set up values from the text file Room.txt
 		try {
 			RoomController.setRoomFromText();
+			PuzzleController.setPuzzleFromText();
+			MonsterController.setMonsterFromText();
+			ItemController.setItemFromText();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			String errorMessage = "Error writing from file : Puzzle.txt";
@@ -112,6 +128,7 @@ public class GUI extends Application{
 		
 		/********************Game, Player, and Navigation End***************************/
 	    currentRoom = 1;
+	    event = new ActionEvent();
 		gUIController = new GUIController();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
@@ -154,21 +171,85 @@ public class GUI extends Application{
 		hbWestEast.setAlignment(Pos.BASELINE_LEFT);
 		btUpperFloor = new Button("Upper-Floor");
 		btLowerFloor = new Button("Lower-Floor");
+		miHint = new MenuItem("HInt"); 
+		miSolve = new MenuItem("Solve");  
+		miReatttempt = new MenuItem("Reattempt");  
+		miIgnore = new MenuItem("Ignore");  
+		miFlee = new MenuItem("Flee Combat");  
+		miAttack = new MenuItem("Attack"); 
+		miAttack.setOnAction(EventHandler ->{
+			menuItemClicked = miAttack.getText();
+		});
+		miDefend = new MenuItem("Defend");  
+		miRunAway = new MenuItem("");  
+		miEquip = new MenuItem("Equip");  
+		miUnequip = new MenuItem("Unequip");  
+		miBuy = new MenuItem("Buy");  
+		miSell =  new MenuItem("sell"); 
 		
 		hbControlMenu = new HBox(15);
 		//hbControlMenu.getStyleClass().addAll("button");
 		btPuzzleMenu = new SplitMenuButton();
-		btPuzzleMenu.setText("4 Puzzle");
+				btPuzzleMenu.setText("Puzzle");
 		btPuzzleMenu.getStyleClass().addAll("buttonSplit");
-		btPuzzleMenu.getItems().addAll(new MenuItem("equip"), new MenuItem("Unequip"), new MenuItem("Buy"), new MenuItem("Sell"));
+		btPuzzleMenu.getItems().addAll(miHint,miSolve, miReatttempt, miIgnore);
+       
+		IntegerProperty count = new SimpleIntegerProperty();
+
 		btMonsterMenu = new SplitMenuButton();
-		btMonsterMenu.setText("4 Monster");
+		
+		btMonsterMenu.setText("Monster");
 		btMonsterMenu.getStyleClass().addAll("buttonSplit");
-		btMonsterMenu.getItems().addAll(new MenuItem("Attack"), new MenuItem("Defend"), new MenuItem("Flee"), new MenuItem("Run away!!!"));
+		btMonsterMenu.getItems().addAll(miAttack, miDefend, miFlee, miRunAway);
 		btItemMenu = new SplitMenuButton();
-		btItemMenu.setText("4 Item");
+		//System.out.println(		btItemMenu.getContextMenu().toString());
+		miBuy.setOnAction(EventHandler ->{
+			System.out.print("You just bought an item");
+			
+		});
+		miAttack.setOnAction(EventHandler -> {
+			menuItemClicked = miAttack.getText();
+			if (monster.equals(MonsterController.getM1Monster().getMonsterName())) {
+				playerHealth = playerHealth - Integer.parseInt(MonsterController.getM1Monster().getHealthLoss());
+			}
+			monster = menuItemClicked;
+			System.out.print("You just clicked attack");
+		
+	  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, puzzle,  txtC));
+
+		});
+		miDefend.setOnAction(EventHandler -> {
+			menuItemClicked = miDefend.getText();
+			monster = menuItemClicked;
+			System.out.print("You just clicked defend");
+	  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, puzzle,  txtC));
+
+		});
+		miFlee.setOnAction(EventHandler -> {
+			menuItemClicked = miFlee.getText();
+			monster = menuItemClicked;
+			System.out.print("You just clicked flee");
+	  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, puzzle,  txtC));
+
+		});
+		miAttack.setOnAction(EventHandler -> {
+			menuItemClicked = miAttack.getText();
+			monster = menuItemClicked;
+			playerHealth = 20 - Integer.parseInt(MonsterController.m3Monster.getHealthLoss());
+
+			System.out.print("You just clicked attack");
+	  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, puzzle,  txtC));
+
+		});
+	   if (menuItemClicked .equals(miAttack.getText())) {
+		   monster = "You just clicked an attack button";
+		   System.out.print("You just clicked attack and did sth...");
+	   }
+
+		btItemMenu.setText("Item");
 		btItemMenu.getStyleClass().addAll("buttonSplit");
-		btItemMenu.getItems().addAll(new MenuItem("Hint"), new MenuItem("Solve"), new MenuItem("Reattemp"), new MenuItem("Ignore"));
+		btItemMenu.getItems().addAll(miEquip, miUnequip, miBuy, miSell);
+
 
 		hbControlMenu.getChildren().addAll(btPuzzleMenu, btItemMenu, btMonsterMenu);
 
@@ -229,7 +310,7 @@ public class GUI extends Application{
     	  borderPane.setCenter(gUIController.showLoginScreen());
       }		
       else {
-  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, txtC));
+  		borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster, roomItem,  roomExits, puzzle,  txtC));
 
       }
 		//borderPane.setCenter(controller.showLoginScreen());
@@ -257,9 +338,12 @@ public class GUI extends Application{
 				roomExits = RoomController.getRoomB1().getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
+				//roomItem =  "You just bought an item";
+				
 				monster= RoomController.getRoomB1().getMonster();
+				
 				nav = btNorth.getText();
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits,puzzle,  txtC));
 				 data.addAll(
 					      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 			            
 			        );
@@ -283,7 +367,7 @@ public class GUI extends Application{
 			buttonClicked = 2;
 			//setRoomDetails();
 			 //Repeat for button clicks and change corrsponding values respectively --BEGIN
-			gamestateActive = true;
+			/*gamestateActive = true;
 			buttonClicked = 1; 
 			roomDesc = RoomController.getRoomC2().getDescription();
 		    roomTitle = RoomController.getRoomC2().getId();
@@ -293,9 +377,27 @@ public class GUI extends Application{
 			playerName = "Elijah";
 			monster= RoomController.getRoomB1().getMonster();
 			nav = btEast.getText();
-			borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+			borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
 			 data.addAll(
-				      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 		            
+				      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster, "Puzzle: " + puzzle  		            
+		        );*/
+			
+			roomDesc = RoomController.connectingChamberRoom.getDescription();
+		    roomTitle = RoomController.connectingChamberRoom.getId();
+		    monster = RoomController.connectingChamberRoom.getMonster();
+			roomItem = RoomController.connectingChamberRoom.getItem();
+			roomExits = RoomController.connectingChamberRoom.getExit();
+			playerHealth = 20;
+			playerName = "Elijah";
+			nav = btEast.getText();
+			puzzle = RoomController.connectingChamberRoom.getPuzzle();
+			//puzzle="";
+			
+			txtC = " ";
+			borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+			 data.addAll(
+		              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+		            
 		        );
 		}
 		System.out.println("Clicked: "+ buttonClicked);
@@ -314,7 +416,7 @@ public class GUI extends Application{
 				//setRoomDetails();
 				 //Repeat for button clicks and change corrsponding values respectively --BEGIN
 				gamestateActive = true;
-				buttonClicked = 1; 
+				//buttonClicked = 1; 
 				roomDesc = RoomController.getRoomC1().getDescription();
 			    roomTitle = RoomController.getRoomC1().getId();
 				roomItem = RoomController.getRoomC1().getItem();
@@ -323,7 +425,7 @@ public class GUI extends Application{
 				playerName = "Elijah";
 				monster= RoomController.getRoomC1().getMonster();
 				nav = btSouth.getText();
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
 				 data.addAll(
 					      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 			            
 			        );
@@ -340,8 +442,8 @@ public class GUI extends Application{
 				buttonClicked = 4;
 				//setRoomDetails();
 				 //Repeat for button clicks and change corrsponding values respectively --BEGIN
-				gamestateActive = true;
-				buttonClicked = 1; 
+				/*gamestateActive = true;
+				//buttonClicked = 1; 
 				roomDesc = RoomController.getRoomA3().getDescription();
 			    roomTitle = RoomController.getRoomA3().getId();
 				roomItem = RoomController.getRoomA3().getItem();
@@ -351,11 +453,31 @@ public class GUI extends Application{
 				txtC = " ";
 				monster= RoomController.getRoomA3().getMonster();
 				nav = "W";
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle,  txtC));
 				 data.addAll(
 			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
+			        );*/
+
+				roomDesc = RoomController.connectingChamberRoom.getDescription();
+			    roomTitle = RoomController.connectingChamberRoom.getId();
+			    monster = RoomController.connectingChamberRoom.getMonster();
+				roomItem = RoomController.connectingChamberRoom.getItem();
+				roomExits = RoomController.connectingChamberRoom.getExit();
+				playerHealth = 20;
+				playerName = "Elijah";
+				nav = btEast.getText();
+				puzzle = RoomController.connectingChamberRoom.getPuzzle();
+				//puzzle="";
+				
+				txtC = " ";
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+				 data.addAll(
+			              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+			            
 			        );
+				
+				
 			}
 			System.out.println("Clicked: "+ buttonClicked);
 			System.out.println("CurrentRoom: "+ currentRoom);
@@ -377,13 +499,13 @@ public class GUI extends Application{
 				txtC = "WRONG-TURN: NO EXIT HERE! ";
 				monster= "";
 				nav = btUpperFloor.getText();
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
 				 data.addAll(
 			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
 				
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle,nav,  roomDesc, monster, roomItem,  roomExits, puzzle,  txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);}
 		});
@@ -400,12 +522,12 @@ public class GUI extends Application{
 				txtC = " ";
 				monster= RoomController.getNecromancerRoom().getMonster();
 				nav = btLowerFloor.getText();
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle,  txtC));
 				 data.addAll(
 			              "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav, roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
 
 				System.out.println("Clicked: "+ buttonClicked);
 				}
@@ -495,6 +617,9 @@ public class GUI extends Application{
 	
 		
 		
+		private Object handler;
+
+
 		//THese are the methods that the button call whenever someting needs to get done....
 		public void showGameDetails() {
 			if(!gamestateActive ==false) {
@@ -571,24 +696,230 @@ public class GUI extends Application{
 			loginVBox.setSpacing(10);
 			
 			loginVBox.getChildren().addAll(top, midA, midB, base);
+			
+		
+			
 			btLogin.setOnAction(EventHandler -> {
 				gamestateActive = true;
 				buttonClicked = 1; 
-				roomDesc = RoomController.getRoomA2().getDescription();
-			    roomTitle = RoomController.getRoomA2().getId();
-			    monster = RoomController.getRoomA2().getMonster();
-				roomItem = RoomController.getRoomA2().getItem();
-				roomExits = RoomController.getRoomA2().getExit();
+				roomDesc = RoomController.entranceChamberRoom.getDescription();
+			    roomTitle = RoomController.entranceChamberRoom.getId();
+			    monster = RoomController.entranceChamberRoom.getMonster();
+				roomItem = RoomController.entranceChamberRoom.getItem();
+				roomExits = RoomController.entranceChamberRoom.getExit();
 				playerHealth = 20;
 				playerName = "Elijah";
-				monster= RoomController.getRoomA2().getMonster();
 				nav = btLogin.getText();
+				puzzle = RoomController.entranceChamberRoom.getPuzzle();
+				//puzzle="";
+				
 				txtC = " ";
-				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, txtC));
+				borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
 				 data.addAll(
 			              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
 			            
 			        );
+				 
+				 //east of login page/screnn
+				 btEast.setOnAction(e -> {
+						if (e.getSource() == btEast) {	
+						buttonClicked = 2;
+						//setRoomDetails();
+						 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+						/*gamestateActive = true;
+						buttonClicked = 1; 
+						roomDesc = RoomController.getRoomC2().getDescription();
+					    roomTitle = RoomController.getRoomC2().getId();
+						roomItem = RoomController.getRoomC2().getItem();
+						roomExits = RoomController.getRoomC2().getExit();
+						playerHealth = 20;
+						playerName = "Elijah";
+						monster= RoomController.getRoomB1().getMonster();
+						nav = btEast.getText();
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+							      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster, "Puzzle: " + puzzle  		            
+					        );*/
+						
+						roomDesc = RoomController.connectingChamberRoom.getDescription();
+					    roomTitle = RoomController.connectingChamberRoom.getId();
+					    monster = RoomController.connectingChamberRoom.getMonster();
+						roomItem = RoomController.connectingChamberRoom.getItem();
+						roomExits = RoomController.connectingChamberRoom.getExit();
+						playerHealth = 20;
+						System.out.println(MonsterController.m3Monster.getHealthLoss());
+						playerName = "Elijah";
+						nav = btEast.getText();
+						puzzle = RoomController.connectingChamberRoom.getPuzzle();
+						//puzzle="";
+						
+						txtC = " ";
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+					              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+					            
+					        );
+					}
+					System.out.println("Clicked: "+ buttonClicked);
+					System.out.println("CurrentRoom: "+ currentRoom);
+					
+					 //Repeat for button clicks and change corrsponding values respectively --END
+
+					
+						
+						
+						
+					});
+				 
+				 //south of login screen
+				 btSouth.setOnAction(e -> {
+						if (e.getSource() == btSouth) {	
+						buttonClicked = 2;
+						//setRoomDetails();
+						 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+						/*gamestateActive = true;
+						buttonClicked = 1; 
+						roomDesc = RoomController.getRoomC2().getDescription();
+					    roomTitle = RoomController.getRoomC2().getId();
+						roomItem = RoomController.getRoomC2().getItem();
+						roomExits = RoomController.getRoomC2().getExit();
+						playerHealth = 20;
+						playerName = "Elijah";
+						monster= RoomController.getRoomB1().getMonster();
+						nav = btEast.getText();
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+							      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster, "Puzzle: " + puzzle  		            
+					        );*/
+						
+						roomDesc = "";
+					    roomTitle = "";
+					    monster = "";
+						roomItem = "";
+						roomExits = "";
+						playerHealth = 20;
+						playerName = "Elijah";
+						nav = btEast.getText();
+						puzzle = "";
+						//puzzle="";
+						
+						txtC = " NO EXIT HERE!";
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+					              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+					            
+					        );
+					}
+					System.out.println("Clicked: "+ buttonClicked);
+					System.out.println("CurrentRoom: "+ currentRoom);
+					
+					 //Repeat for button clicks and change corrsponding values respectively --END
+
+					
+						
+						
+						
+					});
+				 
+				 //north of login screen
+				 btNorth.setOnAction(e -> {
+						if (e.getSource() == btSouth) {	
+						buttonClicked = 2;
+						//setRoomDetails();
+						 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+						/*gamestateActive = true;
+						buttonClicked = 1; 
+						roomDesc = RoomController.getRoomC2().getDescription();
+					    roomTitle = RoomController.getRoomC2().getId();
+						roomItem = RoomController.getRoomC2().getItem();
+						roomExits = RoomController.getRoomC2().getExit();
+						playerHealth = 20;
+						playerName = "Elijah";
+						monster= RoomController.getRoomB1().getMonster();
+						nav = btEast.getText();
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+							      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster, "Puzzle: " + puzzle  		            
+					        );*/
+						
+						roomDesc = "";
+					    roomTitle = "";
+					    monster = "";
+						roomItem = "";
+						roomExits = "";
+						playerHealth = 20;
+						playerName = "Elijah";
+						nav = btEast.getText();
+						puzzle = "";
+						//puzzle="";
+						
+						txtC = " NO EXIT HERE!";
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+					              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+					            
+					        );
+					}
+					System.out.println("Clicked: "+ buttonClicked);
+					System.out.println("CurrentRoom: "+ currentRoom);
+					
+					 //Repeat for button clicks and change corrsponding values respectively --END
+
+					
+						
+						
+						
+					});
+				 
+				 //west of login screen
+				 btWest.setOnAction(e -> {
+						if (e.getSource() == btSouth) {	
+						buttonClicked = 2;
+						//setRoomDetails();
+						 //Repeat for button clicks and change corrsponding values respectively --BEGIN
+						/*gamestateActive = true;
+						buttonClicked = 1; 
+						roomDesc = RoomController.getRoomC2().getDescription();
+					    roomTitle = RoomController.getRoomC2().getId();
+						roomItem = RoomController.getRoomC2().getItem();
+						roomExits = RoomController.getRoomC2().getExit();
+						playerHealth = 20;
+						playerName = "Elijah";
+						monster= RoomController.getRoomB1().getMonster();
+						nav = btEast.getText();
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+							      "*************"  + "****************", "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster, "Puzzle: " + puzzle  		            
+					        );*/
+						
+						roomDesc = "";
+					    roomTitle = "";
+					    monster = "";
+						roomItem = "";
+						roomExits = "";
+						playerHealth = 20;
+						playerName = "Elijah";
+						nav = btEast.getText();
+						puzzle = "";
+						//puzzle="";
+						
+						txtC = " NO EXIT HERE!";
+						borderPane.setCenter(gUIController.getVBox(playerName, playerHealth, roomTitle,  floorTitle, nav,  roomDesc, monster,  roomItem,  roomExits, puzzle, txtC));
+						 data.addAll(
+					              "Player-Name: "  + playerName, "Visited-Room ID: " + roomTitle, "HealthPoint: " + playerHealth, "Monster: " + monster 
+					            
+					        );
+					}
+					System.out.println("Clicked: "+ buttonClicked);
+					System.out.println("CurrentRoom: "+ currentRoom);
+					
+					 //Repeat for button clicks and change corrsponding values respectively --END
+
+					
+						
+						
+						
+					});
 
 			});
 			
@@ -597,7 +928,7 @@ public class GUI extends Application{
 	    /* Login page for game player True*/
 
 	    
-	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String roomItem, String roomExits, String txtC) {
+	    public VBox getVBox(String playerName, int playerHealth, String roomTitle, String  floorTitle, String nav, String roomDesc, String monster, String roomItem, String roomExits, String puzzle, String txtC) {
 	    	
 	    	
 	    	//Room room = new Room(roomDescription);
@@ -616,6 +947,8 @@ public class GUI extends Application{
 	    	baseA.setAlignment(Pos.CENTER);
 	    	HBox baseB = new HBox();
 	    	baseB.setAlignment(Pos.CENTER);
+	    	HBox hbPuzzle = new HBox();
+	    	hbPuzzle.setAlignment(Pos.CENTER);
 	    	HBox baseC = new HBox();
 	    	baseC.setAlignment(Pos.CENTER);
 	    	
@@ -627,7 +960,7 @@ public class GUI extends Application{
 			VBox vbPlayField = new VBox();
 			vbPlayField.setId("playField");
 			
-			Label playerDetails = new Label("Player: " + playerName + " || Current HP: "  + playerHealth);
+			Label playerDetails = new Label("PLAYER: " + playerName + " || Current HP: "  + playerHealth);
 			playerDetails.setId("playerDetails");
 			//nav = "default";
 			
@@ -648,6 +981,8 @@ public class GUI extends Application{
 			lbroomItem.setId("textA");
 			Label textB = new Label("Valid_Exit-RoomIDs: " + roomExits);
 			textB.setId("textB");
+			Label lbPuzzle = new Label("Puzzle: " + puzzle);
+			lbPuzzle.setId("textC");
 			Label textC = new Label(" " + txtC);
 			textC.setId("textC");
 			
@@ -658,8 +993,9 @@ public class GUI extends Application{
 			base.getChildren().add(attackStatus);
 			baseA.getChildren().add(lbroomItem);
 			baseB.getChildren().add(textB);
+			hbPuzzle.getChildren().add(lbPuzzle);
 			baseC.getChildren().add(textC);
-			vbPlayField.getChildren().addAll(topX, top, topB, mid,  baseA, baseB, baseC);
+			vbPlayField.getChildren().addAll(topX, top, topB, mid,  baseA, baseB, hbPuzzle, baseC);
 			VBox.setMargin(topX, new Insets(4));
 			VBox.setMargin(top, new Insets(4));
 			VBox.setMargin(topB, new Insets(4));
