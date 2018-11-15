@@ -203,7 +203,7 @@ ID:Connecting Chamber
 RoomType: special!!!
 Item: None in current room
 Monster: merchant
-Puzzle: None in current room
+Puzzle: R8
 Desc:This room is quiet, but the sound of the sea lapping at the shore outside still permeates the walls. In the corner lurks a funny little man, who grins at you. That's strange - everyone here was supposed to be dead.
 Exits: W-Entrance Antechamber E-F1 Spiral Staircase
 

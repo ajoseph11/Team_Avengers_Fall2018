@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Room {
     private String roomType;
     private String description;
-    private String puzzle;
+    private Puzzle puzzle;
 
     //key: the direction of the exit
     //value: the room to go to
@@ -21,8 +21,12 @@ public class Room {
         description = desc;
     }
 
-    public void setPuzzle(String puzz) {
+    public void setPuzzle(Puzzle puzz) {
         puzzle = puzz;
+    }
+
+    public Puzzle getPuzzle(){
+        return puzzle;
     }
 
     public String getDescription() {

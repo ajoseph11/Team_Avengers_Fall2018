@@ -36,6 +36,7 @@ public class Main {
 
                     //and start a new current room
                     currentRoom = new Room();
+                    currentRoom.setPuzzle(null);
                 }
                 //must be a room information line
                 else {
@@ -50,13 +51,47 @@ public class Main {
                     else if (colonDelimited[0].equals("Desc")) {
                         currentRoom.setDescription(colonDelimited[1].trim());
                     }
-                    //Puzzle?
-                    else if (colonDelimited[0].equals("Puzzle")) {
-                        currentRoom.setPuzzle(colonDelimited[1].trim());
-                    }
                     //Exits?
                     else if (colonDelimited[0].equals("Exits")) {
                         currentRoom.setExits(colonDelimited[1].trim());
+                    }
+                }
+            }
+            input.close();
+        } catch (FileNotFoundException e) {
+            System.err.format("File does not exist\n");
+            //e.printStackTrace();
+            return;
+        }
+
+        try {
+            Scanner input = new Scanner(new FileInputStream("Puzzle.txt"), "UTF-8");
+            Puzzle puzzle = null;
+            while (input.hasNext()) {
+                // read each line from the text file
+                String line = input.nextLine();
+                if("".equals(line)){
+                    continue;
+                }
+                else {
+                    String[] colonDelimited = line.split(":");
+
+                    if (colonDelimited[0].equals("ID")) {
+                        puzzle = new Puzzle();
+                        puzzle.id = colonDelimited[1].trim();
+                    }
+                    else if (colonDelimited[0].equals("Riddle")) {
+                        puzzle.riddle = colonDelimited[1].trim();
+                    }
+                    else if (colonDelimited[0].equals("Hint")) {
+                        puzzle.hint = colonDelimited[1].trim();
+                    }
+                    else if (colonDelimited[0].equals("Answer")) {
+                        puzzle.answer = colonDelimited[1].trim();
+                    }
+                    else if (colonDelimited[0].equals("Room-ID")) {
+                        currentRoom = rooms.get(colonDelimited[1].trim());
+                        currentRoom.setPuzzle(puzzle);
                     }
                 }
             }
@@ -76,6 +111,29 @@ public class Main {
         while (true) {
             //print description
             System.out.println(currentRoom.getDescription());
+            if(currentRoom.getPuzzle() != null){
+                System.out.println("This room has a puzzle to solve: ");
+                System.out.println(currentRoom.getPuzzle().riddle);
+                System.out.println("Do you want hint? (y/n): ");
+                String line = input.nextLine();
+
+                if("y".equals(line) || "Y".equals(line)){
+                    System.out.println(currentRoom.getPuzzle().hint);
+                }
+
+                while(true){
+                    System.out.println("Enter your answer: ");
+                    line = input.nextLine();
+                    if(line.equals(currentRoom.getPuzzle().answer)){
+                        System.out.println("You got it right!");
+                        break;
+                    }
+                    else{
+                        System.out.println("Wrong answer! Please retry.");
+                    }
+                }
+            }
+
             System.out.println("Which way would you like to go?");
 
             HashMap<String, String> currentExits = currentRoom.getExits();

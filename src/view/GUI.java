@@ -171,7 +171,7 @@ public class GUI extends Application{
 		hbWestEast.setAlignment(Pos.BASELINE_LEFT);
 		btUpperFloor = new Button("Upper-Floor");
 		btLowerFloor = new Button("Lower-Floor");
-		miHint = new MenuItem("HInt"); 
+		miHint = new MenuItem("Hint");
 		miSolve = new MenuItem("Solve");  
 		miReatttempt = new MenuItem("Reattempt");  
 		miIgnore = new MenuItem("Ignore");  
@@ -193,11 +193,12 @@ public class GUI extends Application{
 				btPuzzleMenu.setText("Puzzle");
 		btPuzzleMenu.getStyleClass().addAll("buttonSplit");
 		btPuzzleMenu.getItems().addAll(miHint,miSolve, miReatttempt, miIgnore);
-       
+
+
 		IntegerProperty count = new SimpleIntegerProperty();
 
 		btMonsterMenu = new SplitMenuButton();
-		
+
 		btMonsterMenu.setText("Monster");
 		btMonsterMenu.getStyleClass().addAll("buttonSplit");
 		btMonsterMenu.getItems().addAll(miAttack, miDefend, miFlee, miRunAway);
