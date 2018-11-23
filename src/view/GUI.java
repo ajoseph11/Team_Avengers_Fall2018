@@ -2,26 +2,18 @@ package view;
 
 import java.io.IOException;
 
-import com.sun.corba.se.spi.orbutil.fsm.Action;
 
 import controller.PuzzleController;
 import controller.RoomController;
 import controller.MonsterController;
 import controller.ItemController;
-import model.*;
 import javafx.application.Application;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Item;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -42,79 +34,44 @@ public class GUI extends Application{
 	
 
     
-   private boolean gamestateActive;
-   private int currentRoom;
-   private int buttonClicked;
-   final private int windowWidth = 1500; // width of Window
-    final private int windowHeight = 900; //height of window
-   VBox vbCenter; // vertical pane in the center of the window's borderPane
-   VBox vbLeft;  // vertical pane in the left  of the window's borderPane
-   GridPane gpNav;  // grid pane to palce the navigation option east , west , north, and south
-   VBox vbRight;//Right side of the game windows
-   HBox hbTop;  // horizontal pane in the top of the window's borderPane
-   HBox hbBottom; // horizontal pane in the bottom of the window's borderPane
-   Label lbTitle; // label for game title
-   Insets insets; // insets to create margin or padding aroung node items
-   BorderPane borderPane; // main border Pane to display the window
-   Button btExit; //exit button for each room
-   Button btNorth;
-   Button btEast;
-   HBox hbWestEast;
-   Button btSouth;
-   Button btWest;
-   Button btUpperFloor;
-   Button btLowerFloor;
-   HBox hpControlMenu;
-   Label lbHistory;
-   Label lbNavigation;
-   Button btLaunchCM;
-   Button btViewInstructions;
-   Button btNav;
-   HBox hbControlMenu;
-   SplitMenuButton btPuzzleMenu;
-   SplitMenuButton btMonsterMenu;
-   SplitMenuButton btItemMenu;
-   Button btDetails;
-   Button btClearNav;
-   ActionEvent event; 
-   Button btClearDetails;
-   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, puzzle,txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
-   int  playerHealth;
-   MenuItem miHint, miSolve, miReatttempt, miIgnore, miFlee, miAttack, miDefend, miRunAway, miEquip, miUnequip, miBuy, miSell;
-   String menuItemClicked = "";
-  
+   boolean gamestateActive;
    
-   String lvPlayerName, lvRoomId;
+   public static final ObservableList<String> data = FXCollections.observableArrayList();
+   final private int windowWidth = 1500; 
+   final private int windowHeight = 900; 
+   VBox vbCenter, vbRight, vbLeft; 
+   GridPane gpNav;  
+   HBox hbTop, hbBottom;  
+   Label lbTitle; // 
+   Insets insets; // 
+   BorderPane borderPane;
+   Button btNorth, btEast, btSouth, btWest, btLaunchCM,btViewInstructions, btUpperFloor, btLowerFloor, btNav, btDetails, btClearNav, btClearDetails, btExit;
+   HBox hbWestEast, hpControlMenu, hbControlMenu;
+   Label lbHistory, lbNavigation;
+   SplitMenuButton btPuzzleMenu, btMonsterMenu, btItemMenu;
+   MenuItem miHint, miSolve, miReatttempt, miIgnore, miFlee, miAttack, miDefend, miRunAway, miEquip, miUnequip, miBuy, miSell;
+   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, puzzle,txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   int  playerHealth, currentRoom, buttonClicked;
+   String lvPlayerName, lvRoomId, menuItemClicked = "";
    Text  txtErrorMsg;
-   public static final ObservableList<String> data = 
-   FXCollections.observableArrayList();
    GUIController gUIController;
-   VBox vbPlayField;
-	       
+   VBox vbPlayField;     
    ListView<String> listView;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		//vbPlayField = controller.getVBox();
-		//Reference the RoomCOntroller and set up values from the text file Room.txt
+		
 		try {
 			RoomController.setRoomFromText();
 			PuzzleController.setPuzzleFromText();
 			MonsterController.setMonsterFromText();
 			ItemController.setItemFromText();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			String errorMessage = "Error writing from file : Puzzle.txt";
+			
 			e.printStackTrace();
-			System.out.println(errorMessage);
 			
 		}
-		System.out.println("From: " + RoomController.class.getName());
-	    System.out.println(RoomController.getRoomA2().getDescription());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
-
 		
-	   // lvRoomId = new String();
 		gamestateActive = false;
 		nav = "default";
 	   
@@ -128,14 +85,14 @@ public class GUI extends Application{
 		
 		/********************Game, Player, and Navigation End***************************/
 	    currentRoom = 1;
-	    event = new ActionEvent();
+	   
 		gUIController = new GUIController();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
 		txtErrorMsg.setStrokeWidth(20);
 		txtErrorMsg.setUnderline(true);
 		
-		//txtErrorMsg.setFont(Font.font("Serif", FontWeight.LIGHT,20 ));
+		
 		txtErrorMsg.setFont(Font.font("Serif", FontPosture.ITALIC, 20));
 		listView = new ListView<String>(data);
 		listView.setPrefHeight(900.0);
@@ -194,7 +151,6 @@ public class GUI extends Application{
 		btPuzzleMenu.getStyleClass().addAll("buttonSplit");
 		btPuzzleMenu.getItems().addAll(miHint,miSolve, miReatttempt, miIgnore);
        
-		IntegerProperty count = new SimpleIntegerProperty();
 
 		btMonsterMenu = new SplitMenuButton();
 		
