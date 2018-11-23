@@ -23,7 +23,6 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -150,13 +149,7 @@ public class GUI extends Application{
 				btPuzzleMenu.setText("Puzzle");
 		btPuzzleMenu.getStyleClass().addAll("buttonSplit");
 		btPuzzleMenu.getItems().addAll(miHint,miSolve, miReatttempt, miIgnore);
-<<<<<<< HEAD
-       
-=======
 
-
-		IntegerProperty count = new SimpleIntegerProperty();
->>>>>>> 20fb8db61b43b9328aac4bfc29842cc4b41a1f56
 
 		btMonsterMenu = new SplitMenuButton();
 
