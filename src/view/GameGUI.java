@@ -1,26 +1,19 @@
 package view;
 
-import java.awt.TextField;
-
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
-
-import com.sun.org.apache.xml.internal.serializer.ToTextSAXHandler;
-
 import javafx.application.Application;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.LabelBuilder;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameGUI extends Application {
-	
+	GuiController guiController;
 	BorderPane mainPane;
 	VBox leftPane, centerPane, rightPane;
 	HBox topPane, bottomPane;
@@ -29,20 +22,22 @@ public class GameGUI extends Application {
 	final private int guiWidth = 1000; 
 
 	
-	Label lbTop, lbRmDesc, lbUserResponse, lbHp, lbGem, lbWeapon;
-	TextArea txtUserInput;
+	Label lbTop, lbRmDesc, lbUserResponse, lbHp, lbGem, lbWeapon, lbDirection, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem;
+	TextField txtUserInput;
 	
-	String roomDesc = "";
-	String userResponse = "";
+	static String roomDesc;
+	
 	String hP = "";
 	String gem = " ";
 	String weapon = " ";
-	
+	static String direction, exits, errorMessage, userResponse;
+	static boolean isPuzzle, isMonster, isItem;
     
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+		guiController = new GuiController();
+	    guiController.setGameData();
 		mainPane = new BorderPane();
 		leftPane = new VBox();
 		centerPane = new VBox();
@@ -55,28 +50,57 @@ public class GameGUI extends Application {
 		topPane.getChildren().add(lbTop);
 		
 		
-		txtUserInput = new TextArea();
-		txtUserInput.setPrefColumnCount(5);
-		txtUserInput.setPrefRowCount(1);
+		txtUserInput = new TextField();
+		//txtUserInput.setPrefColumnCount(5);
+		//txtUserInput.setPrefRowCount(1);
+		
+		//exits = " ";
+		//roomDesc = "hhhh";
+		lbRmDesc = new Label("                                                 ROOM DESCRIPTION \n" + roomDesc);
+		lbDirection = new Label("DIRECTION: Choose and type ONLY N, E, S, or W from the available room exits.");
+		lbExit = new Label("Possible Exits: "  + exits);
+		lbDirection.setWrapText(true);
+		lbRmDesc.setMaxWidth(guiWidth - 200);
+		lbRmDesc.setMinHeight(100);
+		lbRmDesc.setWrapText(true);
 		
 		
+		lbIsPuzzle = new Label("Puzzle? "+ isPuzzle);
+		lbIsPuzzle.setMaxWidth(guiWidth - 200);
+		//lbIsPuzzle.setMinHeight(100);
+		lbIsPuzzle.setWrapText(true);
+		lbIsMonster = new Label("Monster? "+ isMonster);
+		lbIsMonster.setMaxWidth(guiWidth - 200);
+		//lbIsMonster.setMinHeight(100);
+		lbIsMonster.setWrapText(true);
+		LbIsItem = new Label("Items? "+ isItem);
+		LbIsItem.setMaxWidth(guiWidth - 200);
+		//LbIsItem.setMinHeight(100);
+		LbIsItem.setWrapText(true);
+		centerPane.getChildren().addAll(lbRmDesc, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem, lbDirection,  txtUserInput );
+		centerPane.setMargin(lbRmDesc, new Insets(5));
+		centerPane.setMargin(lbExit, new Insets(5));
+		centerPane.setMargin(lbDirection, new Insets(5));
+		centerPane.setMargin(txtUserInput, new Insets(5));
+		centerPane.setMargin(lbIsMonster, new Insets(5));
+		centerPane.setMargin(lbIsPuzzle, new Insets(5));
+		centerPane.setMargin(LbIsItem, new Insets(5));
 		
-		lbRmDesc = new Label("ROOM DESCRIPTION:" + "\n" + roomDesc);
-		centerPane.getChildren().addAll(lbRmDesc, txtUserInput);
-		
-		
-		centerPane.setAlignment(Pos.BASELINE_CENTER);
+		//centerPane.setAlignment(Pos.BASELINE_CENTER);
 		
 		
 		lbUserResponse = new Label("MESSAGE:" + "\n" + userResponse);
+		lbUserResponse.setMaxWidth(guiWidth - 200);
+		lbUserResponse.setMinHeight(100);
+		lbUserResponse.setWrapText(true);
 		bottomPane.getChildren().addAll(lbUserResponse);
 		bottomPane.setAlignment(Pos.BASELINE_CENTER);
-		BorderPane.setMargin(topPane, new Insets(5));
-		BorderPane.setMargin(rightPane, new Insets(5));
+		BorderPane.setMargin(topPane, new Insets(10));
+		BorderPane.setMargin(rightPane, new Insets(10));
 
-		BorderPane.setMargin(bottomPane, new Insets(5));
-		BorderPane.setMargin(leftPane, new Insets(5));
-		BorderPane.setMargin(centerPane, new Insets(5));
+		BorderPane.setMargin(bottomPane, new Insets(10));
+		BorderPane.setMargin(leftPane, new Insets(10));
+		BorderPane.setMargin(centerPane, new Insets(10));
 
 
    //Left Pane of the border Pane
@@ -102,6 +126,16 @@ public class GameGUI extends Application {
 		
 		
 		
+	}
+	
+	public void setRoomDesc(String roomDesc) {
+		GameGUI.roomDesc = roomDesc;
+	}
+	public void setExit(String exits) {
+		GameGUI.exits = exits;
+	}
+	public void setUserResponse(String userResponse) {
+		GameGUI.userResponse = userResponse;
 	}
 	
 	

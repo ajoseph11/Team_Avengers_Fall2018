@@ -1,5 +1,24 @@
 package view;
+import java.io.IOException;
 
-public class GuiController {
+import controller.*;
+
+import controller.ItemController;
+import controller.MonsterController;
+import controller.PuzzleController;
+import controller.RoomController;
+
+public class GuiController  {
+	
+	
+	
+	GameGUI gameGUI = new GameGUI();
+	public  void setGameData() throws IOException {
+    RoomController.setRoomFromText();
+    gameGUI.setRoomDesc(RoomController.roomA2.getDescription());
+    gameGUI.setExit(RoomController.roomA2.getExit());
+    gameGUI.setUserResponse("Ther is anerrir in ");
+	}
+	
 
 }
