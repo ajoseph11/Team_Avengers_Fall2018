@@ -33,7 +33,7 @@ public class GUI extends Application{
 	
 
     
-<<<<<<< HEAD
+
    private boolean gamestateActive;
    private int currentRoom;
    private int buttonClicked;
@@ -68,16 +68,16 @@ public class GUI extends Application{
    SplitMenuButton btItemMenu;
    Button btDetails;
    Button btClearNav;
-   ActionEvent event; 
+   ActionEvent event;
    Button btClearDetails;
    String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, puzzle,txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
    int  playerHealth;
    MenuItem miHint, miSolve, miReatttempt, miIgnore, miFlee, miAttack, miDefend, miRunAway, miEquip, miUnequip, miBuy, miSell;
    String menuItemClicked = "";
   
-=======
+
    boolean gamestateActive;
->>>>>>> 2029cf4d0754a188f631447b6352d1ccd5344d0b
+
    
    public static final ObservableList<String> data = FXCollections.observableArrayList();
    final private int windowWidth = 1500; 
