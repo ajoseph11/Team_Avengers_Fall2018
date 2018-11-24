@@ -2,26 +2,18 @@ package view;
 
 import java.io.IOException;
 
-import com.sun.corba.se.spi.orbutil.fsm.Action;
 
 import controller.PuzzleController;
 import controller.RoomController;
 import controller.MonsterController;
 import controller.ItemController;
-import model.*;
 import javafx.application.Application;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Item;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -31,7 +23,6 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -42,6 +33,7 @@ public class GUI extends Application{
 	
 
     
+<<<<<<< HEAD
    private boolean gamestateActive;
    private int currentRoom;
    private int buttonClicked;
@@ -83,38 +75,46 @@ public class GUI extends Application{
    MenuItem miHint, miSolve, miReatttempt, miIgnore, miFlee, miAttack, miDefend, miRunAway, miEquip, miUnequip, miBuy, miSell;
    String menuItemClicked = "";
   
+=======
+   boolean gamestateActive;
+>>>>>>> 2029cf4d0754a188f631447b6352d1ccd5344d0b
    
-   String lvPlayerName, lvRoomId;
+   public static final ObservableList<String> data = FXCollections.observableArrayList();
+   final private int windowWidth = 1500; 
+   final private int windowHeight = 900; 
+   VBox vbCenter, vbRight, vbLeft; 
+   GridPane gpNav;  
+   HBox hbTop, hbBottom;  
+   Label lbTitle; // 
+   Insets insets; // 
+   BorderPane borderPane;
+   Button btNorth, btEast, btSouth, btWest, btLaunchCM,btViewInstructions, btUpperFloor, btLowerFloor, btNav, btDetails, btClearNav, btClearDetails, btExit;
+   HBox hbWestEast, hpControlMenu, hbControlMenu;
+   Label lbHistory, lbNavigation;
+   SplitMenuButton btPuzzleMenu, btMonsterMenu, btItemMenu;
+   MenuItem miHint, miSolve, miReatttempt, miIgnore, miFlee, miAttack, miDefend, miRunAway, miEquip, miUnequip, miBuy, miSell;
+   String playerName,roomTitle,  floorTitle, nav,  roomDesc, monster, attackStat, roomItem,  roomExits, puzzle,txtC; // This controls the item displayed in the center of the game console. We need to assign values form the room class to these once and them pain them in the center VBox.
+   int  playerHealth, currentRoom, buttonClicked;
+   String lvPlayerName, lvRoomId, menuItemClicked = "";
    Text  txtErrorMsg;
-   public static final ObservableList<String> data = 
-   FXCollections.observableArrayList();
    GUIController gUIController;
-   VBox vbPlayField;
-	       
+   VBox vbPlayField;     
    ListView<String> listView;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		//vbPlayField = controller.getVBox();
-		//Reference the RoomCOntroller and set up values from the text file Room.txt
+		
 		try {
 			RoomController.setRoomFromText();
 			PuzzleController.setPuzzleFromText();
 			MonsterController.setMonsterFromText();
 			ItemController.setItemFromText();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			String errorMessage = "Error writing from file : Puzzle.txt";
+			
 			e.printStackTrace();
-			System.out.println(errorMessage);
 			
 		}
-		System.out.println("From: " + RoomController.class.getName());
-	    System.out.println(RoomController.getRoomA2().getDescription());//testing the get method from the Room class to see if an object is actually created. You can aslo change the filed to whicheevr you want. 
-
 		
-	   // lvRoomId = new String();
 		gamestateActive = false;
 		nav = "default";
 	   
@@ -128,14 +128,14 @@ public class GUI extends Application{
 		
 		/********************Game, Player, and Navigation End***************************/
 	    currentRoom = 1;
-	    event = new ActionEvent();
+	   
 		gUIController = new GUIController();
 		txtErrorMsg = new Text();
 		txtErrorMsg.setId("#txtErrorMsg");
 		txtErrorMsg.setStrokeWidth(20);
 		txtErrorMsg.setUnderline(true);
 		
-		//txtErrorMsg.setFont(Font.font("Serif", FontWeight.LIGHT,20 ));
+		
 		txtErrorMsg.setFont(Font.font("Serif", FontPosture.ITALIC, 20));
 		listView = new ListView<String>(data);
 		listView.setPrefHeight(900.0);
@@ -194,8 +194,6 @@ public class GUI extends Application{
 		btPuzzleMenu.getStyleClass().addAll("buttonSplit");
 		btPuzzleMenu.getItems().addAll(miHint,miSolve, miReatttempt, miIgnore);
 
-
-		IntegerProperty count = new SimpleIntegerProperty();
 
 		btMonsterMenu = new SplitMenuButton();
 
