@@ -22,7 +22,7 @@ public class GameGUI extends Application {
 	final private int guiWidth = 1000; 
 
 	
-	Label lbTop, lbRmDesc, lbUserResponse, lbHp, lbGem, lbWeapon, lbDirection, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem;
+	Label lbTop, lbRmDesc, lbUserResponse, lbHp, lbGem, lbWeapon, lbDirection, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem, lbRiddle;
 	TextField txtUserInput;
 	
 	static String roomDesc;
@@ -30,7 +30,7 @@ public class GameGUI extends Application {
 	String hP = "";
 	String gem = " ";
 	String weapon = " ";
-	static String direction, exits, errorMessage, userResponse;
+	static String direction, exits, errorMessage, userResponse,riddle, item, monster;
 	static boolean isPuzzle, isMonster, isItem;
     
 
@@ -87,7 +87,10 @@ public class GameGUI extends Application {
 		centerPane.setMargin(LbIsItem, new Insets(5));
 		
 		//centerPane.setAlignment(Pos.BASELINE_CENTER);
-		
+		lbRiddle = new Label("Puzzle,Monster or Item"+ "\n" + riddle + monster + item );
+		lbRiddle.setMaxWidth(guiWidth - 200);
+		//lbRiddle.setMinHeight(100);
+		lbRiddle.setWrapText(true);
 		
 		lbUserResponse = new Label("MESSAGE:" + "\n" + userResponse);
 		lbUserResponse.setMaxWidth(guiWidth - 200);
@@ -111,7 +114,7 @@ public class GameGUI extends Application {
 		leftPane.setAlignment(Pos.BASELINE_CENTER);
 		
 		
-		//Thede lines must come last
+		// These lines must come last
 		mainPane.setTop(topPane);
 		mainPane.setRight(rightPane);
 		mainPane.setBottom(bottomPane);
@@ -137,6 +140,11 @@ public class GameGUI extends Application {
 	public void setUserResponse(String userResponse) {
 		GameGUI.userResponse = userResponse;
 	}
+	public void setRiddle(String riddle){ GameGUI.riddle= riddle;}
+	public void setMonster(String monster){ GameGUI.monster= monster;}
+	public void setItem(String item){ GameGUI.item= item;}
+
+
 	
 	
 	

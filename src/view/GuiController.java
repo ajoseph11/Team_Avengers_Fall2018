@@ -17,6 +17,9 @@ public class GuiController  {
     RoomController.setRoomFromText();
     gameGUI.setRoomDesc(RoomController.roomA2.getDescription());
     gameGUI.setExit(RoomController.roomA2.getExit());
+    gameGUI.setRiddle(PuzzleController.getPuzzleR8().getRiddle());
+    gameGUI.setMonster(RoomController.getRoomA2().getMonster());
+    gameGUI.setItems(RoomController.getRoomA2().getItem());
     gameGUI.setUserResponse("Ther is anerrir in ");
 	}
 	
