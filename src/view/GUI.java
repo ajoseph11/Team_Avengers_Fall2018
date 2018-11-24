@@ -45,8 +45,8 @@ public class GUI extends Application{
    private boolean gamestateActive;
    private int currentRoom;
    private int buttonClicked;
-   final private int windowWidth = 1500; // width of Window
-    final private int windowHeight = 900; //height of window
+   final private int windowWidth = 1000; // width of Window
+    final private int windowHeight = 700; //height of window
    VBox vbCenter; // vertical pane in the center of the window's borderPane
    VBox vbLeft;  // vertical pane in the left  of the window's borderPane
    GridPane gpNav;  // grid pane to palce the navigation option east , west , north, and south
