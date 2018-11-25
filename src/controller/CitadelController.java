@@ -13,13 +13,13 @@ public class CitadelController extends RoomController{
 }
 	
 	public void setAllRoomDetails() {
-		entranceChamberRoom.setId(entranceChamberRoom.getId());
-		entranceChamberRoom.setType(entranceChamberRoom.getType());
-		entranceChamberRoom.setItem(entranceChamberRoom.getItem());
-		entranceChamberRoom.setMonster(entranceChamberRoom.getMonster());
-		entranceChamberRoom.setPuzzle(entranceChamberRoom.getPuzzle());
-		entranceChamberRoom.setDescription(entranceChamberRoom.getDescription());
-		entranceChamberRoom.setExit(entranceChamberRoom.getExit());
+		RoomController.entranceChamberRoom.setId(entranceChamberRoom.getId());
+		RoomController.entranceChamberRoom.setType(entranceChamberRoom.getType());
+		RoomController.entranceChamberRoom.setItem(entranceChamberRoom.getItem());
+		RoomController.entranceChamberRoom.setMonster(entranceChamberRoom.getMonster());
+		RoomController.entranceChamberRoom.setPuzzle(entranceChamberRoom.getPuzzle());
+		RoomController.entranceChamberRoom.setDescription(entranceChamberRoom.getDescription());
+		RoomController.entranceChamberRoom.setExit(entranceChamberRoom.getExit());
 		
 		//connectingChamberRoom.setPuzzle(PuzzleController.r8Map.get("Answer"));
 	

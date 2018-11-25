@@ -164,7 +164,7 @@ RoomType: special!!!
 Item: KF1
 Monster: guard
 Puzzle: None in current room
-Desc: (As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly.) On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head?
+Desc: As you enter the chamber, your attention is drawn to the far corner, where a hulking form breathes softly.) On the floor around you lie the discarded bodies of once-living minions. Is this where all these experiments came to a head?
 Exits: E-B1 S-A2
 
 ID:E1
