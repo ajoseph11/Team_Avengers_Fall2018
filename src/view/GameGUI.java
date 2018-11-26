@@ -48,7 +48,7 @@ public class GameGUI extends Application {
 		guiController.referenceDataFromGameGui();
 		
 	    //guiController.setSpecificDataAccordingToRoom();
-		guiController.linkDataBackToGui();// this has to be last method called . This happen when the data has been received upon button clicked.
+		//guiController.linkDataBackToGui();// this has to be last method called . This happen when the data has been received upon button clicked.
 
 		
 		
@@ -145,9 +145,11 @@ public class GameGUI extends Application {
 		Scene scene = new Scene(mainPane, guiWidth, guiHeight);
 		stage.setTitle("Citadel_of_Storms");
 		stage.setScene(scene);
+
 	   
 		stage.show();
-		
+
+
 		
 		
 	}
@@ -530,9 +532,10 @@ public class GameGUI extends Application {
 	}
 
 
-	
 
-	//Setters and getters for all GUI fields. 
+
+
+	//Setters and getters for all GUI fields.
 	
 	
 }
