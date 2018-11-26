@@ -2,11 +2,7 @@ package controller;
 
 
 public class CitadelController extends RoomController{
-	@Override
-	public String toString() {
-		return "CitadelController [toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + "]";
-	}
+	
 
 	public CitadelController() {
      super();
