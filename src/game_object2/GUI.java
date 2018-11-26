@@ -1,4 +1,4 @@
-package view;
+package game_object2;
 
 import java.io.IOException;
 

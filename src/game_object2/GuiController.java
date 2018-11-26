@@ -1,4 +1,4 @@
-package view;
+package game_object2;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

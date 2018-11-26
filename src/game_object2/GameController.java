@@ -1,9 +1,14 @@
-package controller;
+package game_object2;
 
 import java.io.IOException;
 
 import com.sun.javafx.stage.EmbeddedWindow;
 
+import controller.CitadelController;
+import controller.ItemController;
+import controller.MonsterController;
+import controller.PuzzleController;
+import controller.RoomController;
 import model.Monster;
 /*This used to be the Ruuner class*/
 public class GameController {
