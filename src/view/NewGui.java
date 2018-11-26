@@ -3,6 +3,8 @@ package view;
 
 
 
+
+
 import controller.NewGuiController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,6 +18,8 @@ public class NewGui extends Application {
 	private static Stage stage;
 	private static Scene scene;
 	
+	
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -26,6 +30,7 @@ public class NewGui extends Application {
 		guiController. getUserInputFromTextField();
 		guiController.allocateRoomNUmber();
 		guiController.setRoomDetails();
+		
 
 		// show the gui upon running the app
 		primaryStage.show();
@@ -54,6 +59,7 @@ public class NewGui extends Application {
 	public static void setScene(Scene scene) {
 		NewGui.scene = scene;
 	}
+
 	
 
 	

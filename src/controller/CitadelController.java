@@ -26,6 +26,13 @@ public class CitadelController extends RoomController{
 		RoomController.entranceChamberRoom.setExit(entranceChamberRoom.getExit());
 		
 		//connectingChamberRoom.setPuzzle(PuzzleController.r8Map.get("Answer"));
+		RoomController.connectingChamberRoom.setId(connectingChamberRoom.getId());
+		RoomController.connectingChamberRoom.setType(connectingChamberRoom.getType());
+		RoomController.connectingChamberRoom.setItem(connectingChamberRoom.getItem());
+		RoomController.connectingChamberRoom.setMonster(connectingChamberMap.get("Monster"));
+		RoomController.connectingChamberRoom.setPuzzle(connectingChamberMap.get("Puzzle"));
+		RoomController.connectingChamberRoom.setDescription(connectingChamberRoom.getDescription());
+		RoomController.connectingChamberRoom.setExit(connectingChamberRoom.getExit());
 	
 	}
 	

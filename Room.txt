@@ -35,7 +35,7 @@ RoomType: minion
 Item: None in current room
 Monster: No Monster yet! However, watch out!!!
 Puzzle: None in current room
-Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested¦ or continues to rest. The only way to find out is to tread ahead.
+Desc: Every candle is lit. A desk lies ahead with tools for a scriber. There are two bunkbeds as well as a chair. This must have been where someone rested? or continues to rest. The only way to find out is to tread ahead.
 Exits: N-C1 W-B2 S-C3 E-D2
 
 ID:A3
