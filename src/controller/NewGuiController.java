@@ -423,7 +423,8 @@ public class NewGuiController {
     	 //i copied from  here
     		   switch (iUserOption) {
     		  
-			case 0:
+			case 0: // beginning room for the game
+				
 				centerPane.getChildren().clear();
 				leftPane.getChildren().clear();
 				bottomPane.getChildren().clear();
@@ -438,7 +439,7 @@ public class NewGuiController {
 				setLeftPane();
 				getUserInputFromTextField();
 				break;
-			case 2:
+			case 2: //East
 				if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
 					centerPane.getChildren().clear();
 					leftPane.getChildren().clear();
@@ -474,7 +475,7 @@ public class NewGuiController {
 		  			setCenterPane();
 		  			
 		  			
-					userResponse =  "Room ID: " + RoomController.connectingChamberRoom.getId();
+					userResponse =  "Room ID: " + RoomController.spiralStaircaseRoom.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
