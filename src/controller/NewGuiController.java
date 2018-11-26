@@ -371,17 +371,62 @@ public class NewGuiController {
 			getUserInputFromTextField();
 		  	  	
   		}
-    	while (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {//Entrance
-    		if (iUserOption == 2) {
-    			centerPane.getChildren().clear();
+    	if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {//Entrance
+    		if (iUserOption == 2 && roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
+    			
     			roomDesc = RoomController.connectingChamberRoom.getDescription();
     			exits = RoomController.connectingChamberRoom.getExit();
+    			centerPane.getChildren().clear();
     			setCenterPane();
     			getUserInputFromTextField();
     			
     			bottomPane.getChildren().clear();
     			userResponse = "You are now East of " + RoomController.entranceChamberRoom.getId() + " ID: " + RoomController.connectingChamberRoom.getId();
     			setBottomPane();
+    			
+
+    	    	if (roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) { //connecting
+    	    		if (iUserOption == 4 && roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) {
+    	    			centerPane.getChildren().clear();
+    	    			roomDesc = RoomController.entranceChamberRoom.getDescription();
+    	    			exits = RoomController.entranceChamberRoom.getExit();
+    	    			setCenterPane();
+    	    			getUserInputFromTextField();
+    	    			
+    	    			bottomPane.getChildren().clear();
+    	    			userResponse = "You are now West of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.entranceChamberRoom.getId();
+    	    			setBottomPane();
+    	    			
+    	    		
+    	    		}
+    	    		
+    	    		if (iUserOption == 2 && roomDesc.equals(RoomController.connectingChamberRoom.getDescription()) ) {
+    	    			centerPane.getChildren().clear();
+    	    			roomDesc = RoomController.spiralStaircaseRoom.getDescription();
+    	    			exits = RoomController.spiralStaircaseRoom.getExit();
+    	    			setCenterPane();
+    	    			getUserInputFromTextField();
+    	    			
+    	    			bottomPane.getChildren().clear();
+    	    			userResponse = "You are now East of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.spiralStaircaseRoom.getId();
+    	    			setBottomPane();
+    	    			
+    	    		
+    	    		}
+    	    	
+    	    		else {
+    	    			centerPane.getChildren().clear();
+    	    			roomDesc = RoomController.connectingChamberRoom.getDescription();
+    	    			exits = RoomController.connectingChamberRoom.getExit();
+    	    			setCenterPane();
+    	    			
+    	    			bottomPane.getChildren().clear();
+    	    			userResponse = "Room ID: " + RoomController.connectingChamberRoom.getId();
+
+    	    			setBottomPane();
+    	    			getUserInputFromTextField();
+    	    		}
+    	    	}
     			
     		
     		}
@@ -400,48 +445,6 @@ public class NewGuiController {
     		}
     	}
     	
-    	while (roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) { //connecting
-    		if (iUserOption == 4) {
-    			centerPane.getChildren().clear();
-    			roomDesc = RoomController.entranceChamberRoom.getDescription();
-    			exits = RoomController.entranceChamberRoom.getExit();
-    			setCenterPane();
-    			getUserInputFromTextField();
-    			
-    			bottomPane.getChildren().clear();
-    			userResponse = "You are now West of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.entranceChamberRoom.getId();
-    			setBottomPane();
-    			
-    		
-    		}
-    		
-    		else if (iUserOption == 2) {
-    			centerPane.getChildren().clear();
-    			roomDesc = RoomController.spiralStaircaseRoom.getDescription();
-    			exits = RoomController.spiralStaircaseRoom.getExit();
-    			setCenterPane();
-    			getUserInputFromTextField();
-    			
-    			bottomPane.getChildren().clear();
-    			userResponse = "You are now East of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.spiralStaircaseRoom.getId();
-    			setBottomPane();
-    			
-    		
-    		}
-    	
-    		else {
-    			centerPane.getChildren().clear();
-    			roomDesc = RoomController.connectingChamberRoom.getDescription();
-    			exits = RoomController.connectingChamberRoom.getExit();
-    			setCenterPane();
-    			
-    			bottomPane.getChildren().clear();
-    			userResponse = "Room ID: " + RoomController.connectingChamberRoom.getId();
-
-    			setBottomPane();
-    			getUserInputFromTextField();
-    		}
-    	}
     	
 
     
