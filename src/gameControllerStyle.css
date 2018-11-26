@@ -20,3 +20,25 @@
 	
 	
 }
+.button{
+	-fx-background-radius: 12pt;
+	
+	-fx-border-color: grey;
+	-fx-font-size: 15pt;
+	-fx-border-radius: 10pt;
+	-fx-border-width: 2 1 0 0;
+	-fx-border-radius: 12pt;
+	
+	
+	
+}
+.button:hover{
+	
+	-fx-background-radius: 12pt;
+	
+	
+	
+	-fx-border-radius: 12pt;
+	-fx-border-width: 3 2 1 0;
+	-fx-border-radius: 12pt;
+}

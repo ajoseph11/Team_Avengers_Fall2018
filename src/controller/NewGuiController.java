@@ -9,6 +9,8 @@ import java.util.concurrent.BlockingDeque;
 
 import javax.swing.ButtonModel;
 
+import com.sun.org.apache.xml.internal.security.utils.UnsyncBufferedOutputStream;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -22,9 +24,12 @@ import javafx.stage.Stage;
 import view.NewGui;
 
 public class NewGuiController {
+	//
+	CitadelController citadelController; //Master controller for the game
+	
 	//Selections for users to interact with the game
 	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M"};
-	int iUserOption = 1;// 1, 2, 3, 4, 5, 6, 7; for each of  the above values we are adding 1 to their index
+	int iUserOption = 0;// 1, 2, 3, 4, 5, 6, 7; for each of  the above values we are adding 1 to their index
 	
 	
    private Stage stage; //create a stage that references the gui stage when the game is run
@@ -54,6 +59,8 @@ public class NewGuiController {
 	
 	
 	public NewGuiController() {
+		citadelController = new CitadelController(); //master controller for the game
+		
 		stage = NewGui.getStage(); //static getter reference to the GUI
 		scene = NewGui.getScene(); //static getter reference to the GUI
 		
@@ -330,12 +337,7 @@ public class NewGuiController {
       }
       
       public void referenceAllControllers() throws IOException {
-  		RoomController.setRoomFromText(); // This set the model Room ready with all the data needed on the GUI
-  		PuzzleController.setPuzzleFromText(); // this sets the model Puzzle ready with all the data needed on the GUI
-  		ItemController.setItemFromText(); // this sets the model Item readt for all the data needed for the GUI(view) to
-  											// run
-  		MonsterController.setMonsterFromText(); // this sets all the data needed for the model Monster
-
+  		citadelController.setAllRoomDetails();
   	}
       
       public void setRoomDetails() {
@@ -345,23 +347,24 @@ public class NewGuiController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	  if (iUserOption == 0 ) {
+    	  if (iUserOption == 0 ) {  //First room 
   			roomDesc = RoomController.entranceChamberRoom.getDescription();
-  			//GameGUI.roomDesc = RoomController.entranceChamberRoom.getDescription();
-  			//exits = RoomController.entranceChamberRoom.getExit();
+  			exits = RoomController.entranceChamberRoom.getExit();
   			
+			
   			
-
-
   		}
+    		//check for user input
+			
+    	  
   		//go to connecting chambers
-  		else if (iUserOption == 1) {
+  		 if (iUserOption == 1) {
   			roomDesc = RoomController.connectingChamberRoom.getDescription();
   			exits = RoomController.connectingChamberRoom.getExit();
   			
 
   		}
-  		else if (iUserOption == 2) {
+  		if (iUserOption == 2) {
   			roomDesc = RoomController.roomA1.getDescription();
   			exits = RoomController.roomA1.getExit();
   			
