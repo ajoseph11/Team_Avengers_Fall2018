@@ -1,9 +1,11 @@
 package view;
 
+import controller.CitadelController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -29,6 +32,7 @@ public class Login extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -56,6 +60,7 @@ public class Login extends Application {
         final Label lblMessage = new Label();
         Button btnNewUser = new Button("New User");
         final Label lblMessages = new Label();
+
 
 
         //Adding Nodes to GridPane layout
@@ -98,7 +103,7 @@ public class Login extends Application {
                 checkUser = txtUserName.getText().toString();
                 checkPw = pf.getText().toString();
                 if(checkUser.equals(user) && checkPw.equals(pw)){
-                    lblMessage.setText("Congratulations!");
+                    lblMessage.setText("You are now logged in");
                     lblMessage.setTextFill(Color.GREEN);
                 }
                 else{
@@ -109,6 +114,7 @@ public class Login extends Application {
                 pf.setText("");
             }
         });
+
 
         //Add HBox and GridPane layout to BorderPane Layout
         bp.setTop(hb);

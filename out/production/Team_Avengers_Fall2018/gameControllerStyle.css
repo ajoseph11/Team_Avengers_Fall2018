@@ -1,0 +1,46 @@
+.root{
+	-fx-font-size: 15pt;
+	-fx-font-family: consolas;
+    -fx-padding: 3 6 3 6;
+	
+	-fx-base: #BFE7FF;
+}
+.vbox, .hbox{
+	-fx-border-color: blue;
+	-fx-border-style: dotted;
+	-fx-border-width: 1;
+}
+.text-field{
+	-fx-background-color: grey;
+	
+	
+	
+}
+.text-field:focused{
+	-fx-background-color: #A9A9A9;
+	
+	
+}
+.button{
+	-fx-background-radius: 12pt;
+	
+	-fx-border-color: grey;
+	-fx-font-size: 15pt;
+	-fx-border-radius: 10pt;
+	-fx-border-width: 2 1 0 0;
+	-fx-border-radius: 12pt;
+	
+	
+	
+}
+.button:hover{
+	
+	-fx-background-radius: 12pt;
+	
+	
+	
+	-fx-border-radius: 12pt;
+	-fx-border-width: 3 2 1 0;
+	-fx-border-radius: 12pt;
+}
+

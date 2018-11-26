@@ -1,5 +1,8 @@
 package controller;
 
+
+
+import java.io.File;
 import java.io.IOException;
 
 public class CitadelController extends RoomController{
@@ -8,8 +11,10 @@ public class CitadelController extends RoomController{
 	public CitadelController() {
      super();
 }
-	
-	public void setAllRoomDetails() throws IOException {
+
+
+
+    public void setAllRoomDetails() throws IOException {
 		RoomController.setRoomFromText(); // This set the model Room ready with all the data needed on the GUI
   		PuzzleController.setPuzzleFromText(); // this sets the model Puzzle ready with all the data needed on the GUI
   		ItemController.setItemFromText(); // this sets the model Item readt for all the data needed for the GUI(view) to
@@ -26,12 +31,14 @@ public class CitadelController extends RoomController{
 		RoomController.entranceChamberRoom.setExit(entranceChamberRoom.getExit());
 		
 		//connectingChamberRoom.setPuzzle(PuzzleController.r8Map.get("Answer"));
-	
+
+
+
+
+		}
 	}
 	
 	
 	
 
-	
-	
-}
+
