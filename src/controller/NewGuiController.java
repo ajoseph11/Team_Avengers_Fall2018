@@ -4,17 +4,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.awt.print.Printable;
 import java.io.IOException;
 import java.util.concurrent.BlockingDeque;
 
 import javax.swing.ButtonModel;
 
 import com.sun.org.apache.xml.internal.security.utils.UnsyncBufferedOutputStream;
+import com.sun.tracing.dtrace.StabilityLevel;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -56,6 +59,8 @@ public class NewGuiController {
 	private String weapon = " ";
 	private String direction, exits, errorMessage, userResponse,riddle, item, monster, userInput;
 	private boolean isPuzzle, isMonster, isItem;
+
+	protected Node hbBottom;
 	
 	
 	public NewGuiController() {
@@ -194,8 +199,8 @@ public class NewGuiController {
 		hbBottom.getChildren().addAll(lbUserResponse, btInstructions, btCloseInstruction);
 		bottomPane.getChildren().addAll(hbBottom);
 		bottomPane.setAlignment(Pos.BASELINE_CENTER);
-		HBox.setMargin(lbUserResponse, new Insets(0, 100, 0, 0));
-		HBox.setMargin(hbBottom, new Insets(0, 0, 0, 50));
+		HBox.setMargin(lbUserResponse, new Insets(0, 10, 0, 0));
+		HBox.setMargin(hbBottom, new Insets(0, 0, 0, 10));
 
 	}
 	
@@ -284,18 +289,26 @@ public class NewGuiController {
     	           userInput = txtUserInput.getText().toUpperCase();
     	           if (userInput.length() > 1) { //cut the user input back to 1 if more than one
     	        	   userInput = userInput.substring(0, 1);
+    	        	   
+    	        	
+    	        	 
     	           }
-    	           userResponse = userInput;
-    	            txtUserInput.setText(userInput);
+    	           validateUserInput();//check what they entered
+    	            txtUserInput.setText(userInput); //print it back to them on the textfield
+    	           
+    	            setRoomDetails(); // set new room details
     	    	           
     	        } else {
-    	        	userInput = "No input!!!";
+    	        	userInput = "No input, Please make a choice!!!";
+    	        	userResponse = userInput;
+    	        	bottomPane.getChildren().clear();
+    	        	setBottomPane();
     	        
     	        }
-    	        validateUserInput();
+    	        
     	        System.out.println(userInput);
     			System.out.println(userInput + " is user input & " + iUserOption + " is button clicked value");
-    			//setRoomDetails();
+    			
     			showItemPuzzleMonster();
     	      
     	     }
@@ -347,32 +360,93 @@ public class NewGuiController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	  if (iUserOption == 0 ) {  //First room 
+    	  if (iUserOption == 0 ) {  //First room  entrance chamber
   			roomDesc = RoomController.entranceChamberRoom.getDescription();
   			exits = RoomController.entranceChamberRoom.getExit();
+  			setCenterPane();
   			
-			
-  			
+  			bottomPane.getChildren().clear();
+			userResponse =  "Room ID: " + RoomController.entranceChamberRoom.getId();
+			setBottomPane();
+			getUserInputFromTextField();
+		  	  	
   		}
-    		//check for user input
-			
-    	  
-  		//go to connecting chambers
-  		 if (iUserOption == 1) {
-  			roomDesc = RoomController.connectingChamberRoom.getDescription();
-  			exits = RoomController.connectingChamberRoom.getExit();
-  			
+    	while (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {//Entrance
+    		if (iUserOption == 2) {
+    			centerPane.getChildren().clear();
+    			roomDesc = RoomController.connectingChamberRoom.getDescription();
+    			exits = RoomController.connectingChamberRoom.getExit();
+    			setCenterPane();
+    			getUserInputFromTextField();
+    			
+    			bottomPane.getChildren().clear();
+    			userResponse = "You are now East of " + RoomController.entranceChamberRoom.getId() + " ID: " + RoomController.connectingChamberRoom.getId();
+    			setBottomPane();
+    			
+    		
+    		}
+    	
+    		else {
+    			centerPane.getChildren().clear();
+    			roomDesc = RoomController.entranceChamberRoom.getDescription();
+    			exits = RoomController.entranceChamberRoom.getExit();
+    			setCenterPane();
+    			
+    			bottomPane.getChildren().clear();
+    			userResponse = "Room ID: " + RoomController.entranceChamberRoom.getId();
 
-  		}
-  		if (iUserOption == 2) {
-  			roomDesc = RoomController.roomA1.getDescription();
-  			exits = RoomController.roomA1.getExit();
-  			
-  		}
-    	  
-    	//centerPane.getChildren().clear();
-  		//centerPane.getChildren().addAll(lbRmDesc, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem, lbDirection, hbUserInput);
+    			setBottomPane();
+    			getUserInputFromTextField();
+    		}
+    	}
+    	
+    	while (roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) { //connecting
+    		if (iUserOption == 4) {
+    			centerPane.getChildren().clear();
+    			roomDesc = RoomController.entranceChamberRoom.getDescription();
+    			exits = RoomController.entranceChamberRoom.getExit();
+    			setCenterPane();
+    			getUserInputFromTextField();
+    			
+    			bottomPane.getChildren().clear();
+    			userResponse = "You are now West of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.entranceChamberRoom.getId();
+    			setBottomPane();
+    			
+    		
+    		}
+    		
+    		else if (iUserOption == 2) {
+    			centerPane.getChildren().clear();
+    			roomDesc = RoomController.spiralStaircaseRoom.getDescription();
+    			exits = RoomController.spiralStaircaseRoom.getExit();
+    			setCenterPane();
+    			getUserInputFromTextField();
+    			
+    			bottomPane.getChildren().clear();
+    			userResponse = "You are now East of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.spiralStaircaseRoom.getId();
+    			setBottomPane();
+    			
+    		
+    		}
+    	
+    		else {
+    			centerPane.getChildren().clear();
+    			roomDesc = RoomController.connectingChamberRoom.getDescription();
+    			exits = RoomController.connectingChamberRoom.getExit();
+    			setCenterPane();
+    			
+    			bottomPane.getChildren().clear();
+    			userResponse = "Room ID: " + RoomController.connectingChamberRoom.getId();
 
+    			setBottomPane();
+    			getUserInputFromTextField();
+    		}
+    	}
+    	
+
+    
+    	  
+    	
       }
 	
       public void clearTextField() {
