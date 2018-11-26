@@ -24,6 +24,7 @@ public class NewGui extends Application {
 		//guiController.setNodesForGui();
 		guiController.setSceneAndStageForGUI(); // this updates GUi accordingly...
 		guiController. getUserInputFromTextField();
+		guiController.allocateRoomNUmber();
 		guiController.setRoomDetails();
 
 		// show the gui upon running the app

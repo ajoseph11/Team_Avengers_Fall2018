@@ -31,10 +31,10 @@ public class NewGuiController {
 	CitadelController citadelController; //Master controller for the game
 	
 	//Selections for users to interact with the game
-	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M"};
+	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D"};
 	int iUserOption = 0;// 1, 2, 3, 4, 5, 6, 7; for each of  the above values we are adding 1 to their index
 	
-	
+	private int currentRoom;
    private Stage stage; //create a stage that references the gui stage when the game is run
    private Scene scene; //create a scene that references the GUI scene whenever the game is run.
 	
@@ -57,7 +57,7 @@ public class NewGuiController {
 	private String hP = "";
 	private String gem = " ";
 	private String weapon = " ";
-	private String direction, exits, errorMessage, userResponse,riddle, item, monster, userInput;
+	private String exits,  userResponse,riddle, item, monster, userInput;
 	private boolean isPuzzle, isMonster, isItem;
 
 	protected Node hbBottom;
@@ -185,8 +185,25 @@ public class NewGuiController {
 	}
 	
 	public void setBottomPane() {
+		Button btSave = new Button("Save-Game");
+		Button btPause = new Button("Pause-Game");
+		Button btResume = new Button("Resume-Game");
+		
+		
+		VBox  vbInteract = new VBox();
+		//////vbInteract.setSpacing(10);
+		vbInteract.getChildren().addAll(btSave, btPause, btResume);
+		vbInteract.setAlignment(Pos.BASELINE_LEFT);
+		
+		VBox.setMargin(btSave, new Insets(0, 0, 10, 0));
+		VBox.setMargin(btPause, new Insets(0, 0, 10, 0));
+		VBox.setMargin(btResume, new Insets(0, 0, 10, 0));
+		
 		Button btInstructions = new Button("Instructions");
 		Button btCloseInstruction = new Button("X");
+		btInstructions.getStyleClass().add("buttonB");
+		btCloseInstruction.getStyleClass().add("buttonB");
+		
 		//userResponse = "";
 		lbUserResponse = new Label("GAME-MESSAGE" + "\n" + userResponse);
 		//lbUserResponse.setMaxWidth(guiWidth - 200);
@@ -194,11 +211,12 @@ public class NewGuiController {
 		lbUserResponse.setWrapText(true);
 		lbUserResponse.setAlignment(Pos.BASELINE_LEFT);
 		HBox hbBottom = new HBox();
-		hbBottom.setAlignment(Pos.BOTTOM_RIGHT);
+		hbBottom.setAlignment(Pos.BASELINE_RIGHT);
 		hbBottom.setSpacing(10);
-		hbBottom.getChildren().addAll(lbUserResponse, btInstructions, btCloseInstruction);
+		hbBottom.getChildren().addAll(vbInteract ,lbUserResponse, btInstructions, btCloseInstruction);
 		bottomPane.getChildren().addAll(hbBottom);
 		bottomPane.setAlignment(Pos.BASELINE_CENTER);
+		bottomPane.setMinHeight(165);
 		HBox.setMargin(lbUserResponse, new Insets(0, 10, 0, 0));
 		HBox.setMargin(hbBottom, new Insets(0, 0, 0, 10));
 
@@ -271,6 +289,14 @@ public class NewGuiController {
 			if (userInput.equals("M")) {
 
 				iUserOption = 7;
+			}
+			if (userInput.equals("U")) {
+
+				iUserOption = 8;
+			}
+			if (userInput.equals("D")) {
+
+				iUserOption = 9;
 			}
 		
 		
@@ -354,6 +380,7 @@ public class NewGuiController {
   	}
       
       public void setRoomDetails() {
+    	  
     	  try {
 			referenceAllControllers();
 		} catch (IOException e) {
@@ -362,6 +389,7 @@ public class NewGuiController {
 		}
     	  if (iUserOption == 0 ) {  //First room  entrance chamber
   			roomDesc = RoomController.entranceChamberRoom.getDescription();
+  			allocateRoomNUmber();//allocate number as you print details;
   			exits = RoomController.entranceChamberRoom.getExit();
   			setCenterPane();
   			
@@ -371,10 +399,11 @@ public class NewGuiController {
 			getUserInputFromTextField();
 		  	  	
   		}
-    	if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {//Entrance
-    		if (iUserOption == 2 && roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
+    	 if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription()) && iUserOption == 2 && currentRoom == 1) {//Entrance
+    	//	if (iUserOption == 2 && roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
     			
     			roomDesc = RoomController.connectingChamberRoom.getDescription();
+    			allocateRoomNUmber();//allocate number as you print details;
     			exits = RoomController.connectingChamberRoom.getExit();
     			centerPane.getChildren().clear();
     			setCenterPane();
@@ -385,56 +414,14 @@ public class NewGuiController {
     			setBottomPane();
     			
 
-    	    	if (roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) { //connecting
-    	    		if (iUserOption == 4 && roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) {
-    	    			centerPane.getChildren().clear();
-    	    			roomDesc = RoomController.entranceChamberRoom.getDescription();
-    	    			exits = RoomController.entranceChamberRoom.getExit();
-    	    			setCenterPane();
-    	    			getUserInputFromTextField();
-    	    			
-    	    			bottomPane.getChildren().clear();
-    	    			userResponse = "You are now West of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.entranceChamberRoom.getId();
-    	    			setBottomPane();
-    	    			
-    	    		
-    	    		}
-    	    		
-    	    		if (iUserOption == 2 && roomDesc.equals(RoomController.connectingChamberRoom.getDescription()) ) {
-    	    			centerPane.getChildren().clear();
-    	    			roomDesc = RoomController.spiralStaircaseRoom.getDescription();
-    	    			exits = RoomController.spiralStaircaseRoom.getExit();
-    	    			setCenterPane();
-    	    			getUserInputFromTextField();
-    	    			
-    	    			bottomPane.getChildren().clear();
-    	    			userResponse = "You are now East of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.spiralStaircaseRoom.getId();
-    	    			setBottomPane();
-    	    			
-    	    		
-    	    		}
-    	    	
-    	    		else {
-    	    			centerPane.getChildren().clear();
-    	    			roomDesc = RoomController.connectingChamberRoom.getDescription();
-    	    			exits = RoomController.connectingChamberRoom.getExit();
-    	    			setCenterPane();
-    	    			
-    	    			bottomPane.getChildren().clear();
-    	    			userResponse = "Room ID: " + RoomController.connectingChamberRoom.getId();
-
-    	    			setBottomPane();
-    	    			getUserInputFromTextField();
-    	    		}
-    	    	}
+    	    
     			
-    		
-    		}
+    	 }
     	
-    		else {
+    	
+    		else if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription()) && iUserOption != 2)  {
     			centerPane.getChildren().clear();
-    			roomDesc = RoomController.entranceChamberRoom.getDescription();
-    			exits = RoomController.entranceChamberRoom.getExit();
+    			
     			setCenterPane();
     			
     			bottomPane.getChildren().clear();
@@ -443,14 +430,63 @@ public class NewGuiController {
     			setBottomPane();
     			getUserInputFromTextField();
     		}
-    	}
+    	 
+    	 
+    	 if (roomDesc.equals(RoomController.getConnectingChamberRoom().getDescription()) && iUserOption == 4 && currentRoom == 2) {//Entrance
+    	    	//	if (iUserOption == 2 && roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
+    	    			
+    	    			roomDesc = RoomController.entranceChamberRoom.getDescription();
+    	    			allocateRoomNUmber();//allocate number as you print details;
+    	    			exits = RoomController.entranceChamberRoom.getExit();
+    	    			centerPane.getChildren().clear();
+    	    			setCenterPane();
+    	    			getUserInputFromTextField();
+    	    			
+    	    			bottomPane.getChildren().clear();
+    	    			userResponse = "You are now West of " + RoomController.connectingChamberRoom.getId() + " ID: " + RoomController.entranceChamberRoom.getId();
+    	    			setBottomPane();
+    	    			
+
+    	    	    
+    	    			
+    	    	 }
+    	    	
+    	    	
+    	    		else if (roomDesc.equals(RoomController.getConnectingChamberRoom().getDescription()) && iUserOption != 4) {
+    	    			centerPane.getChildren().clear();
+    	    			
+    	    			setCenterPane();
+    	    			
+    	    			bottomPane.getChildren().clear();
+    	    			userResponse = "Room ID: " + RoomController.connectingChamberRoom.getId();
+
+    	    			setBottomPane();
+    	    			getUserInputFromTextField();
+    	    		}
+    	 
+    	 
+   
+       	
+      }
+    	
     	
     	
 
     
     	  
-    	
-      }
+    	public void allocateRoomNUmber() {
+    		if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
+    			currentRoom = 1;
+    		}
+    		if (roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) {
+    			currentRoom = 2;
+    		}
+    		if (roomDesc.equals(RoomController.spiralStaircaseRoom.getDescription())) {
+    			currentRoom = 3;
+    		}
+    		System.out.println("Current Room: "+currentRoom);
+    	}
+      
 	
       public void clearTextField() {
       } 

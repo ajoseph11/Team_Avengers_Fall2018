@@ -1,7 +1,8 @@
 .root{
 	-fx-font-size: 15pt;
-	-fx-padding: 3 6 6 6;
 	-fx-font-family: consolas;
+    -fx-padding: 3 6 3 6;
+	
 	-fx-base: #BFE7FF;
 }
 .vbox, .hbox{
@@ -42,3 +43,4 @@
 	-fx-border-width: 3 2 1 0;
 	-fx-border-radius: 12pt;
 }
+
