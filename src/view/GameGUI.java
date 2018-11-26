@@ -48,7 +48,7 @@ public class GameGUI extends Application {
 		guiController.referenceDataFromGameGui();
 		
 	    //guiController.setSpecificDataAccordingToRoom();
-		guiController.linkDataBackToGui();// this has to be last method called . This happen when the data has been received upon button clicked.
+		//guiController.linkDataBackToGui();// this has to be last method called . This happen when the data has been received upon button clicked.
 
 		
 		
