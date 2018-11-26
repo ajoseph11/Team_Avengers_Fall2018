@@ -145,9 +145,11 @@ public class GameGUI extends Application {
 		Scene scene = new Scene(mainPane, guiWidth, guiHeight);
 		stage.setTitle("Citadel_of_Storms");
 		stage.setScene(scene);
+
 	   
 		stage.show();
-		
+
+
 		
 		
 	}
@@ -530,9 +532,10 @@ public class GameGUI extends Application {
 	}
 
 
-	
 
-	//Setters and getters for all GUI fields. 
+
+
+	//Setters and getters for all GUI fields.
 	
 	
 }

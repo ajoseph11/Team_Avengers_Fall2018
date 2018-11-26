@@ -71,7 +71,7 @@ public class GuiController {
 		MonsterController.setMonsterFromText(); // this sets all the data needed for the model Monster
 
 	}
-	public void setSpecificDataAccordingToRoom() {
+	public void setSpecificDataAccordingToRoom() throws IOException {
 		citadelController.setAllRoomDetails();
 		tfUserInputFromGui.setPromptText("Enter your input & click submit to validate");
 		tfUserInputFromGui.setPrefColumnCount(30);
@@ -119,7 +119,12 @@ public class GuiController {
             getUserOption();
             referenceDataFromGameGui();
             System.out.println(userInputFromTextField);
-            setSpecificDataAccordingToRoom();
+            try {
+				setSpecificDataAccordingToRoom();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             
             
            
