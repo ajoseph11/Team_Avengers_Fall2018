@@ -1380,26 +1380,463 @@ public class NewGuiController {
 						   setLeftPane();
 						   getUserInputFromTextField();
 					   }
+					   else if (roomDesc.equals(RoomController.roomE2.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomE3.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomE3.getExit();
+						   riddle = PuzzleController.getPuzzleR4().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR4().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomE3.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomC4.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomC5.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomC5.getExit();
+						   riddle = PuzzleController.getPuzzleR3().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR3().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomC5.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomD4.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomD5.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomD5.getExit();
+						   //riddle = PuzzleController.getPuzzleR8().getRiddle();
+						   isPuzzle = false;
+						   isMonster = false;
+						  // hint = PuzzleController.getPuzzleR8().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomD5.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomA1.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomA2.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomA2.getExit();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomA2.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomE1.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomE2.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomE2.getExit();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomE2.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.stairsB1FRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomC4.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomC4.getExit();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomC4.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
 					   break;
-				   case 8: //up
-					   if (roomDesc.equals(RoomController.stairsB1FRoom.getDescription())) {
+				   case 4://west
+					   if (roomDesc.equals(RoomController.roomB1.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomA1.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomA1.getExit();
+						   isMonster = true;
+						   monster = MonsterController.getM8Monster().getMonsterName();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomA1.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+
+					   else if (roomDesc.equals(RoomController.roomB2.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomA2.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomA2.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomA2.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomC1.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomB1.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomB1.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomB1.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomC2.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomB2.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomB2.getExit();
+						   riddle = PuzzleController.getPuzzleR6().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR6().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomB2.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomB3.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomA3.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomA3.getExit();
+						   riddle = PuzzleController.getPuzzleR2().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR2().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomA3.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomB4.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomA4.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomA4.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomA4.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomB5.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomA5.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomA5.getExit();
+						   isPuzzle = false;
+						   isMonster = true;
+						   monster = MonsterController.getM8Monster().getMonsterName();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomA5.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomD2.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomC2.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomC2.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomC2.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomD3.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.stairsB1FRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.stairsB1FRoom.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomE2.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomD2.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomD2.getExit();
+						   riddle = PuzzleController.getPuzzleR5().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR5().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomD2.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomE3.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomD3.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomD3.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomD3.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomC4.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomB4.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomB4.getExit();
+						   riddle= PuzzleController.getPuzzleR7().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR7().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomB4.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomD4.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomC4.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomC4.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomC4.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomD5.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomC5.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomC5.getExit();
+						   riddle = PuzzleController.getPuzzleR3().getRiddle();
+						   isPuzzle = true;
+						   isMonster = false;
+						   hint = PuzzleController.getPuzzleR3().getHint();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomC5.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomE4.getDescription())) {
 						   centerPane.getChildren().clear();
 						   leftPane.getChildren().clear();
 						   bottomPane.getChildren().clear();
 						   roomDesc = RoomController.roomD4.getDescription();
 						   allocateRoomNUmber();//allocate number as you print details;
 						   exits = RoomController.roomD4.getExit();
-						   riddle = PuzzleController.getPuzzleR6().getRiddle();
+						   riddle = PuzzleController.getPuzzleR8().getRiddle();
 						   isPuzzle = true;
-						   //isMonster = true;
-						   //isItem = true;
-						   hint = PuzzleController.getPuzzleR8().getHint();
-						   //item = ItemController.getItemW2().getItemName();
-						   // monster = MonsterController.getM8Monster().getMonsterName();
+						   isMonster = false;
+						   hint= PuzzleController.getPuzzleR8().getHint();
 						   setCenterPane();
 
 
 						   userResponse =  "Room ID: " + RoomController.roomD4.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomE1.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomD1.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomD1.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomD1.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.roomE5.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomD5.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomD5.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomD5.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.connectingChamberRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.entranceChamberRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.entranceChamberRoom.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.entranceChamberRoom.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.stairsB1FRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.roomB3.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.roomB3.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.roomB3.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+				   		break;
+				   case 8: //up
+					   if (roomDesc.equals(RoomController.spiralStaircaseRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.guardLockedDoorRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.guardLockedDoorRoom.getExit();
+						   //riddle = PuzzleController.getPuzzleR6().getRiddle();
+						   isMonster = true;
+						   monster = MonsterController.getM8Monster().getMonsterName();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.guardLockedDoorRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
