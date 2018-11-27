@@ -4,14 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.awt.print.Printable;
 import java.io.IOException;
-import java.util.concurrent.BlockingDeque;
-
-import javax.swing.ButtonModel;
-
-import com.sun.org.apache.xml.internal.security.utils.UnsyncBufferedOutputStream;
-import com.sun.tracing.dtrace.StabilityLevel;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sun.nio.cs.FastCharsetProvider;
+
 import view.NewGui;
 
 public class NewGuiController {
@@ -48,7 +41,7 @@ public class NewGuiController {
 	private HBox topPane, bottomPane, hbUserInput;
 	//other modes in the gui
 
-	private Label lbTop, lbRmDesc, lbUserResponse, lbHp, lbGem, lbWeapon, lbDirection, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem, lbRiddle, lbPuzzle, lbMonster, lbItem;
+	private Label lbTop, lbRmDesc, lbUserResponse, lbHp, lbGem, lbWeapon, lbInstruction, lbDirection, lbExit, lbIsPuzzle, lbIsMonster, LbIsItem, lbRiddle, lbPuzzle, lbMonster, lbItem;
 	private TextField txtUserInput;
 	private  Button btSubmitUserInput;
 	
@@ -57,12 +50,16 @@ public class NewGuiController {
 	private int hP;
 	private int gem;
 	private String weapon = " ";
-	private String exits,  userResponse,riddle, item, monster, userInput, riddleAnswer, hint;
+	private String exits,  userResponse,riddle, item, monster, userInput, riddleAnswer, hint, instruction;
 	private boolean isPuzzle, isMonster, isItem;
 
 	protected Node hbBottom;
 
 	private Label lbHint;
+
+	private Button btInstructions;
+
+	private Button btCloseInstruction;
 	
 	
 	public NewGuiController() {
@@ -82,13 +79,16 @@ public class NewGuiController {
 		leftPane.getStyleClass().add("vbox");//apply style from css to this vbox
 		centerPane = new VBox();
 		centerPane.getStyleClass().add("vbox");
+		centerPane.getStyleClass().add("gamePane");
 		rightPane = new VBox();
+		rightPane.getStyleClass().add("rightPane");
 		rightPane.getStyleClass().add("vbox");
 		topPane = new HBox();
+		topPane.getStyleClass().add("topPane");
 		topPane.getStyleClass().add("hbox");
 		hbUserInput = new HBox();
 		bottomPane = new HBox();
-		bottomPane.getStyleClass().add("hbox");
+		bottomPane.getStyleClass().addAll("hbox", "bottomPane");
 		// set the right node into the borderPane
 		borderPane.setTop(topPane);
 		borderPane.setRight(rightPane);
@@ -131,8 +131,52 @@ public class NewGuiController {
 		}
 	
 	public void setRightPane() {
+		instruction = 
+				"1.*ENTER YOUR INPUT CHOICE AND SUBMIT*\n"
+				+ "2.Type only one charater for NAVIGATION\n"
+				+ "N = North, E = East, S = South , W = West\n"
+				+ "U = Up, D = Down, P = Puzzle, H = Hint\n"
+				+ "I = Item, M = Monster\n"
+				+ "3.Multiple characters are allowed when\n"
+				+ "dealing with PUZZLE, MONSTER, or ITEMS\n"
+				;
+		
+		
+
+		lbInstruction = new Label("GAME INSTRUCTIONS: \n" + instruction);
+		lbDirection.setWrapText(true);
+		lbInstruction.setMaxWidth(420);
+		
+		lbInstruction.setPadding(new Insets(5));
+		rightPane.getChildren().add(lbInstruction);
 		
 	}
+	
+	public void showOrCloseInstructions() {
+		rightPane.getChildren().clear(); // CLEAR THE INSTRUCTION INITIALLY BUT OPENIT IF USER WANTS TO.
+
+		btInstructions.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				rightPane.getChildren().clear(); // CLEAR THE INSTRUCTION INITIALLY BUT OPENIT IF USER WANTS TO.
+
+				setRightPane();
+				
+			}
+		});
+		
+		btCloseInstruction.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				rightPane.getChildren().clear();
+				
+			}
+		});
+	}
+	
+    
 	public void setCenterPane() {
 		setUserInputPane();
 		lbRmDesc = new Label("ROOM DESCRIPTION \n" + roomDesc);
@@ -208,8 +252,8 @@ public class NewGuiController {
 		VBox.setMargin(btPause, new Insets(0, 0, 10, 0));
 		VBox.setMargin(btResume, new Insets(0, 0, 10, 0));
 		
-		Button btInstructions = new Button("Instructions");
-		Button btCloseInstruction = new Button("X");
+		btInstructions = new Button("Instructions");
+		btCloseInstruction = new Button("X");
 		btInstructions.getStyleClass().add("buttonB");
 		btCloseInstruction.getStyleClass().add("buttonB");
 		
@@ -228,7 +272,7 @@ public class NewGuiController {
 		bottomPane.setMinHeight(165);
 		HBox.setMargin(lbUserResponse, new Insets(0, 10, 0, 0));
 		HBox.setMargin(hbBottom, new Insets(0, 0, 0, 10));
-
+		showOrCloseInstructions(); //CHECK TO SEE IF THEY WANT TO VIEW INSTRUCTIONS OR NOT;
 	}
 	
 	public void setUserInputPane() {
@@ -1923,4 +1967,8 @@ public class NewGuiController {
 	  			
 	  		}
       }
+      
+     
+      
+      
 }
