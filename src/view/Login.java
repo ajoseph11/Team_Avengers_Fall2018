@@ -28,7 +28,8 @@ public class Login extends Application {
     String user = "COS";
     String pw = "password";
     String checkUser, checkPw;
-
+	private static Stage stage;
+	private static Scene scene;
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,6 +37,8 @@ public class Login extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+		stage = primaryStage; //link our primaryStage variable to the GUI's primary stage so we can be able to acces it in the contoroller. 
+
         primaryStage.setTitle("CITADEL OF STORMS");
 
         BorderPane bp = new BorderPane();
@@ -127,4 +130,22 @@ public class Login extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public static void setStage(Stage stage) {
+		Login.stage = stage;
+	}
+
+	public static Scene getScene() {
+		return scene;
+	}
+
+	public static void setScene(Scene scene) {
+		Login.scene = scene;
+	}
+    
+	
 }

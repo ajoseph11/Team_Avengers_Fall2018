@@ -31,10 +31,6 @@ public class CitadelController extends RoomController{
 		RoomController.entranceChamberRoom.setExit(entranceChamberRoom.getExit());
 		
 		//connectingChamberRoom.setPuzzle(PuzzleController.r8Map.get("Answer"));
-
-
-
-
 		}
 	}
 	
