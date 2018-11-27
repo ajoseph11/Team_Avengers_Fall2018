@@ -1885,9 +1885,76 @@ public class NewGuiController {
 						   setLeftPane();
 						   getUserInputFromTextField();
 					   }
+					   else if (roomDesc.equals(RoomController.guardLockedDoorRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.sorcererBossFightRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.sorcererBossFightRoom.getExit();
+						   isPuzzle = false;
+						   isMonster = true;
+						   monster = MonsterController.getM2Monster().getMonsterName();
+						   setCenterPane();
 
+
+						   userResponse =  "Room ID: " + RoomController.sorcererBossFightRoom.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.necromancerRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.stairsB1FRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.stairsB1FRoom.getExit();
+						   isPuzzle = false;
+						   isMonster = false;
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
 					   break;
-				   case 9: //down
+				   case 9://down
+					   if (roomDesc.equals(RoomController.spiralStaircaseRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.stairsB1FRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.stairsB1FRoom.getExit();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
+					   else if (roomDesc.equals(RoomController.sorcererBossFightRoom.getDescription())) {
+						   centerPane.getChildren().clear();
+						   leftPane.getChildren().clear();
+						   bottomPane.getChildren().clear();
+						   roomDesc = RoomController.guardLockedDoorRoom.getDescription();
+						   allocateRoomNUmber();//allocate number as you print details;
+						   exits = RoomController.guardLockedDoorRoom.getExit();
+						   isPuzzle = false;
+						   isMonster = true;
+						   monster = MonsterController.getM8Monster().getMonsterName();
+						   setCenterPane();
+
+
+						   userResponse =  "Room ID: " + RoomController.guardLockedDoorRoom.getId();
+						   setBottomPane();
+						   setLeftPane();
+						   getUserInputFromTextField();
+					   }
 					   break;
 				
 			default:
