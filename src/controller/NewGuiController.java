@@ -493,9 +493,8 @@ public class NewGuiController {
 						exits = RoomController.roomA1.getExit();
 						isPuzzle = false;
 						isMonster = true;
-						//isItem = true;
-						//hint = PuzzleController.getPuzzleR8().getHint();
-						item = ItemController.getItemW2().getItemName();
+						isItem = true;
+						item = ItemController.getItemk11().getItemName();
 						monster = MonsterController.getM8Monster().getMonsterName();
 						setCenterPane();
 
@@ -1024,10 +1023,9 @@ public class NewGuiController {
 					roomDesc = RoomController.roomE1.getDescription();
 					allocateRoomNUmber();//allocate number as you print details;
 					exits = RoomController.roomE1.getExit();
-					//riddle = PuzzleController.getPuzzleR6().getRiddle();
-					//isPuzzle = true;
 					isMonster= true;
-					//hint = PuzzleController.getPuzzleR6().getHint();
+					isItem = true;
+					item = ItemController.getItemk11().getItemName();
 					monster = MonsterController.getM8Monster().getMonsterName();
 					setCenterPane();
 
@@ -1132,8 +1130,9 @@ public class NewGuiController {
 					roomDesc = RoomController.roomE5.getDescription();
 					allocateRoomNUmber();//allocate number as you print details;
 					exits = RoomController.roomE5.getExit();
-					//riddle = PuzzleController.getPuzzleR6().getRiddle();
 					isMonster = true;
+					isItem = true;
+					item = ItemController.getItemk11().getItemName();
 					monster = MonsterController.getM8Monster().getMonsterName();
 					hint = PuzzleController.getPuzzleR6().getHint();
 					setCenterPane();
@@ -1151,9 +1150,9 @@ public class NewGuiController {
 					roomDesc = RoomController.roomE5.getDescription();
 					allocateRoomNUmber();//allocate number as you print details;
 					exits = RoomController.roomE5.getExit();
-					//riddle = PuzzleController.getPuzzleR6().getRiddle();
-					//isPuzzle = true;
 					isMonster = true;
+					isItem = true;
+					item = ItemController.getItemk11().getItemName();
 					monster = MonsterController.getM8Monster().getMonsterName();
 					setCenterPane();
 
@@ -1170,9 +1169,9 @@ public class NewGuiController {
 					roomDesc = RoomController.roomE5.getDescription();
 					allocateRoomNUmber();//allocate number as you print details;
 					exits = RoomController.roomE5.getExit();
-					//riddle = PuzzleController.getPuzzleR6().getRiddle();
-					//isPuzzle = true;
 					isMonster = true;
+					isItem = true;
+					item = ItemController.getItemk11().getItemName();
 					monster = MonsterController.getM8Monster().getMonsterName();
 					setCenterPane();
 
@@ -1322,8 +1321,9 @@ public class NewGuiController {
 						   roomDesc = RoomController.roomA5.getDescription();
 						   allocateRoomNUmber();//allocate number as you print details;
 						   exits = RoomController.roomA5.getExit();
-						   //isPuzzle = false;
 						   isMonster = true;
+						   isItem = true;
+						   item = ItemController.getItemk11().getItemName();
 						   monster = MonsterController.getM8Monster().getMonsterName();
 						   setCenterPane();
 
@@ -1536,6 +1536,8 @@ public class NewGuiController {
 						   allocateRoomNUmber();//allocate number as you print details;
 						   exits = RoomController.roomA1.getExit();
 						   isMonster = true;
+						   isItem = true;
+						   item = ItemController.getItemk11().getItemName();
 						   monster = MonsterController.getM8Monster().getMonsterName();
 						   setCenterPane();
 
@@ -1644,6 +1646,8 @@ public class NewGuiController {
 						   exits = RoomController.roomA5.getExit();
 						   isPuzzle = false;
 						   isMonster = true;
+						   isItem = true;
+						   item = ItemController.getItemk11().getItemName();
 						   monster = MonsterController.getM8Monster().getMonsterName();
 						   setCenterPane();
 
