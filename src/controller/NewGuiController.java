@@ -2,15 +2,18 @@ package controller;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
-
+import org.omg.PortableServer.POAPackage.WrongAdapter;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,9 +22,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
 
 import view.NewGui;
@@ -32,11 +39,12 @@ public class NewGuiController {
 	
 	//Selections for users to interact with the game
 	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H"};
-	int iUserOption = 0;// 1, 2, 3, 4, 5, 6, 7, 8, 9, 10; for each of  the above values we are adding 1 to their index
+	int iUserOption = -1;// 1, 2, 3, 4, 5, 6, 7, 8, 9, 10; for each of  the above values we are adding 1 to their index
+
 	
    private int currentRoom;
    private Stage stage; //create a stage that references the gui stage when the game is run
-   private Scene scene; //create a scene that references the GUI scene whenever the game is run.
+   private Scene gameScene; //create a scene that references the GUI scene whenever the game is run.
 	
 	
 	//set all variables for the instance of GUi inside the controller
@@ -57,7 +65,7 @@ public class NewGuiController {
 	private int hP;
 	private int gem;
 	private String weapon = " ";
-	private String exits,  userResponse,riddle, item, monster, userInput, riddleAnswer, hint, instruction;
+	private String exits,  passwordError, userNameError,  userName, password, userResponse,riddle, item, monster, userInput, riddleAnswer, hint, instruction;
 	private boolean isPuzzle, isMonster, isItem;
 
 	protected Node hbBottom;
@@ -71,13 +79,31 @@ public class NewGuiController {
 	private Button btMap;
 
 	private Button btCloseMap;
+
+	private Button btnLogin;
+
+	private Button btnNewUser;
+
+	private TextField tfUserName;
+
+	private PasswordField tfPassword;
+
+	private Label lblMessages;
+
+	private GridPane gridPane;
+
+	private Label lblPassword;
+
+	private Label lblMessage;
+
+	private Label lblUserName;
 	
 	
 	public NewGuiController() {
 		citadelController = new CitadelController(); //master controller for the game
 		
 		stage = NewGui.getStage(); //static getter reference to the GUI
-		scene = NewGui.getScene(); //static getter reference to the GUI
+		gameScene = NewGui.getScene(); //static getter reference to the GUI
 		
 		userResponse = ""; //empty message at the beginning of game
 		
@@ -128,6 +154,8 @@ public class NewGuiController {
 	}
 	
 	public void setSceneAndStageForGUI() {
+	
+		
 		setRoomDetails();
 		setLeftPane();
 		setTopPane();
@@ -135,12 +163,68 @@ public class NewGuiController {
 		setRightPane();
 		setBottomPane();
 		
-		scene = new Scene(borderPane, guiWidth, guiHeight);
-		scene.getStylesheets().addAll("css/gameControllerStyle.css", "css/loginStyle.css");
+		
+		gameScene = new Scene(borderPane, guiWidth, guiHeight);
+		gameScene.getStylesheets().addAll("css/gameControllerStyle.css", "css/loginStyle.css");
 		stage.setTitle("Citadel--Of--Storms");
-		stage.setScene(scene);
 		stage.setResizable(false);
+		if (iUserOption == -1 ) { //initial value is -1 so run login scene first and so  somrthing when button is clicked
+			stage.setScene(getLoginScene()); // return login scene and change state to show new scene after clickinglogin
+			btnLogin.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					userName = tfUserName.getText();
+					password = tfPassword.getText();
+					//check for username and password match
+					if (userName.equals("player") && password.equals("game")) {
+					iUserOption = 0; // get room 1 details ready
+					setRoomDetails();
+					leftPane.getChildren().clear();
+					rightPane.getChildren().clear();
+					centerPane.getChildren().clear();
+					bottomPane.getChildren().clear();topPane.getChildren().clear();
+					setLeftPane();
+					setTopPane();
+					setCenterPane();
+					setRightPane();
+					setBottomPane();
+					stage.setScene(gameScene); // set game scene starting with room 1 details
+					getUserInputFromTextField();
+					}
+	else {
+					
+		if (isWrongPassword() || isWrongUserName()) {
+			passwordError = "";
+			userNameError  = "Wrong details";
+			tfUserName.setText(userNameError);
+			tfPassword.setText(passwordError);
+            getUserInputFromTextField();
 		}
+		
+		
+	                 //   setSceneAndStageForGUI();
+					}
+				
+					
+					
+					
+				}
+			});
+			
+			btnNewUser.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
+	
+	
+		
+	}
 	
 	public void setRightPane() {
 		Label lbMap = new Label(" CLICK BELOW TO VIEW GAME");
@@ -2024,9 +2108,7 @@ public class NewGuiController {
     	
     	
     	
-
-    
-    	  
+   	  
     	public void allocateRoomNUmber() {
     		if (roomDesc.equals(RoomController.entranceChamberRoom.getDescription())) {
     			currentRoom = 1;
@@ -2040,6 +2122,8 @@ public class NewGuiController {
     		System.out.println("Current Room: "+currentRoom);
     	}
       
+    
+ 
 	
       public void clearTextField() {
       } 
@@ -2088,9 +2172,94 @@ public class NewGuiController {
 	  			setLeftPane();
 	  			
 	  		}
+    	  
+    	 
       }
       
+     public Scene getLoginScene() { //Login scene that gets called when game begins . Upon validation of data , the main game page gets displayed
+    	  BorderPane bp = new BorderPane();
+          bp.setPadding(new Insets(10,50,50,50));
+         //Adding HBox
+         HBox hb = new HBox();
+         hb.setPadding(new Insets(20,20,20,30));
+
+         gridPane = new GridPane();
+         gridPane.setPadding(new Insets(20,20,20,20));
+         gridPane.setHgap(5);
+         gridPane.setVgap(5);
+
+         lblUserName = new Label("Username");
+         tfUserName = new TextField();
+         lblPassword = new Label("Password");
+         tfPassword = new PasswordField();
+         btnLogin = new Button("Login");
+         lblMessage = new Label();
+         btnNewUser = new Button("New User");
+         lblMessages = new Label();
+         
+         
+
+
+
+         //Adding Nodes to GridPane layout
+         gridPane.add(lblUserName, 0, 0);
+         gridPane.add(tfUserName, 1, 0);
+         gridPane.add(lblPassword, 0, 1);
+         gridPane.add(tfPassword, 1, 1);
+         gridPane.add(btnLogin, 2, 1);
+         gridPane.add(lblMessage, 1, 2);
+         gridPane.add(btnNewUser, 2, 2);
+         gridPane.add(lblMessages, 3, 1);
+
+         //Reflection for gridPane
+         Reflection r = new Reflection();
+         r.setFraction(0.7f);
+         gridPane.setEffect(r);
+
+         //DropShadow effect
+         DropShadow dropShadow = new DropShadow();
+         dropShadow.setOffsetX(5);
+         dropShadow.setOffsetY(5);
+
+         //Adding text and DropShadow effect to it
+         Text text = new Text("CITADEL OF STORMS");
+         text.setFont(Font.font ("Jokerman", 25));
+         text.setEffect(dropShadow);
+
+         //Adding text to HBox
+         hb.getChildren().add(text);
+
+         //Add ID's to Nodes
+         bp.setId("bp");
+         gridPane.setId("root");
+         btnLogin.setId("btnLogin");
+         text.setId("text");
      
+         
+         
+         //Add HBox and GridPane layout to BorderPane Layout
+         bp.setTop(hb);
+         bp.setCenter(gridPane);
+
+         //Adding BorderPane to the scene and loading CSS
+          Scene loginScene = new Scene(bp);
+        
+         loginScene.getStylesheets().add(getClass().getClassLoader().getResource("css/loginStyle.css").toExternalForm());
+         return loginScene;
+         // stage.setScene(loginScene);
+         //loginStage.setScene(loginScene);
+        // loginStage.setResizable(false);
+        // loginStage.show();
+         
+     }
+     
+    
       
+    public boolean isWrongPassword() {
+    	return password != "game";
+    }
+    public boolean isWrongUserName() {
+    	return userName != "player";
+    }
       
 }
