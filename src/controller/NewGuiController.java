@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.omg.PortableServer.POAPackage.WrongAdapter;
 
@@ -38,8 +39,9 @@ public class NewGuiController {
 	CitadelController citadelController; //Master controller for the game
 	
 	//Selections for users to interact with the game
-	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H"};
-	int iUserOption = -1;// 1, 2, 3, 4, 5, 6, 7, 8, 9, 10; for each of  the above values we are adding 1 to their index
+	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H", "PK", "F"};
+	int iUserOption = -1;// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11; for each of  the above values we are adding 1 to their index
+	private ArrayList< String> inventory;
 
 	
    private int currentRoom;
@@ -97,6 +99,8 @@ public class NewGuiController {
 	private Label lblMessage;
 
 	private Label lblUserName;
+
+	private Label lbInventory;
 	
 	
 	public NewGuiController() {
@@ -234,7 +238,7 @@ public class NewGuiController {
 				+ "2.Type only one charater for NAVIGATION\n"
 				+ "N = North, E = East, S = South , W = West\n"
 				+ "U = Up, D = Down, P = Puzzle, H = Hint\n"
-				+ "I = Item, M = Monster\n"
+				+ "I = Item, M = Monster\n, PK = Pick Item"
 				+ "3.Multiple characters are allowed when\n"
 				+ "dealing with PUZZLE, MONSTER, or ITEMS\n"
 				
@@ -354,14 +358,19 @@ public class NewGuiController {
 		hP = 20;
 		gem = 50;
 		weapon  = "";
+		//inventory.add("");
 		lbHp = new Label("HP: " + hP);
 		lbGem = new Label("GEM:" + gem);
 		lbWeapon = new Label("WEAPON:"  + weapon);
-		leftPane.getChildren().addAll(lbHp, lbGem, lbWeapon);
+		lbInventory = new Label("INVENTORY:"  );
+				
+
+		leftPane.getChildren().addAll(lbHp, lbGem, lbWeapon, lbInventory);
 		leftPane.setAlignment(Pos.BASELINE_LEFT);
 		VBox.setMargin(lbHp, new Insets(5));
 		VBox.setMargin(lbGem, new Insets(5));
 		VBox.setMargin(lbWeapon, new Insets(5));
+		VBox.setMargin(lbInventory, new Insets(5));
 		
 		
 }
@@ -501,7 +510,14 @@ public class NewGuiController {
 
 				iUserOption = 10;
 			}
-		
+			if (userInput.equals("PK")) {
+
+				iUserOption = 11;
+			}
+			if (userInput.equals("FI")) {
+
+				iUserOption = 12;
+			}
 		
 		
 		
@@ -1161,6 +1177,9 @@ public class NewGuiController {
 					isMonster= true;
 					isItem = true;
 					item = ItemController.getItemk11().getItemName();
+					if (!inventory.contains(item)) {
+						inventory.add(item);
+					}
 					monster = MonsterController.getM8Monster().getMonsterName();
 					setCenterPane();
 
@@ -1268,6 +1287,7 @@ public class NewGuiController {
 					isMonster = true;
 					isItem = true;
 					item = ItemController.getItemk11().getItemName();
+					inventory.add(item);
 					monster = MonsterController.getM8Monster().getMonsterName();
 					hint = PuzzleController.getPuzzleR6().getHint();
 					setCenterPane();
@@ -1288,8 +1308,10 @@ public class NewGuiController {
 					isMonster = true;
 					isItem = true;
 					item = ItemController.getItemk11().getItemName();
+					weapon = item;
 					monster = MonsterController.getM8Monster().getMonsterName();
 					setCenterPane();
+					setLeftPane();
 
 
 					userResponse =  "Room Name: " + RoomController.roomE5.getId();
@@ -1307,6 +1329,7 @@ public class NewGuiController {
 					isMonster = true;
 					isItem = true;
 					item = ItemController.getItemk11().getItemName();
+					inventory.add(item);
 					monster = MonsterController.getM8Monster().getMonsterName();
 					setCenterPane();
 
@@ -1459,6 +1482,7 @@ public class NewGuiController {
 						   isMonster = true;
 						   isItem = true;
 						   item = ItemController.getItemk11().getItemName();
+						   inventory.add(item);
 						   monster = MonsterController.getM8Monster().getMonsterName();
 						   setCenterPane();
 
@@ -1783,6 +1807,7 @@ public class NewGuiController {
 						   isMonster = true;
 						   isItem = true;
 						   item = ItemController.getItemk11().getItemName();
+						   inventory.add(item);
 						   monster = MonsterController.getM8Monster().getMonsterName();
 						   setCenterPane();
 
@@ -1974,12 +1999,15 @@ public class NewGuiController {
 						   centerPane.getChildren().clear();
 						   leftPane.getChildren().clear();
 						   bottomPane.getChildren().clear();
+						 //  rightPane.getChildren().clear();
+						  
 						   roomDesc = RoomController.entranceChamberRoom.getDescription();
 						   allocateRoomNUmber();//allocate number as you print details;
 						   exits = RoomController.entranceChamberRoom.getExit();
 						   isPuzzle = false;
 						   isMonster = false;
 						   setCenterPane();
+						   setLeftPane();
 
 
 						   userResponse =  "Room Name: " + RoomController.entranceChamberRoom.getId();
