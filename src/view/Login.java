@@ -1,6 +1,7 @@
 package view;
 
 import controller.CitadelController;
+import controller.NewGuiController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -105,9 +106,20 @@ public class Login extends Application {
             public void handle(ActionEvent event) {
                 checkUser = txtUserName.getText().toString();
                 checkPw = pf.getText().toString();
+                //lblMessage.setText("You are now logged in");
+                //lblMessage.setTextFill(Color.GREEN);
                 if(checkUser.equals(user) && checkPw.equals(pw)){
-                    lblMessage.setText("You are now logged in");
-                    lblMessage.setTextFill(Color.GREEN);
+                   //NewGui.launch();
+                   // NewGui.getStage().show();
+                  // Stage newGui = view.NewGui.getStage();
+                   //Scene scene = NewGui.getScene();
+                    //newGui.setScene( scene);
+                    //newGui.show();
+                    //Stage seconStage = NewGui.getStage();
+                    Stage secondStage = new Stage();
+                    secondStage.setScene(new Scene(new HBox(4, new Label("Second window"))));
+                    secondStage.show();
+
                 }
                 else{
                     lblMessage.setText("Wrong username or password.");

@@ -13,13 +13,12 @@ import javafx.stage.Stage;
 
 
 public class NewGui extends Application {
-
+// try extending to stage
 	//static members
 	private static Stage stage;
 	private static Scene scene;
-	
-	
-	
+
+
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
