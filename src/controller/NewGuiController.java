@@ -2,9 +2,15 @@ package controller;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+
+
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import view.NewGui;
@@ -60,6 +67,10 @@ public class NewGuiController {
 	private Button btInstructions;
 
 	private Button btCloseInstruction;
+
+	private Button btMap;
+
+	private Button btCloseMap;
 	
 	
 	public NewGuiController() {
@@ -76,6 +87,7 @@ public class NewGuiController {
 		
 		borderPane = new BorderPane();
 		leftPane = new VBox();
+	
 		leftPane.getStyleClass().add("vbox");//apply style from css to this vbox
 		centerPane = new VBox();
 		centerPane.getStyleClass().add("vbox");
@@ -124,13 +136,15 @@ public class NewGuiController {
 		setBottomPane();
 		
 		scene = new Scene(borderPane, guiWidth, guiHeight);
-		scene.getStylesheets().add("gameControllerStyle.css");
+		scene.getStylesheets().addAll("css/gameControllerStyle.css", "css/loginStyle.css");
 		stage.setTitle("Citadel--Of--Storms");
 		stage.setScene(scene);
 		stage.setResizable(false);
 		}
 	
 	public void setRightPane() {
+		Label lbMap = new Label(" CLICK BELOW TO VIEW GAME");
+		
 		instruction = 
 				"1.*ENTER YOUR INPUT CHOICE AND SUBMIT*\n"
 				+ "2.Type only one charater for NAVIGATION\n"
@@ -139,17 +153,54 @@ public class NewGuiController {
 				+ "I = Item, M = Monster\n"
 				+ "3.Multiple characters are allowed when\n"
 				+ "dealing with PUZZLE, MONSTER, or ITEMS\n"
+				
 				;
 		
 		
-
+		HBox hbMapPane = new HBox();
+		btMap = new Button("View-Map");
+		btCloseMap = new Button("X");
+		hbMapPane.getChildren().addAll(btMap, btCloseMap);
 		lbInstruction = new Label("GAME INSTRUCTIONS: \n" + instruction);
 		lbDirection.setWrapText(true);
-		lbInstruction.setMaxWidth(420);
+		lbInstruction.setMaxWidth(600);
 		
 		lbInstruction.setPadding(new Insets(5));
-		rightPane.getChildren().add(lbInstruction);
+		rightPane.getChildren().addAll(lbMap, hbMapPane, lbInstruction);
+		showAndHideMap(); //collapse right pane and show map instead
 		
+	}
+	
+	public void showAndHideMap() {
+		btMap.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				leftPane.getChildren().clear();
+				
+				Image mapImage = new Image(getClass().getResourceAsStream("../image/map.jpeg")); //  get map image and display accordingly
+				ScrollPane spMapPane = new ScrollPane();
+				spMapPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+				spMapPane.setMinWidth(500);
+				spMapPane.setContent(new ImageView(mapImage));
+				
+				leftPane.getChildren().clear();
+				leftPane.getChildren().add(spMapPane);
+				
+			}
+		});
+		
+		btCloseMap.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				leftPane.getChildren().clear();
+				//leftPane.getChildren().addAll(lbHp, lbGem, lbWeapon);
+				
+				setLeftPane();
+				
+			}
+		});
 	}
 	
 	public void showOrCloseInstructions() {
@@ -478,7 +529,7 @@ public class NewGuiController {
 	  			setCenterPane();
 	  			
 	  			
-				userResponse =  "Room ID: " + RoomController.entranceChamberRoom.getId();
+				userResponse =  "Room Name: " + RoomController.entranceChamberRoom.getId();
 				setBottomPane();
 				setLeftPane();
 				getUserInputFromTextField();
@@ -499,7 +550,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomA1.getId();
+						userResponse =  "Room Name: " + RoomController.roomA1.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -518,7 +569,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomB1.getId();
+						userResponse =  "Room Name: " + RoomController.roomB1.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -536,7 +587,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomC1.getId();
+						userResponse =  "Room Name: " + RoomController.roomC1.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -555,7 +606,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomA3.getId();
+						userResponse =  "Room Name: " + RoomController.roomA3.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -575,7 +626,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomB2.getId();
+						userResponse =  "Room Name: " + RoomController.roomB2.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -593,7 +644,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomB3.getId();
+						userResponse =  "Room Name: " + RoomController.roomB3.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -612,7 +663,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomB4.getId();
+						userResponse =  "Room Name: " + RoomController.roomB4.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -627,7 +678,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomD1.getId();
+						userResponse =  "Room Name: " + RoomController.roomD1.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -646,7 +697,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomD2.getId();
+						userResponse =  "Room Name: " + RoomController.roomD2.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -667,7 +718,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomE1.getId();
+						userResponse =  "Room Name: " + RoomController.roomE1.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -685,7 +736,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomE2.getId();
+						userResponse =  "Room Name: " + RoomController.roomE2.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -703,7 +754,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						userResponse =  "Room Name: " + RoomController.stairsB1FRoom.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -718,7 +769,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomC4.getId();
+						userResponse =  "Room Name: " + RoomController.roomC4.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -736,7 +787,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomD3.getId();
+						userResponse =  "Room Name: " + RoomController.roomD3.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -754,7 +805,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomD4.getId();
+						userResponse =  "Room Name: " + RoomController.roomD4.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -772,7 +823,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomA4.getId();
+						userResponse =  "Room Name: " + RoomController.roomA4.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -790,7 +841,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomE4.getId();
+						userResponse =  "Room Name: " + RoomController.roomE4.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -808,7 +859,7 @@ public class NewGuiController {
 						setCenterPane();
 
 
-						userResponse =  "Room ID: " + RoomController.roomC2.getId();
+						userResponse =  "Room Name: " + RoomController.roomC2.getId();
 						setBottomPane();
 						setLeftPane();
 						getUserInputFromTextField();
@@ -832,7 +883,7 @@ public class NewGuiController {
 		  			setCenterPane();
 		  			
 		  			
-					userResponse =  "Room ID: " + RoomController.connectingChamberRoom.getId();
+					userResponse =  "Room Name: " + RoomController.connectingChamberRoom.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -851,7 +902,7 @@ public class NewGuiController {
 		  			setCenterPane();
 		  			
 		  			
-					userResponse =  "Room ID: " + RoomController.spiralStaircaseRoom.getId();
+					userResponse =  "Room Name: " + RoomController.spiralStaircaseRoom.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -867,7 +918,7 @@ public class NewGuiController {
 		  			setCenterPane();
 		  			
 		  			
-					userResponse =  "Room ID: " + RoomController.roomD3.getId();
+					userResponse =  "Room Name: " + RoomController.roomD3.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -885,7 +936,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomB2.getId();
+					userResponse =  "Room Name: " + RoomController.roomB2.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -903,7 +954,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomC1.getId();
+					userResponse =  "Room Name: " + RoomController.roomC1.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -921,7 +972,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomC2.getId();
+					userResponse =  "Room Name: " + RoomController.roomC2.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -939,7 +990,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomD2.getId();
+					userResponse =  "Room Name: " + RoomController.roomD2.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -957,7 +1008,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomB3.getId();
+					userResponse =  "Room Name: " + RoomController.roomB3.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -975,7 +1026,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomB4.getId();
+					userResponse =  "Room Name: " + RoomController.roomB4.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -993,7 +1044,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+					userResponse =  "Room Name: " + RoomController.stairsB1FRoom.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1011,7 +1062,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomC4.getId();
+					userResponse =  "Room Name: " + RoomController.roomC4.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1030,7 +1081,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomE1.getId();
+					userResponse =  "Room Name: " + RoomController.roomE1.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1046,7 +1097,7 @@ public class NewGuiController {
 					//isPuzzle = true;
 					///hint = PuzzleController.getPuzzleR6().getHint();
 					setCenterPane();
-					userResponse =  "Room ID: " + RoomController.roomE2.getId();
+					userResponse =  "Room Name: " + RoomController.roomE2.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1064,7 +1115,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomE3.getId();
+					userResponse =  "Room Name: " + RoomController.roomE3.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1082,7 +1133,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomD4.getId();
+					userResponse =  "Room Name: " + RoomController.roomD4.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1100,7 +1151,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomD5.getId();
+					userResponse =  "Room Name: " + RoomController.roomD5.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1118,7 +1169,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomE4.getId();
+					userResponse =  "Room Name: " + RoomController.roomE4.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1138,7 +1189,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomE5.getId();
+					userResponse =  "Room Name: " + RoomController.roomE5.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1157,7 +1208,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomE5.getId();
+					userResponse =  "Room Name: " + RoomController.roomE5.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1176,7 +1227,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomE5.getId();
+					userResponse =  "Room Name: " + RoomController.roomE5.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1195,7 +1246,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomB1.getId();
+					userResponse =  "Room Name: " + RoomController.roomB1.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1214,7 +1265,7 @@ public class NewGuiController {
 					setCenterPane();
 
 
-					userResponse =  "Room ID: " + RoomController.roomB5.getId();
+					userResponse =  "Room Name: " + RoomController.roomB5.getId();
 					setBottomPane();
 					setLeftPane();
 					getUserInputFromTextField();
@@ -1239,7 +1290,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1258,7 +1309,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB3.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB3.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1275,7 +1326,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomC2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomC2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1292,7 +1343,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.stairsB1FRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1309,7 +1360,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1328,7 +1379,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1347,7 +1398,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1364,7 +1415,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1383,7 +1434,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1400,7 +1451,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD3.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD3.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1419,7 +1470,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1438,7 +1489,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomE3.getId();
+						   userResponse =  "Room Name: " + RoomController.roomE3.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1457,7 +1508,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomC5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomC5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1476,7 +1527,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1491,7 +1542,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1506,7 +1557,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomE2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomE2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1521,7 +1572,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomC4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomC4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1542,7 +1593,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA1.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA1.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1560,7 +1611,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1577,7 +1628,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB1.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB1.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1596,7 +1647,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1615,7 +1666,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA3.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA3.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1632,7 +1683,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1652,7 +1703,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomA5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomA5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1669,7 +1720,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomC2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomC2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1686,7 +1737,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.stairsB1FRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1705,7 +1756,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD2.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD2.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1722,7 +1773,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD3.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD3.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1741,7 +1792,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1758,7 +1809,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomC4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomC4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1777,7 +1828,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomC5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomC5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1796,7 +1847,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD4.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD4.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1813,7 +1864,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD1.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD1.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1830,7 +1881,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomD5.getId();
+						   userResponse =  "Room Name: " + RoomController.roomD5.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1847,7 +1898,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.entranceChamberRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.entranceChamberRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1864,7 +1915,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.roomB3.getId();
+						   userResponse =  "Room Name: " + RoomController.roomB3.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1884,7 +1935,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.guardLockedDoorRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.guardLockedDoorRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1902,7 +1953,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.sorcererBossFightRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.sorcererBossFightRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1919,7 +1970,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.stairsB1FRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1936,7 +1987,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.stairsB1FRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.stairsB1FRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();
@@ -1954,7 +2005,7 @@ public class NewGuiController {
 						   setCenterPane();
 
 
-						   userResponse =  "Room ID: " + RoomController.guardLockedDoorRoom.getId();
+						   userResponse =  "Room Name: " + RoomController.guardLockedDoorRoom.getId();
 						   setBottomPane();
 						   setLeftPane();
 						   getUserInputFromTextField();

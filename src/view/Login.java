@@ -125,7 +125,7 @@ public class Login extends Application {
 
         //Adding BorderPane to the scene and loading CSS
         Scene scene = new Scene(bp);
-        scene.getStylesheets().add(getClass().getClassLoader().getResource("login.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("css/loginStyle.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
