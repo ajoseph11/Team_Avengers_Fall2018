@@ -2242,7 +2242,7 @@ public class NewGuiController {
          bp.setCenter(gridPane);
 
          //Adding BorderPane to the scene and loading CSS
-          Scene loginScene = new Scene(bp);
+          Scene loginScene = new Scene(bp, 400, 300);
         
          loginScene.getStylesheets().add(getClass().getClassLoader().getResource("css/loginStyle.css").toExternalForm());
          return loginScene;
