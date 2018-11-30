@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 import org.omg.PortableServer.POAPackage.WrongAdapter;
 
+import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -31,7 +33,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import javafx.stage.Stage;
-
 import view.NewGui;
 
 public class NewGuiController {
@@ -39,8 +40,8 @@ public class NewGuiController {
 	CitadelController citadelController; //Master controller for the game
 	
 	//Selections for users to interact with the game
-	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H", "PK", "F"};
-	int iUserOption = -1;// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11; for each of  the above values we are adding 1 to their index
+	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H", "PK", "F", "SV"};
+	int iUserOption = -1;// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 12; for each of  the above values we are adding 1 to their index
 	private ArrayList< String> inventory;
 
 	
@@ -164,6 +165,7 @@ public class NewGuiController {
 		setLeftPane();
 		setTopPane();
 		setCenterPane();
+	
 		setRightPane();
 		setBottomPane();
 		
@@ -238,7 +240,7 @@ public class NewGuiController {
 				+ "2.Type only one charater for NAVIGATION\n"
 				+ "N = North, E = East, S = South , W = West\n"
 				+ "U = Up, D = Down, P = Puzzle, H = Hint\n"
-				+ "I = Item, M = Monster\n, PK = Pick Item"
+				+ "I = Item, L = Monster\n, PK = Pick Item"
 				+ "3.Multiple characters are allowed when\n"
 				+ "dealing with PUZZLE, MONSTER, or ITEMS\n"
 				
@@ -518,6 +520,9 @@ public class NewGuiController {
 
 				iUserOption = 12;
 			}
+			if (userInput.equals("SV")) {
+				iUserOption = 13;
+			}
 		
 		
 		
@@ -572,6 +577,7 @@ public class NewGuiController {
     		}
       
       public void showItemPuzzleMonster() {
+    		
     		if (iUserOption == 5 && isItem != false) { //add Item if I is entered
 				addItemDetails();
 				leftPane.getChildren().clear();
@@ -584,6 +590,7 @@ public class NewGuiController {
     		}
 			if (iUserOption == 6 && isPuzzle != false) { //add puzzle if P is entered
 				addPuzzleDetails();
+				checkPuzzleAnswers();
 			}
 			if (iUserOption == 6 && isPuzzle == false)  {
 				bottomPane.getChildren().clear();
@@ -601,6 +608,7 @@ public class NewGuiController {
 	        }
 	        if (iUserOption == 10 && isPuzzle != false)  {
 	        	addPuzzleHint();
+	        	checkPuzzleAnswers();
 	        }
       }
       
@@ -1005,9 +1013,17 @@ public class NewGuiController {
 		  			isPuzzle = true;
 		  			isMonster = true;
 		  			hint = PuzzleController.getPuzzleR8().getHint();
+<<<<<<< HEAD
 		  			monster = MonsterController.getM3Monster().getMonsterName()+ "; Health:"+ MonsterController.getM3Monster().getMonsterHealth() +
                             "; Armor:" + MonsterController.getM3Monster().getArmor();
+=======
+		  			monster = MonsterController.getM3Monster().getMonsterName();
+		  		
+>>>>>>> 6544a903eed4c43d173bf6f4f00e9be6b6b7dde5
 		  			// showItemPuzzleMonster();
+		  			
+		  			
+		  			//if (userInput.equals(arg0))
 		  			setCenterPane();
 		  			
 		  			
@@ -2244,6 +2260,7 @@ public class NewGuiController {
 						   getUserInputFromTextField();
 					   }
 					   break;
+<<<<<<< HEAD
                    case 11://Pickup
                        leftPane.getChildren().clear();
                        inventory.add(MonsterController.getM3Monster().getItemsDrop());
@@ -2253,16 +2270,24 @@ public class NewGuiController {
                       //hp = hp-5;
                      break;
 
+=======
+				   case 13:
+					   
+					   checkPuzzleAnswers();
+				  			
+				  		
+				   break;
+>>>>>>> 6544a903eed4c43d173bf6f4f00e9be6b6b7dde5
 				
 			default:
 				break;
 			} 		    	
     		    		    	
-    	
+      }	
     	 
    // i ended here..
        	
-      }
+      
     	
     	
     	
@@ -2287,44 +2312,65 @@ public class NewGuiController {
       } 
     
       public void checkPuzzleAnswers() {
-    	  getUserInputFromTextField();
+    	
     	  if (riddle.equals(PuzzleController.puzzleR1.getRiddle())) {
      		 
     		  riddleAnswer = PuzzleController.puzzleR1.getAnswer().toUpperCase();}
-    		  if (riddle.equals(PuzzleController.puzzleR2.getRiddle())) {
+    	   if (riddle.equals(PuzzleController.puzzleR2.getRiddle())) {
     	    		 
         		  riddleAnswer = PuzzleController.puzzleR2.getAnswer().toUpperCase();}
-        		  if (riddle.equals(PuzzleController.puzzleR3.getRiddle())) {
+    	   if (riddle.equals(PuzzleController.puzzleR3.getRiddle())) {
         	    		 
             		  riddleAnswer = PuzzleController.puzzleR3.getAnswer().toUpperCase();}
-            		  if (riddle.equals(PuzzleController.puzzleR4.getRiddle())) {
+    	  if (riddle.equals(PuzzleController.puzzleR4.getRiddle())) {
             	    		 
                 		  riddleAnswer = PuzzleController.puzzleR4.getAnswer().toUpperCase();}
-                		  if (riddle.equals(PuzzleController.puzzleR5.getRiddle())) {
+    	   if (riddle.equals(PuzzleController.puzzleR5.getRiddle())) {
                 	    		 
                     		  riddleAnswer = PuzzleController.puzzleR5.getAnswer().toUpperCase();}
-                    		  if (riddle.equals(PuzzleController.puzzleR6.getRiddle())) {
+    	  if (riddle.equals(PuzzleController.puzzleR6.getRiddle())) {
                     	    		 
                         		  riddleAnswer = PuzzleController.puzzleR6.getAnswer().toUpperCase();}
-                        		  if (riddle.equals(PuzzleController.puzzleR7.getRiddle())) {
+    	 if (riddle.equals(PuzzleController.puzzleR7.getRiddle())) {
                         	    		 
                             		  riddleAnswer = PuzzleController.puzzleR7.getAnswer().toUpperCase();}
-                            		  	if (riddle.equals(PuzzleController.puzzleR8.getRiddle())) {
+    	  	if (riddle.equals(PuzzleController.puzzleR8.getRiddle())) {
     		 
-                            		  		riddleAnswer = PuzzleController.puzzleR8.getAnswer().toUpperCase();
+           riddleAnswer = PuzzleController.puzzleR8.getAnswer().toUpperCase();
+        
+                System.out.println(riddleAnswer + "answer");            		  		
+    	  	}
                             		  		
-                            		  		
-    		  
-    		 System.out.print(PuzzleController.puzzleR8.getAnswer().toUpperCase() + "answer");
+    	    getUserInputFromTextField();
+            if (userInput.equalsIgnoreCase(riddleAnswer)) {
+         	  // System.out.println("still working...");
+         	   bottomPane.getChildren().clear();
+         	   userResponse= "You are right";
+         	   setBottomPane();
+
+            }  
+            else {
+         	   System.out.println("Keep trying");
+         	   bottomPane.getChildren().clear();
+         	   userResponse= "Keep  working on the puzzle, YOu are wrong!!!";
+         	   setBottomPane();
+
+            }
+    		//System.out.print(PuzzleController.puzzleR8.getAnswer().toUpperCase() + "answer");
     		  //setBottomPane();
-    	  }
+                            		  		//System.out.println("TEsting puzze");
+    	 
+    	 
+                            		  	}
+    	
+	  		
                             		 
-      }
+      
       public void changeGem() {
     	  checkPuzzleAnswers();
     	  if (userInput.equals(riddleAnswer)) {
 	  			
-	  			System.out.println("Riddleanswer:" +  riddleAnswer);
+	  			//System.out.println("Riddleanswer:" +  riddleAnswer);
 	  			leftPane.getChildren().clear();
 	  			gem = gem + 10;
 	  			setLeftPane();
