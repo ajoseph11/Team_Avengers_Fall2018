@@ -308,7 +308,7 @@ public class GameController {
 			public void handle(ActionEvent event) {
 				//leftPane.setMaxWidth(300);
 				rightPane.getChildren().clear();
-				//leftPane.getChildren().clear();
+				leftPane.getChildren().clear();
 				setLeftPane();
 				
 			}
