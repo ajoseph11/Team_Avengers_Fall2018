@@ -12,11 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import org.omg.PortableServer.POAPackage.WrongAdapter;
 
-import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,16 +25,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import javafx.stage.Stage;
-import view.NewGui;
+import view.GUI;
 
-public class NewGuiController {
+public class GameController {
 	//
-	CitadelController citadelController; //Master controller for the game
 	
 	//Selections for users to interact with the game
 	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H", "PK", "F", "SV"};
@@ -104,11 +99,10 @@ public class NewGuiController {
 	private Label lbInventory;
 	
 	
-	public NewGuiController() {
-		citadelController = new CitadelController(); //master controller for the game
+	public GameController() {
 		
-		stage = NewGui.getStage(); //static getter reference to the GUI
-		gameScene = NewGui.getScene(); //static getter reference to the GUI
+		stage = GUI.getStage(); //static getter reference to the GUI
+		gameScene = GUI.getScene(); //static getter reference to the GUI
 		
 		userResponse = ""; //empty message at the beginning of game
 		
@@ -312,7 +306,7 @@ public class NewGuiController {
 
 			@Override
 			public void handle(ActionEvent event) {
-				leftPane.setMaxWidth(300);
+				//leftPane.setMaxWidth(300);
 				rightPane.getChildren().clear();
 				//leftPane.getChildren().clear();
 				setLeftPane();
@@ -566,8 +560,8 @@ public class NewGuiController {
     	        
     	        }
     	        
-    	        System.out.println(userInput);
-    			System.out.println(userInput + " is user input & " + iUserOption + " is button clicked value");
+    	      //  System.out.println(userInput);
+    		//	System.out.println(userInput + " is user input & " + iUserOption + " is button clicked value");
     			txtUserInput.setText(userInput);
     			showItemPuzzleMonster();
     	      
@@ -617,7 +611,13 @@ public class NewGuiController {
       }
       
       public void referenceAllControllers() throws IOException {
-  		citadelController.setAllRoomDetails();
+  		RoomController.setRoomFromText(); // This set the model Room ready with all the data needed on the GUI
+  		PuzzleController.setPuzzleFromText(); // this sets the model Puzzle ready with all the data needed on the GUI
+  		ItemController.setItemFromText(); // this sets the model Item readt for all the data needed for the GUI(view) to
+  											// run
+  		MonsterController.setMonsterFromText(); // this sets all the data needed for the model Monster
+    	  
+
   	}
       
       public void setRoomDetails() {
@@ -2315,7 +2315,7 @@ public class NewGuiController {
     		if (roomDesc.equals(RoomController.spiralStaircaseRoom.getDescription())) {
     			currentRoom = 3;
     		}
-    		System.out.println("Current Room: "+currentRoom);
+    		//System.out.println("Current Room: "+currentRoom);
     	}
       
     
@@ -2351,7 +2351,7 @@ public class NewGuiController {
     		 
            riddleAnswer = PuzzleController.puzzleR8.getAnswer().toUpperCase();
         
-                System.out.println(riddleAnswer + "answer");            		  		
+              //  System.out.println(riddleAnswer + "answer");            		  		
     	  	}
                             		  		
     	    getUserInputFromTextField();
@@ -2363,7 +2363,7 @@ public class NewGuiController {
 
             }  
             else {
-         	   System.out.println("Keep trying");
+         	   //System.out.println("Keep trying");
          	   bottomPane.getChildren().clear();
          	   userResponse= "Keep  working on the puzzle, YOu are wrong!!!";
          	   setBottomPane();

@@ -5,14 +5,14 @@ package view;
 
 
 
-import controller.NewGuiController;
+import controller.GameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 
 import javafx.stage.Stage;
 
 
-public class NewGui extends Application {
+public class GUI extends Application {
 // try extending to stage
 	//static members
 	private static Stage stage;
@@ -23,7 +23,7 @@ public class NewGui extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage; //link our primaryStage variable to the GUI's primary stage so we can be able to acces it in the contoroller. 
-		NewGuiController guiController = new NewGuiController(); //instance of gui controller which controlls all instances of gui-view and classes-model
+		GameController guiController = new GameController(); //instance of gui controller which controlls all instances of gui-view and classes-model
 		//guiController.setNodesForGui();
 		guiController.setSceneAndStageForGUI(); // this updates GUi accordingly...
 		guiController. getUserInputFromTextField();
@@ -50,7 +50,7 @@ public class NewGui extends Application {
 	}
 
 	public static void setStage(Stage stage) {
-		NewGui.stage = stage;
+		GUI.stage = stage;
 	}
 	
 	
@@ -60,7 +60,7 @@ public class NewGui extends Application {
 	}
 
 	public static void setScene(Scene scene) {
-		NewGui.scene = scene;
+		GUI.scene = scene;
 	}
 
 	
