@@ -42,7 +42,7 @@ public class NewGuiController {
 	//Selections for users to interact with the game
 	String [] userOptions = {"N", "E", "S", "W", "I", "P", "M", "U", "D", "H", "PK", "F", "SV"};
 	int iUserOption = -1;// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 12; for each of  the above values we are adding 1 to their index
-	private ArrayList< String> inventory;
+	private String inventory;
 
 	
    private int currentRoom;
@@ -240,7 +240,8 @@ public class NewGuiController {
 				+ "2.Type only one charater for NAVIGATION\n"
 				+ "N = North, E = East, S = South , W = West\n"
 				+ "U = Up, D = Down, P = Puzzle, H = Hint\n"
-				+ "I = Item, L = Monster\n, PK = Pick Item"
+				+ "I = Item, M = Monster, PK = Pickup Item\n"
+				+ "FI = Fight"
 				+ "3.Multiple characters are allowed when\n"
 				+ "dealing with PUZZLE, MONSTER, or ITEMS\n"
 				
@@ -311,7 +312,10 @@ public class NewGuiController {
 
 			@Override
 			public void handle(ActionEvent event) {
+				leftPane.setMaxWidth(300);
 				rightPane.getChildren().clear();
+				//leftPane.getChildren().clear();
+				setLeftPane();
 				
 			}
 		});
@@ -367,7 +371,7 @@ public class NewGuiController {
 		lbInventory = new Label("INVENTORY:" + inventory  );
 				
 
-		leftPane.getChildren().addAll(lbHp, lbGem, lbWeapon, lbInventory);
+		leftPane.getChildren().addAll(lbHp, lbGem, lbInventory);
 		leftPane.setAlignment(Pos.BASELINE_LEFT);
 		VBox.setMargin(lbHp, new Insets(5));
 		VBox.setMargin(lbGem, new Insets(5));
@@ -1013,13 +1017,13 @@ public class NewGuiController {
 		  			isPuzzle = true;
 		  			isMonster = true;
 		  			hint = PuzzleController.getPuzzleR8().getHint();
-<<<<<<< HEAD
+
 		  			monster = MonsterController.getM3Monster().getMonsterName()+ "; Health:"+ MonsterController.getM3Monster().getMonsterHealth() +
                             "; Armor:" + MonsterController.getM3Monster().getArmor();
-=======
-		  			monster = MonsterController.getM3Monster().getMonsterName();
+
+		  			//monster = MonsterController.getM3Monster().getMonsterName();
 		  		
->>>>>>> 6544a903eed4c43d173bf6f4f00e9be6b6b7dde5
+
 		  			// showItemPuzzleMonster();
 		  			
 		  			
@@ -1355,7 +1359,7 @@ public class NewGuiController {
 					isMonster = true;
 					isItem = true;
 					item = ItemController.getItemk11().getItemName();
-					inventory.add(item);
+					inventory = (item);
 					monster = MonsterController.getM8Monster().getMonsterName()+ "; Health:"+ MonsterController.getM8Monster().getMonsterHealth() +
                             "; Armor:" + MonsterController.getM8Monster().getArmor();
 					hint = PuzzleController.getPuzzleR6().getHint();
@@ -1399,7 +1403,7 @@ public class NewGuiController {
 					isMonster = true;
 					isItem = true;
 					item = ItemController.getItemk11().getItemName();
-					inventory.add(item);
+					inventory= item;
 					monster = MonsterController.getM8Monster().getMonsterName()+ "; Health:"+ MonsterController.getM8Monster().getMonsterHealth() +
                             "; Armor:" + MonsterController.getM8Monster().getArmor();
 					setCenterPane();
@@ -1560,7 +1564,7 @@ public class NewGuiController {
 						   isMonster = true;
 						   isItem = true;
 						   item = ItemController.getItemk11().getItemName();
-						   inventory.add(item);
+						   inventory = item;
 						   monster = MonsterController.getM8Monster().getMonsterName() + "; Health:"+ MonsterController.getM8Monster().getMonsterHealth() +
                                    "; Armor:" + MonsterController.getM8Monster().getArmor();
 						   setCenterPane();
@@ -1920,7 +1924,7 @@ public class NewGuiController {
 						   isMonster = true;
 						   isItem = true;
 						   item = ItemController.getItemk11().getItemName();
-						   inventory.add(item);
+						   inventory = item;
 						   monster = MonsterController.getM8Monster().getMonsterName()+ "; Health:"+ MonsterController.getM8Monster().getMonsterHealth() +
                                    "; Armor:" + MonsterController.getM8Monster().getArmor();
 						   setCenterPane();
@@ -2260,24 +2264,33 @@ public class NewGuiController {
 						   getUserInputFromTextField();
 					   }
 					   break;
-<<<<<<< HEAD
+
                    case 11://Pickup
-                       leftPane.getChildren().clear();
-                       inventory.add(MonsterController.getM3Monster().getItemsDrop());
-                       setLeftPane();
+                    if (roomDesc.equals(RoomController.roomC2.getDescription()) ) {
+                    	   leftPane.getChildren().clear();
+                           //inventory = MonsterController.getM3Monster().getItemsDrop();
+                          lbInventory.setWrapText(true);
+                           inventory = ItemController.getItemd2().getItemName() + ","
+                           		+ ItemController.getItema4().getItemName() +"&"
+                           				+ ItemController.getItema1().getItemName();
+                           setLeftPane();
+                    }
+                    else {
+                    	leftPane.getChildren().clear();
+                    }
                        break;
                    case 12://Fight
                       //hp = hp-5;
                      break;
 
-=======
+
 				   case 13:
 					   
 					   checkPuzzleAnswers();
 				  			
 				  		
 				   break;
->>>>>>> 6544a903eed4c43d173bf6f4f00e9be6b6b7dde5
+
 				
 			default:
 				break;
@@ -2412,7 +2425,7 @@ public class NewGuiController {
          gridPane.add(tfPassword, 1, 1);
          gridPane.add(btnLogin, 2, 1);
          gridPane.add(lblMessage, 1, 2);
-         gridPane.add(btnNewUser, 2, 2);
+       //  gridPane.add(btnNewUser, 2, 2);
          gridPane.add(lblMessages, 3, 1);
 
          //Reflection for gridPane
