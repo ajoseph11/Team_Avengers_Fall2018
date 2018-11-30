@@ -1,0 +1,93 @@
+.root{
+	-fx-font-size: 15pt;
+	-fx-font-family: Consolas;
+    -fx-padding: 3 6 3 6;
+	-fx-color: white;
+	-fx-base: #BFE7FF;
+	
+	
+	
+}
+.vbox, .hbox{
+	-fx-border-color: blue;
+	-fx-border-style: dotted;
+	-fx-border-width: 1;
+}
+.text-field{
+	-fx-background-color: grey;
+	
+	
+	
+}
+.text-field:focused{
+	-fx-background-color: #A9A9A9;
+	
+	
+}
+.button{
+	-fx-background-radius: 12pt;
+	
+	-fx-border-color: grey;
+	-fx-font-size: 15pt;
+	-fx-border-radius: 10pt;
+	-fx-border-width: 2 1 0 0;
+	-fx-border-radius: 12pt;
+	
+	
+	
+}
+.topPane{
+		-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
+	
+}
+.bottomPane{
+		-fx-background-color: linear-gradient(#3f87a6, #ebf8e1, #f69d3c);
+	
+}
+.button:hover{
+	
+	-fx-background-radius: 12pt;
+	
+	
+	
+	-fx-border-radius: 12pt;
+	-fx-border-width: 3 2 1 0;
+	-fx-border-radius: 12pt;
+}
+
+.gamePane{
+	
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover;
+	-fx-background-position: center;
+	
+	-fx-background-color: rgba(191,231,255,0.4);
+	
+	
+	-fx-font-size: 14pt;
+	-fx-font-family: Roboto;
+
+	
+	
+	-fx-text-fill: white;
+	
+	
+
+	
+}
+.rightPane{
+
+	
+	-fx-font-size: 13pt;
+	-fx-font-family: Consolas;
+
+	-fx-font-style: italic;
+	-fx-font-weight: bold;
+	
+	
+
+	
+}
+.label{
+	
+}
