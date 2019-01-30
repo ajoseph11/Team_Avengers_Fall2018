@@ -11,7 +11,7 @@ and recommendations are welcome.
 ## Motivation
 Citadel of storms is a text - based adventure  game.
 
-In fulfillment of expectation for STEC 3860 : Software Developomen I, at Georgia Gwinnett College Technology.
+In fulfillment of expectation for STEC 3860 : Software development I, at Georgia Gwinnett College.
 
 [comment]: #---
 ## Contributors
@@ -21,7 +21,7 @@ In fulfillment of expectation for STEC 3860 : Software Developomen I, at Georgia
 
 ## Technology and tools
 
- * Programming Language : __Java__. You can view Java's *[documentation][]* . You can download  Java's _version 8_ Jdk *[here][]*
+ * Programming Language : __Java__. You can view Java's *[documentation][]* . You can also download  Java's _version 8_ Jdk *[here][]*
 
 ---
 
