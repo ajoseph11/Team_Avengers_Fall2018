@@ -1,4 +1,4 @@
-# Citadel of Storms :: A text based game.
+# Citadel of Storms : A text based game.
 
 |Loading Game | Game UI      |
 |:-----------:|:----------:  |
