@@ -16,6 +16,11 @@ In fulfillment of expectation for STEC 3860 : Software development I, at Georgia
 [comment]: #---
 ## Contributors
  Aaleyah Joseph, Adefemi Kolawole, Scott Nguyen.
+ 
+#### Project Roles:
+   **1. Aaleyah Joseph -** _Graphics Designer_   
+   **2. Adefemi Kolawole -** _Team Lead_   
+   **3. Scott Nguyen -** _Documentation Lead._ 
 
 [comment]: #---
 
